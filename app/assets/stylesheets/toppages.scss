@@ -1,18 +1,25 @@
-.top{
-    height:100vh;
+@media screen and(min-width: 768px){
 }
+@media screen and(min-width: 1024px){
+}
+
+.top{
+    height: 100vh;
+}
+
 .top-img{
+    position: relative;
     background-color: #82d9d9;
     width: 70%;
     height: 70%;
 }
 .top-text{
     position: absolute;
-    left: 25%;
-    bottom: 35%;
+    bottom: 25%;
+    right: 3%;
     text-align: center;
-
 }
+
 
 // Place all the styles related to the toppages controller here.
 // They will automatically be included in application.css.

@@ -1,17 +1,47 @@
 <div class="row align-items-center top" style="background-color:#e6e6e6;">
-    <div class="col-lg-7 col-12 top-img"></div>
+    <div class="col-lg-7 col-12 top-img">
     <div class="top-text">
-            <div class="align-items-center">
-                <h1>冷蔵庫タスク</h1>
-                <p>整理整頓しよう!</p>
-                <p>※背景にイラストor写真</p>
-            </div>
+        <div class="align-items-center">
+            <h1>冷蔵庫タスク</h1>
+            <p>整理整頓しよう!</p>
+            <p>※背景にイラストor写真</p>
+
+        </div>
+    </div>
     </div>
     
-    <div class="col-lg-3 col-12 offset-lg-1" style="color:white">
-            <div class="align-items-center">
-                <a class="btn btn-success btn-block">ログイン</a>
-                <a class="btn btn-success btn-block">会員登録</a>
+    <div class="col-lg-3 col-12 offset-lg-1" style="padding:0">
+        <div class="align-items-center">
+            <a class="btn btn-success btn-block form-btn login-btn" style="color:white">ログイン</a>
+            <a class="btn btn-success btn-block form-btn signup-btn" style="color:white">新規登録</a>
+        </div>
+        
+        <div class='signup-form'>
+            <%= render 'users/new' %>
+            <div class="text-right">
+                <a class="btn btn-link">ログイン</a>
             </div>
+        </div>
+        <div class='login-form'></div>
+        
     </div>
+
 </div>
+<script>
+    //button
+    $('.signup-form').hide();
+    $('.login-form').hide();
+    //ログインも隠しておく
+    
+    //signupを選んだ場合
+    $('.signup-btn').on('click', function(){
+        $('.form-btn').hide();
+        $('.signup-form').fadeIn();
+    });
+    //loginを選んだ時
+    $('.login-btn').on('click', function(){
+        $('.form-btn').hide();
+        $('.login-form').fadeIn();
+    });
+    
+</script>
