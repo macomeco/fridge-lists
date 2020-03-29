@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_user_logged_in, only: [:show]
   def show
-    
+    @user = User.find(params[:id])
   end
 
   def new
@@ -12,10 +13,12 @@ class UsersController < ApplicationController
     
     if @user.save
       flash[:success] = 'ユーザーを登録しました'
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
     else
       flash.now[:danger] = 'ユーザーの登録に失敗しました'
-      #render :new
+#     render template: "users/new"
+      redirect_back(fallback_location: root_path)
+
     end
   end
 
@@ -28,7 +31,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).premit(:name, :emial, :password, :password_confirmation)
+    params.require(:user).permit(:name, :emial, :password, :password_confirmation)
   end
 
 
