@@ -29,10 +29,10 @@ test:
   database: fridge-lists_test
   
 production:
-  <<: *default
-#  database: db/production.sqlite3
   encoding: unicode
   pool: 5
+  <<: *default
+#  database: db/production.sqlite3
   database: fridge-lists_production
   username: fridge-lists
   password: <%= ENV['SAMPLE_DATABASE_PASSWORD'] %>

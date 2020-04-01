@@ -18,7 +18,6 @@ class UsersController < ApplicationController
       flash.now[:danger] = 'ユーザーの登録に失敗しました'
 #     render template: "users/new"
       redirect_back(fallback_location: root_path)
-
     end
   end
 
@@ -31,7 +30,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :emial, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
 

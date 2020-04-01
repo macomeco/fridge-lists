@@ -5,22 +5,25 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <!--  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>  -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
 
+
   </head>
 
   <body>
 
-    <div class="container-fluid" style="background-color:#e6e6e6;height:100vh">
+    <div class="container-fluid" style="height:100vh">
     <div class="flash-msg" style="position:absolute;width:35%;right:0;">
           <%= render 'layouts/flash_messages' %>      
     </div>
@@ -34,4 +37,5 @@
   $(function(){
     setTimeout("$('.alert').fadeOut(100)", 3000) 
   })
+  //background-color:#e6e6e6;
 </script>

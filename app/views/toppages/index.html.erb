@@ -1,7 +1,20 @@
 <% if logged_in? %>
 
-<p>ログインしているよ <%= current_user.name %>さんの冷蔵庫</p>
-<%= link_to 'ログアウト', logout_path, method: :delete %>
+
+<div class="row">
+    <div class="col-4" style="display:flex">  
+        <%= render 'layouts/navbar'%>
+    </div>
+    
+
+
+
+
+    
+</div>
+
+
+
 
 <% else %>
     <div class="row align-items-center top">
@@ -17,7 +30,6 @@
         
         <div class="col-lg-3 col-12 offset-lg-1" style="padding:0">
             <div class="align-items-center">
-                <%= link_to 'ログイン', signup_path%>
                 <a class="btn btn-success btn-block form-btn login-btn" style="color:white">ログイン</a>
                 <a class="btn btn-success btn-block form-btn signup-btn" style="color:white">新規登録</a>
             </div>

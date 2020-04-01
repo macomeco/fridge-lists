@@ -1,0 +1,61 @@
+<nav id="nav-bar">
+  <ul>
+    <li class="sub-menu" >
+      <a class="sub-menu-head"><i class="fas fa-plus fa-2x"></i>
+      <ul class="sub-menu-body">
+        <li><a href="#">なかみ</a></li>
+      </ul>
+    </li>
+    
+    <li class="sub-menu">
+      <a class="sub-menu-head"><i class="fas fa-search fa-2x"></i>
+      <ul class="sub-menu-body">
+        <li><a href="#">なかみ</a></li>
+      </ul>
+    </li>
+    <li class="sub-menu">
+      <a class="sub-menu-head"><i class="fas fa-cog fa-2x"></i>
+      <ul class="sub-menu-body">
+        <li><a href="#">なかみ</a></li>
+      </ul>
+    </li>
+    <li class="sub-menu">
+      <a class="sub-menu-head"><i class="fas fa-user fa-2x"></i>
+      <ul class="sub-menu-body">
+        <li><a href="#">なかみ</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<script>
+  $(function(){
+    $('.sub-menu-body').hide();
+    $('.sub-menu-head').on('click', function(){
+      $(this).next('.sub-menu-body').slideToggle();
+      $('.sub-menu-body').not($(this).next('.sub-menu-body')).slideUp();
+    })
+  });
+</script>
+<style>
+  ul {
+    list-style: none;
+    margin:0;
+    padding:0;
+    text-align:center;
+  }
+
+  li{
+    padding:10px;
+  }
+  
+
+  
+  #nav-bar{
+    width:30%;
+    height:100vh;
+    background-color:pink;
+  }
+  .sub-menu{
+    margin:0px;
+  }
+</style>
