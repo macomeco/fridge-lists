@@ -1,11 +1,11 @@
 <div class="card mt-2">
     <div class="card-body">
-        <%= form_with(model: @user, local: true)do |f| %>
+        <%= form_with(model: tag, local: true)do |f| %>
         <div class="form-group">
             <%= f.label :name, 'タグの追加'%>
             <div class="form-inline">
                 <%= f.text_field :name, class: 'form-control'%>
-                <%= f.submit 'OK' , class: 'btn btn-success ml-2' %>
+                <%= f.submit '追加' , class: 'btn btn-success ml-2' %>
             </div>
         </div>
         <%end%>

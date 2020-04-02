@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-body">
+        <p style="font-size:20px">タグ一覧</p>
+            <div style="border-bottom: 2px dotted #e6e6e6"></div>
+</br>
+    <% tags.each do |tag|%>
+        <%= tag.name %><a class="btn tag-edit"><i class="fas fa-pen"></i></a>
+            <div class="tag-edit-form"><%= render 'tags/tag_form' ,tag: tag%></div>
+        </br>
+    <% end %>
+
+    </div>
+</div>
+
+<div class="tag-form">
+    <%= render 'tags/tag_form' , tag: @tag%>    
+</div>
+
+<script>
+    $('.tag-form,.tag-edit-form').hide();
+    $(function(){
+        $('.tag-edit').on('click',function(){
+            $(this).next('.tag-edit-form').slideToggle();
+            $('.tag-edit-form').not($(this).next('.tag-edit-form')).slideUp();
+        })
+    })
+
+</script>
