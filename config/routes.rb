@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'lists/create'
+  get 'lists/destroy'
+  get 'lists/update'
   root to: 'toppages#index'
   
   get 'login', to: 'sessions#new'
@@ -9,4 +12,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :new, :create, :edit, :update]
   resources :tags, only: [:create, :destroy, :update]
+  resources :lists, only: [:create, :destroy, :update]
+
 end

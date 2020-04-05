@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-body">
+        <h1 style="font-size:20px">お部屋一覧</h1>
+        <div style="border-bottom: 2px dotted #e6e6e6"></div>
+        </br>
+        <% lists.each do |list|%>
+            <%= link_to list , :method => :delete, data:{ confirm: list.name+'を削除しますか？'},class: 'm-3' do %><i class="fa fa-times"></i><% end %>
+            <%= list.name %>
+                <div class="text-right list-edit btn btn-link "><i class="fas fa-edit"></i></div>
+                <div class="list-edit-form">
+                <%= render 'lists/list_form',list: list%>   
+                </div>
+                </br>
+        <% end %>
+        
+        <div class="list-add text-right"><a class="btn btn-success">お部屋の追加<i class="fas fa-plus"></i></a></div>
+        <div class="list-add-form">
+        <%= render 'lists/list_form',list: @list%>    
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.list-add-form,.list-edit-form').hide();//
+        $('.list-edit').on('click',function(){
+            $(this).next('.list-edit-form').slideToggle();
+//            $('.tag-edit-form').not($(this).next('.tag-edit-form')).slideUp();
+        })
+        $('.list-add').on('click',function(){
+            $(this).next('.list-add-form').slideToggle();
+            //$('.tag-add-form').not($(this).next('.tag-add-form')).slideUp();
+        })
+</script>
