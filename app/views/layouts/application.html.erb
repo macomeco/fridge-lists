@@ -20,22 +20,24 @@
 
 
   </head>
-
+     <div class="flash-msg" style="position:absolute;width:35%;left:-5px;bottom:0%">
+        <%= render 'layouts/flash_messages' %>
+      </div>
+      
   <body>
 
     <div class="container-fluid" style="height:100vh;padding:0">
-    <div class="flash-msg" style="position:absolute;width:35%;right:-5px;top:10%">
-          <%= render 'layouts/flash_messages' %>      
-    </div>
 
+      <div style="position:relative;">
       <%= yield %>
+      </div>
     </div>
   </body>
 </html>
 
 <script>
-  $(function(){
-    setTimeout("$('.alert').fadeOut(100)", 3000) 
-  })
+  //$(function(){
+  //  setTimeout("$('.alert').fadeOut(100)", 3000) 
+  //})
   //background-color:#e6e6e6;
 </script>

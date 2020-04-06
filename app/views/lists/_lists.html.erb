@@ -4,7 +4,7 @@
         <div style="border-bottom: 2px dotted #e6e6e6"></div>
         </br>
         <% lists.each do |list|%>
-            <%= link_to list , :method => :delete, data:{ confirm: list.name+'を削除しますか？'},class: 'm-3' do %><i class="fa fa-times"></i><% end %>
+            <%= link_to list , :method => :delete, data:{ confirm: list.name+'を削除しますか？'},class: 'm-2' do %><i class="fa fa-times"></i><% end %>
             <%= list.name %>
                 <div class="text-right list-edit btn btn-link "><i class="fas fa-edit"></i></div>
                 <div class="list-edit-form">

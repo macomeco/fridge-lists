@@ -4,7 +4,7 @@
         <div style="border-bottom: 2px dotted #e6e6e6"></div>
         </br>
         <% tags.each do |tag|%>
-            <%= link_to tag , :method => :delete, data:{ confirm: tag.name+'を削除しますか？'},class: 'm-3' do %><i class="fa fa-times"></i><% end %>
+            <%= link_to tag , :method => :delete, data:{ confirm: tag.name+'を削除しますか？'},class: 'm-2' do %><i class="fa fa-times"></i><% end %>
             <%= tag.name %>
                 <div class="text-right tag-edit btn btn-link "><i class="fas fa-edit"></i></div>
                 <div class="tag-edit-form">

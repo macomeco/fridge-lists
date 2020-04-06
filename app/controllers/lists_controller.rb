@@ -18,7 +18,7 @@ class ListsController < ApplicationController
   end
   
   def update
-      if @list.update(tags_params)
+      if @list.update(lists_params)
           flash[:success] = 'お部屋を設定しました'
       redirect_back(fallback_location: root_path)
       else

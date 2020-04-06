@@ -1,12 +1,17 @@
 <% if logged_in? %>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding:0">
     <h1 style="color:white;font-size:20px"><%= current_user.name %>さんの冷蔵庫</h1>
 </nav>
 
 <div class="row">
-    <div class="col-3" style="display:flex">  
+    <div class="col-2" style="display:block">  
         <%= render 'layouts/navbar'%>
+    </div>
+    
+    <div class="col-9" style="display:flex;overflow:auto;">
+        <%= render 'lists/list' ,lists: @lists%>
+        
     </div>
     
 </div>
@@ -63,3 +68,6 @@
     });
     
 </script>
+<style>
+
+</style>
