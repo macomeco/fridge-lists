@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy, :edit, :show, :update]
+  before_action :correct_user, only: [:destroy, :edit, :update]
 
   def create
     @tag = current_user.tags.build(tags_params)
@@ -10,7 +10,6 @@ class TagsController < ApplicationController
     else
       flash.now[:success] = 'タグの追加に失敗しました'
       redirect_back(fallback_location: root_path)
-      
     end
   end
   

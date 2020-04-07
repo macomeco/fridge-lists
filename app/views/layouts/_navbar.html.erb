@@ -1,30 +1,29 @@
 <nav id="nav-bar">
   <ul>
     <li class="sub-menu" >
-      <a class="sub-menu-head"><i class="fas fa-plus fa-2x"></i>
+      <a class="sub-menu-head"><i class="fas fa-plus fa-2x"></i></a>
       <ul class="sub-menu-body">
-        <li><a href="#">なかみ</a></li>
+        <li><%= render 'things/thing_form' %></li>
         <li><%= render 'tags/tags' , tags: @tags%></li>
+
       </ul>
     </li>
     
     <li class="sub-menu">
-      <a class="sub-menu-head"><i class="fas fa-search fa-2x"></i>
+      <a class="sub-menu-head"><i class="fas fa-search fa-2x"></i></a>
       <ul class="sub-menu-body">
         <li><a href="#">なかみ</a></li>
       </ul>
     </li>
     <li class="sub-menu">
-      <a class="sub-menu-head"><i class="fas fa-cog fa-2x"></i>
+      <a class="sub-menu-head"><i class="fas fa-cog fa-2x"></i></a>
       <ul class="sub-menu-body">
-        <li><a href="#">なかみ</a></li>
         <li><%= render 'lists/lists' , lists: @lists%></li>
       </ul>
     </li>
     <li class="sub-menu">
-      <a class="sub-menu-head"><i class="fas fa-user fa-2x"></i>
+      <a class="sub-menu-head"><i class="fas fa-user fa-2x"></i></a>
       <ul class="sub-menu-body">
-        <li><a href="#">なかみ</a></li>
         <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
         <li><%= render 'users/edit',user: current_user%></li>
       </ul>
@@ -37,6 +36,7 @@
     $('.sub-menu-head').on('click', function(){
       $(this).next('.sub-menu-body').slideToggle();
       $('.sub-menu-body').not($(this).next('.sub-menu-body')).slideUp();
+      console.log('わしじゃよ')
     })
   });
 </script>

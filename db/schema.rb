@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_041042) do
+ActiveRecord::Schema.define(version: 2020_04_07_070231) do
 
   create_table "lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -20,12 +20,35 @@ ActiveRecord::Schema.define(version: 2020_04_05_041042) do
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
+  create_table "putinlists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "list_id"
+    t.bigint "thing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_putinlists_on_list_id"
+    t.index ["thing_id"], name: "index_putinlists_on_thing_id"
+  end
+
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_tags_on_user_id"
+  end
+
+  create_table "things", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.date "deadline"
+    t.integer "quantity"
+    t.bigint "user_id"
+    t.bigint "tag_id"
+    t.bigint "list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_things_on_list_id"
+    t.index ["tag_id"], name: "index_things_on_tag_id"
+    t.index ["user_id"], name: "index_things_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -37,5 +60,10 @@ ActiveRecord::Schema.define(version: 2020_04_05_041042) do
   end
 
   add_foreign_key "lists", "users"
+  add_foreign_key "putinlists", "lists"
+  add_foreign_key "putinlists", "things"
   add_foreign_key "tags", "users"
+  add_foreign_key "things", "lists"
+  add_foreign_key "things", "tags"
+  add_foreign_key "things", "users"
 end

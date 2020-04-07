@@ -1,0 +1,2 @@
+module PutinlistsHelper
+end

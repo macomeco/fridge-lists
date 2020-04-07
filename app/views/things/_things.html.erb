@@ -1,0 +1,19 @@
+<% things.each do |tng| %>
+    <div class="card">
+        <div class="card-body">
+        <%= tng.content %>
+        
+        <% @list_name = List.all.find(tng.list_id).name%>
+        <%= @list_name %>
+        
+        <%= tng.deadline%>
+        
+        <% @tag_name = Tag.all.find(tng.tag_id).name%>
+        <%= @tag_name %>
+        
+        <%= tng.quantity%>
+
+        </div>
+    </div>
+    
+<%end%>
