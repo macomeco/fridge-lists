@@ -1,19 +1,29 @@
 <% things.each do |tng| %>
-    <div class="card">
-        <div class="card-body">
-        <%= tng.content %>
-        
-        <% @list_name = List.all.find(tng.list_id).name%>
-        <%= @list_name %>
-        
-        <%= tng.deadline%>
-        
-        <% @tag_name = Tag.all.find(tng.tag_id).name%>
-        <%= @tag_name %>
-        
-        <%= tng.quantity%>
+    <%if list_id == tng.list_id then%>
+        <% (tng.quantity).times do %>
+            <div class="card mb-2">
+                <div class="card-body">
+                        <a style="text-align:left">
+                            <%= tng.content %>
+                        
+                            <% @tag_name = Tag.all.find(tng.tag_id).name%>
+                            <a class="text-muted"><%= "#"+ @tag_name %></a>
+                            <% num = (tng.deadline-Date.today).to_i %>
+                        </a>
+                        <a class="text-right" style="float:right">
+                            <%if num > 0 %>
+                                あと<%= num %>日　
+                            <% elsif num == 0 %>
+                                本日　
+                            <%else%>
+                                <%= num.abs %>日経過　
+                            <%end%>
+                        <i class="fas fa-pen"></i>
 
-        </div>
-    </div>
-    
+                        </a>
+                </div>
+            </div>
+        <%end%>
+    <%end%>
 <%end%>
+

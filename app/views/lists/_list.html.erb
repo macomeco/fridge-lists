@@ -1,10 +1,10 @@
 <% lists.each do |list|%>
-    <div class="list-card col-3 ml-3 bg-light">
+    <div class="list-card col-3 ml-3 bg-light" style="overflow:auto;float:left">
         <div>
             <h1 style="font-size:20px"><%= list.name%></h1>
             <div style="border-bottom: 2px dotted #e6e6e6"></div>
             </br>
-            <%= render 'things/things' , things: @things %>
+            <%= render 'things/things' , things: @things , list_id: list.id %>
         </div>
     </div>
 <% end %>

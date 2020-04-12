@@ -22,7 +22,7 @@ class ListsController < ApplicationController
           flash[:success] = 'お部屋を設定しました'
       redirect_back(fallback_location: root_path)
       else
-          flash.now[:danger] = 'お部屋の設定に失敗しました'
+          flash[:danger] = 'お部屋の設定に失敗しました'
       redirect_back(fallback_location: root_path)
       end
   end

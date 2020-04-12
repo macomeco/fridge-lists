@@ -3,7 +3,7 @@ class ToppagesController < ApplicationController
       if logged_in?
       #もの
       @thing = current_user.things.build
-      @things = current_user.things.order(id: :asc)
+      @things = current_user.things.order(deadline: :desc)
       
       #タグ
       @tag = current_user.tags.build
