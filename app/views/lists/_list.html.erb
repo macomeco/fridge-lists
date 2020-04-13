@@ -1,17 +1,32 @@
 <% lists.each do |list|%>
-    <div class="list-card col-3 ml-3 bg-light" style="overflow:auto;float:left">
-        <div>
-            <h1 style="font-size:20px"><%= list.name%></h1>
-            <div style="border-bottom: 2px dotted #e6e6e6"></div>
-            </br>
-            <%= render 'things/things' , things: @things , list_id: list.id %>
+    <div class="card col-3 ml-3 bg-light" id="list-card" style="display:flex;overflow:auto;">
+        <div class="card-body p-1">
+            <div>
+                <h1 style="font-size:20px" class="mt-2"><%= list.name%></h1>
+                <div style="border-bottom: 2px dotted #e6e6e6"></div>
+                </br>
+                <%= render 'things/things' , things: @things , list_id: list.id %>
+            </div>
         </div>
     </div>
 <% end %>
 
 <style>
-    .list-card{
-        top:0;
+    #list-card{
+        margin-top: auto;
+        margin-bottom: auto;
         height:90vh;
     }
+    ::-webkit-scrollbar{
+        width:10px;
+        height:10px;
+    }
+    ::-webkit-scrollbar-track{
+        border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb{
+        border-radius: 5px;
+        background: pink;
+    }
+
 </style>

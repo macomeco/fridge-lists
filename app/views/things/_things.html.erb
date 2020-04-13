@@ -2,6 +2,13 @@
     <%if list_id == tng.list_id then%>
         <% (tng.quantity).times do %>
             <div class="card mb-2">
+                
+                
+                <div class="row no-gutters">
+                    <div class="col-md-1"><div style="background-color:pink;width:100%;height:100%"></div></div>
+                
+                
+                    <div class="col-md-11">
                 <div class="card-body">
                         <a style="text-align:left">
                             <%= tng.content %>
@@ -22,6 +29,12 @@
 
                         </a>
                 </div>
+                </div></div>
+                
+                
+                
+                
+                
             </div>
         <%end%>
     <%end%>

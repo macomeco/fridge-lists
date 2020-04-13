@@ -1,35 +1,43 @@
+
 <div class="card">
     <div class="card-body">
-    <h1 class="title" style="font-size:20px">タグ一覧</h1>
-        <div style="border-bottom: 2px dotted #e6e6e6"></div>
-        </br>
-        <% tags.each do |tag|%>
-            <%= link_to tag , :method => :delete, data:{ confirm: tag.name+'を削除しますか？'},class: 'm-2' do %><i class="fa fa-times"></i><% end %>
-            <%= tag.name %>
-                <div class="text-right tag-edit btn btn-link "><i class="fas fa-edit"></i></div>
-                <div class="tag-edit-form">
-                <%= render 'tags/tag_form',tag: tag%>   
-                </div>
-                </br>
-        <% end %>
-        
-        <div class="tag-add text-right"><a class="btn btn-success">タグの追加<i class="fas fa-plus"></i></a></div>
+        <p>タグの追加</p>
         <div class="tag-add-form">
-        <%= render 'tags/tag_form',tag: @tag%>    
+            <%= render 'tags/tag_form',tag: @tag%>
         </div>
-    </div>
+
+        <div class="card" style="height:200px">
+
+                <div class="card-body p-1" style="overflow-y:scroll">
+    
+                    <table class="table table-borderless">
+                        <tbody>
+                        
+                            <% tags.each do |tag|%>
+                                <tr class="p-0">
+                                    <td class="p-1"><%= link_to tag , :method => :delete, data:{ confirm: tag.name+'を削除しますか？'},class: 'm-0' do %><i class="fa fa-times"></i><% end %></td>
+                                    <td class="p-1"><%= tag.name %></td>
+                                    <td class="p-0"><div class="text-right tag-edit btn btn-link "><i class="fas fa-pen"></i></div></td>
+                                    <div class="tag-edit-form">
+                                    <%= render 'tags/tag_form',tag: tag%>   
+                                    </div>
+                                </tr>
+                            <% end %>
+                    
+                        </tbody>
+                    </table>
+                
+                </div>
+            </div>
+        </div>
 </div>
 
 
-
 <script>
-    $('.tag-add-form,.tag-edit-form').hide();//
+    $('.tag-edit-form').hide();//
         $('.tag-edit').on('click',function(){
             $(this).next('.tag-edit-form').slideToggle();
 //            $('.tag-edit-form').not($(this).next('.tag-edit-form')).slideUp();
         })
-        $('.tag-add').on('click',function(){
-            $(this).next('.tag-add-form').slideToggle();
-            //$('.tag-add-form').not($(this).next('.tag-add-form')).slideUp();
-        })
+
 </script>
