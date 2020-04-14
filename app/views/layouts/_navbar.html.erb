@@ -1,14 +1,14 @@
 <nav id="nav-bar">
   <ul>
     <li class="sub-menu" >
-      <div class="sub-menu-head"><i class="fas fa-plus fa-2x"></i><a class="ml-2 btn btn-link">リストに追加</a></div>
+      <div class="sub-menu-head"><i class="fas fa-plus fa-2x"></i><a class="ml-2 btn btn-link">モノ</a></div>
       <ul class="sub-menu-body">
         <li><%= render 'things/thing_form' %></li>
       </ul>
     </li>
 
     <li class="sub-menu">
-      <div class="sub-menu-head"><i class="fas fa-tag fa-2x"></i><a class="ml-2 btn btn-link">タグの追加</a></div>
+      <div class="sub-menu-head"><i class="fas fa-tag fa-2x"></i><a class="ml-2 btn btn-link">タグ</a></div>
       <ul class="sub-menu-body">
         <li><%= render 'tags/tags' , tags: @tags%></li>
       </ul>
@@ -21,11 +21,12 @@
       </ul>
     </li>
     <li class="sub-menu">
-      <div class="sub-menu-head"><i class="fas fa-cog fa-2x"></i><a class="ml-2 btn btn-link">リストの設定</a></div>
+      <div class="sub-menu-head"><i class="fas fa-cog fa-2x"></i><a class="ml-2 btn btn-link">リスト</a></div>
       <ul class="sub-menu-body">
         <li><%= render 'lists/lists' , lists: @lists%></li>
       </ul>
     </li>
+    
     <li class="sub-menu">
       <div class="sub-menu-head"><i class="fas fa-user fa-2x"></i><a class="ml-2 btn btn-link">ユーザー設定</a></div>
       <ul class="sub-menu-body">

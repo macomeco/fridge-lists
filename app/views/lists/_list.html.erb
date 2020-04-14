@@ -1,21 +1,41 @@
 <% lists.each do |list|%>
-    <div class="card col-3 ml-3 bg-light" id="list-card" style="display:flex;overflow:auto;">
-        <div class="card-body p-1">
-            <div>
-                <h1 style="font-size:20px" class="mt-2"><%= list.name%></h1>
-                <div style="border-bottom: 2px dotted #e6e6e6"></div>
-                </br>
-                <%= render 'things/things' , things: @things , list_id: list.id %>
+<div class="col-3 p-0" id="list_col" style="background-color:beige;border-left: 1px solid">
+    
+    
+    
+    <!-- リスト名 -->
+    <div class="card bg-light m-2" style="width:95%">
+        <div class="row no-gutters">
+            <div class="col-md-1"><div style="background-color:#89c997;width:100%;height:100%"></div></div>
+            
+            <div class="col-md-11">
+                <div class="card-body mx-auto">
+                    <h1 style="font-size:20px"><%= list.name%></h1>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- 検索のやつ -->
+
+
+
+    <!-- 中身 -->
+    <div class="" id="list-card" style="display:flex;overflow:auto;">
+        <div class="mx-auto" style="width:95%;">
+            <%= render 'things/things' , things: @things , list_id: list.id %>
+        </div>
+    </div>
+    
+</div>
 <% end %>
 
 <style>
     #list-card{
         margin-top: auto;
         margin-bottom: auto;
-        height:90vh;
+        height: 84vh;
+        
     }
     ::-webkit-scrollbar{
         width:10px;
@@ -23,6 +43,7 @@
     }
     ::-webkit-scrollbar-track{
         border-radius: 5px;
+        background: gray;
     }
     ::-webkit-scrollbar-thumb{
         border-radius: 5px;
