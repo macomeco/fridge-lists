@@ -5,29 +5,37 @@
                 
                 
                 <div class="row no-gutters">
-                    <div class="col-md-1"><div style="background-color:#89c997;width:100%;height:100%"></div></div>
-                
+                    
+                    <div class="col-md-1" style="background-color:pink">
+                        <div class="card-body px-0">
+                            <div class="m-auto text-center">
+                                <i class="fas fa-check fa-xs"></i>
+                            </div>
+                        </div>
+                    </div>
                 
                     <div class="col-md-11">
-                <div class="card-body">
+                    <div class="card-body">
                         <a style="text-align:left">
                             <%= tng.content %>
                         
                             <% @tag_name = Tag.all.find(tng.tag_id).name%>
-                            <a class="text-muted"><%= "#"+ @tag_name %></a>
+                            <a class="text-muted" style="font-size:14px"><%= "#"+ @tag_name %></a>
                             <% num = (tng.deadline-Date.today).to_i %>
                         </a>
-                        <a class="text-right" style="float:right">
+                        <div class="text-right" style="float:right;">
+                            
+                            <a style="font-size:14px">
                             <%if num > 0 %>
-                                あと<%= num %>日　
+                                あと <%= num %>日　
                             <% elsif num == 0 %>
-                                本日　
+                                
                             <%else%>
-                                <%= num.abs %>日経過　
+                                <%= num.abs %>日 経過　
                             <%end%>
-                        <i class="fas fa-pen"></i>
-
-                        </a>
+                            </a>
+                            <i class="fas fa-pen"></i>
+                        </div>
                 </div>
                 </div></div>
                 
@@ -39,4 +47,3 @@
         <%end%>
     <%end%>
 <%end%>
-

@@ -1,0 +1,56 @@
+<!-- 登録したものすべてを表示するぱーしゃる -->
+<div class="col-3 p-0" id="list_col" style="background-color:beige;border-left: 1px solid">
+    
+    <!-- リスト名 -->
+    <div class="card bg-light m-2" style="width:95%">
+        <div class="row no-gutters">
+            <div class="col-md-1"><div style="background-color:#89c997;width:100%;height:100%"></div></div>
+            
+            <div class="col-md-11">
+                <div class="card-body mx-auto">
+                    <h1 style="font-size:20px">すべて</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 検索のやつ -->
+
+
+
+    <!-- 中身 -->
+    <div class="" id="list-card" style="display:flex;overflow:auto;">
+        <div class="mx-auto" style="width:95%;">
+            <% things.each do |tng| %>
+                <div class="card mb-2">
+                    <div class="row no-gutters">
+                        <div class="col-md-1">
+                            <div style="background-color:#89c997;width:100%;height:100%"></div>
+                        </div>
+                        <div class="col-md-11">
+                            <div class="card-body">
+                                <a style="text-align:left">
+                                    <%= tng.content %>
+                                    <% @tag_name = Tag.all.find(tng.tag_id).name%>
+                                    <a class="text-muted"><%= "#"+ @tag_name %></a>
+                                    <% num = (tng.deadline-Date.today).to_i %>
+                                </a>
+                                <a class="text-right" style="float:right">
+                                    <%if num > 0 %>
+                                        あと<%= num %>日　
+                                    <% elsif num == 0 %>
+                                        本日　
+                                    <%else%>
+                                        <%= num.abs %>日経過　
+                                    <%end%>
+                                <i class="fas fa-pen"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <%end%>
+        </div>
+    </div>
+    
+</div>
