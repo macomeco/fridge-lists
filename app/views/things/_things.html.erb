@@ -1,16 +1,17 @@
 <% things.each do |tng| %>
     <%if list_id == tng.list_id then%>
-        <% (tng.quantity).times do %>
             <div class="card mb-2">
                 
                 
                 <div class="row no-gutters">
                     
-                    <div class="col-md-1" style="background-color:pink">
-                        <div class="card-body px-0">
-                            <div class="m-auto text-center">
-                                <i class="fas fa-check fa-xs"></i>
-                            </div>
+                    <div class="col-md-1 py-auto" style="background-color:pink">
+                        <div class="card-body px-0 h-100">
+                                <%= link_to tng , :method => :delete, data:{ confirm: tng.content+'を削除しますか？'},class: 'w-100 h-100' do %>
+                                    <div class="text-center w-100 h-100">
+                                        <i class="fa fa-check fa-xs"></i>
+                                    </div>
+                                <% end %>
                         </div>
                     </div>
                 
@@ -18,20 +19,24 @@
                     <div class="card-body">
                         <a style="text-align:left">
                             <%= tng.content %>
-                        
+                            
+                            <% if Tag.all.find_by(id: tng.tag_id) == nil then %>
+                            <%else%>
                             <% @tag_name = Tag.all.find(tng.tag_id).name%>
                             <a class="text-muted" style="font-size:14px"><%= "#"+ @tag_name %></a>
+                            <%end%>
+                            
                             <% num = (tng.deadline-Date.today).to_i %>
                         </a>
                         <div class="text-right" style="float:right;">
                             
-                            <a style="font-size:14px">
+                            <a class="mr-2" style="font-size:14px">
                             <%if num > 0 %>
-                                あと <%= num %>日　
+                                あと <%= num %>日
                             <% elsif num == 0 %>
-                                
+                                当日
                             <%else%>
-                                <%= num.abs %>日 経過　
+                                <%= num.abs %>日 経過
                             <%end%>
                             </a>
                             <i class="fas fa-pen"></i>
@@ -45,5 +50,4 @@
                 
             </div>
         <%end%>
-    <%end%>
 <%end%>

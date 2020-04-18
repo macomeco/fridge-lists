@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'putinlists/create'
-  get 'putinlists/destroy'
+
   root to: 'toppages#index'
   
   get 'login', to: 'sessions#new'

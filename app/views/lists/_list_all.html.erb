@@ -31,8 +31,12 @@
                             <div class="card-body">
                                 <a style="text-align:left">
                                     <%= tng.content %>
+                                    
+                                    <% if Tag.all.find_by(id: tng.tag_id) == nil then%>
+                                    <%else%>
                                     <% @tag_name = Tag.all.find(tng.tag_id).name%>
                                     <a class="text-muted"><%= "#"+ @tag_name %></a>
+                                    <%end%>
                                     <% num = (tng.deadline-Date.today).to_i %>
                                 </a>
                                 <a class="text-right" style="float:right">

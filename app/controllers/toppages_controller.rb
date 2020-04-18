@@ -1,9 +1,10 @@
 class ToppagesController < ApplicationController
   def index
       if logged_in?
+      
       #もの
       @thing = current_user.things.build
-      @things = current_user.things.order(deadline: :asc)
+      @things = current_user.things.order(params[:sort]) #:deadline=>:asc,:id=>:desc
       
       #タグ
       @tag = current_user.tags.build

@@ -2,15 +2,28 @@ class ThingsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy, :edit, :update]
   
+  
   def create
-    @thing = current_user.things.build(things_params)
-    if @thing.save
-      flash[:success] = 'ものを追加しました'
-      redirect_back(fallback_location: root_path)
-    else
-      flash.now[:success] = 'ものの追加に失敗しました'
-      redirect_back(fallback_location: root_path)
+    
+  #@thing = current_user.things.build(things_params)
+  test = things_params[:quantity].to_i
+  @arr = []
+  
+  test.times do      
+    @arr.push(current_user.things.build(things_params))
+  end
+  
+    @arr.each do |t|
+      if t.save
+        flash[:success] = 'ものを追加しました'
+        #redirect_back(fallback_location: root_path)
+      else
+        flash.now[:success] = 'ものの追加に失敗しました'
+        redirect_back(fallback_location: root_path)
+      end
     end
+    
+   redirect_back(fallback_location: root_path)
   end
 
   def edit
@@ -32,7 +45,7 @@ class ThingsController < ApplicationController
   
   def correct_user  #編集するタグがユーザのタグか判定
     @thing = current_user.things.find_by(id: params[:id])
-    unless @tihng
+    unless @thing
     redirect_back(fallback_location: root_path)
     end
   end

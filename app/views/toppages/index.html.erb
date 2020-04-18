@@ -9,7 +9,7 @@
         <%= render 'layouts/navbar'%>
     </div>
     
-    <div class="col-10 p-0" style="display:flex;overflow:auto;background-color:blue">
+    <div class="col-10 p-0" style="display:flex;overflow-x:scroll;background-color:blue">
         <%= render 'lists/list_all' ,things: @things%>
         <%= render 'lists/list' ,lists: @lists%>
     </div>
@@ -71,4 +71,5 @@
 .row{
     height:95%;
 }
+
 </style>

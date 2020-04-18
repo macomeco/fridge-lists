@@ -16,12 +16,18 @@
         </div>
     </div>
 
-    <!-- 検索のやつ -->
+    <%= link_to '登録順', sort: 'created_at'%>
+    <%= link_to '日付順', sort: 'deadline'%>
 
+    <!-- 並び替え -->
+    <%= form_with(url: root_path(:sort), method: :get, local: true, class:'form_sort')do |f|%>
+    <%= f.select :sort, [['近い順', 'deadline'],['登録順', 'created_at'],['近い順', 'deadline']] ,{},{class: 'form-control select_sort'}%>
+    <%= f.submit 'yojo', id:'submit_select'%>
+    <%end%>
 
 
     <!-- 中身 -->
-    <div class="" id="list-card" style="display:flex;overflow:auto;">
+    <div class="" id="list-card" style="display:flex;overflow-y:auto;">
         <div class="mx-auto p-1" style="width:95%;">
             <%= render 'things/things' , things: @things , list_id: list.id %>
         </div>
@@ -35,19 +41,14 @@
         margin-top: auto;
         margin-bottom: auto;
         height: 84vh;
-        
-    }
-    ::-webkit-scrollbar{
-        width:10px;
-        height:10px;
-    }
-    ::-webkit-scrollbar-track{
-        border-radius: 5px;
-        background: gray;
-    }
-    ::-webkit-scrollbar-thumb{
-        border-radius: 5px;
-        background: pink;
-    }
-
+    }   
 </style>
+<script>
+    $(".select_sort").change(function(){
+        //console.log('わあああ');
+        var select_sort = $(this).val();
+        console.log(select_sort);
+        //$(" #submit_select").click();
+        $(".form_sort").submit();
+    });
+</script>
