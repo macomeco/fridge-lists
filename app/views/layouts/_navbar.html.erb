@@ -2,51 +2,65 @@
   <ul>
     <li class="sub-menu" >
       <div class="sub-menu-head"><i class="fas fa-plus fa-2x"></i><a class="ml-2 btn btn-link">モノ</a></div>
-      <ul class="sub-menu-body">
+      <ul class="sub-menu-body" id="menu1">
         <li><%= render 'things/thing_form' %></li>
       </ul>
     </li>
 
     <li class="sub-menu">
       <div class="sub-menu-head"><i class="fas fa-tag fa-2x"></i><a class="ml-2 btn btn-link">タグ</a></div>
-      <ul class="sub-menu-body">
+      <ul class="sub-menu-body" id="menu2">
         <li><%= render 'tags/tags' , tags: @tags%></li>
       </ul>
     </li>
     
     <li class="sub-menu">
       <div class="sub-menu-head"><i class="fas fa-search fa-2x"></i><a class="ml-2 btn btn-link">検索</a></div>
-      <ul class="sub-menu-body">
-        <li><%= render 'layouts/search'%></li>
-        <li><a href="#">なかみ</a></li>
+      <ul class="sub-menu-body" id="menu3">
+        <li class="p-0"><%= render 'layouts/search', search_things: @search_things %></li>
       </ul>
     </li>
     <li class="sub-menu">
       <div class="sub-menu-head"><i class="fas fa-clipboard-list fa-2x"></i></i><a class="ml-2 btn btn-link">リスト</a></div>
-      <ul class="sub-menu-body">
+      <ul class="sub-menu-body" id="menu4">
         <li><%= render 'lists/lists' , lists: @lists%></li>
       </ul>
     </li>
     
     <li class="sub-menu">
-      <div class="sub-menu-head"><i class="fas fa-user fa-2x"></i><a class="ml-2 btn btn-link">ユーザー設定</a></div>
-      <ul class="sub-menu-body">
-        <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+      <div class="sub-menu-head"><i class="fas fa-user fa-2x"></i><a class="ml-2 btn btn-link">ユーザー</a></div>
+      <ul class="sub-menu-body" id="menu5">
         <li><%= render 'users/edit',user: current_user%></li>
       </ul>
     </li>
   </ul>
 </nav>
+
 <script>
   $(function(){
     $('.sub-menu-body').hide();
+
+    //くっきの保存がされていたらそれをひらく
+    for (var i = 1; i<= 5;i++){
+      if($.cookie('menu') == 'menu'+i ){
+        $('#menu'+ i ).show();
+      }
+    }
+  
     $('.sub-menu-head').on('click', function(){
       $(this).next('.sub-menu-body').slideToggle();
+      
+      //くっきの設定  idの取得 
+      $.cookie('menu', $(this).next('.sub-menu-body').attr('id'), {expires: 1 });
+
+      var test= $(this).next('.sub-menu-body').attr('id');
+      console.log(test);
+        
       $('.sub-menu-body').not($(this).next('.sub-menu-body')).slideUp();
-      console.log('わしじゃよ')
     })
   });
 </script>
+
 <style>
   ul {
     list-style: none;
@@ -57,7 +71,6 @@
 
   li{
     padding:10px;
-
   }
   
   #nav-bar{

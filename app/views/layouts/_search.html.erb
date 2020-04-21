@@ -1,9 +1,65 @@
 <div class="card">
     <div class="card-body">
-        <p>検索</p>
-        
-        <div class="">
-        </div>
+        <%= form_with(url: root_path(:search),method: :get,local: true)do |f|%>
+            <div class="input-group">
+                <%= f.text_field :search, {class: 'form-control form-control-sm'}%>
+                <span class="input-group-append">
+                    <%= f.submit '検索' , {class: 'btn btn-success btn-sm'} %>
+                </span>
+                <%end%>
+            </div>
+            
 
     </div>
 </div>
+<%if search_things==nil then%>
+    なんもないよ
+<%else%>
+<!-- 中身 -->
+<% search_things.each do |tng| %>
+    <div class="card mt-2">
+            
+            <div class="row no-gutters">
+                
+                <div class="col-md-1 py-auto" style="background-color:pink">
+                    <div class="card-body px-0 h-100">
+                        <%= link_to tng , :method => :delete, data:{ confirm: tng.content+'を削除しますか？'},class: 'w-100 h-100' do %>
+                            <div class="text-center w-100 h-100">
+                                <i class="fa fa-check fa-xs"></i>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            
+                <div class="col-md-11">
+                <div class="card-body">
+                    <a style="text-align:left">
+                        <%= tng.content %>
+                        
+                        <% if Tag.all.find_by(id: tng.tag_id) == nil then %>
+                        <%else%>
+                        <% @tag_name = Tag.all.find(tng.tag_id).name%>
+                        <a class="text-muted" style="font-size:13px"><%= "#"+ @tag_name %></a>
+                        <%end%>
+                        
+                        <% num = (tng.deadline-Date.today).to_i %>
+                    </a>
+                    <div class="text-right" style="float:right;">
+                        
+                        <a class="mr-2" style="font-size:13px">
+                        <%if num > 0 %>
+                            あと <%= num %>日
+                        <% elsif num == 0 %>
+                            当日
+                        <%else%>
+                            <%= num.abs %>日 経過
+                        <%end%>
+                        </a>
+                        <i class="fas fa-pen"></i>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    <%end%>
+<%end%>

@@ -2,7 +2,7 @@
 <div class="col-3 p-0" id="list_col" style="background-color:beige;border-left: 1px solid">
     
     
-    
+    <div class="no_"+<%= list.id %>+"_list">
     <!-- リスト名 -->
     <div class="card bg-light m-2" style="width:95%">
         <div class="row no-gutters">
@@ -16,14 +16,7 @@
         </div>
     </div>
 
-    <%= link_to '登録順', sort: 'created_at'%>
-    <%= link_to '日付順', sort: 'deadline'%>
 
-    <!-- 並び替え -->
-    <%= form_with(url: root_path(:sort), method: :get, local: true, class:'form_sort')do |f|%>
-    <%= f.select :sort, [['近い順', 'deadline'],['登録順', 'created_at'],['近い順', 'deadline']] ,{},{class: 'form-control select_sort'}%>
-    <%= f.submit 'yojo', id:'submit_select'%>
-    <%end%>
 
 
     <!-- 中身 -->
@@ -34,6 +27,7 @@
     </div>
     
 </div>
+</div>
 <% end %>
 
 <style>
@@ -43,12 +37,3 @@
         height: 84vh;
     }   
 </style>
-<script>
-    $(".select_sort").change(function(){
-        //console.log('わあああ');
-        var select_sort = $(this).val();
-        console.log(select_sort);
-        //$(" #submit_select").click();
-        $(".form_sort").submit();
-    });
-</script>

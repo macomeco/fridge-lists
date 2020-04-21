@@ -30,31 +30,37 @@
         
             </div>
         </div>
+        
+
+
+        <div class="custom-control custom-switch my-3">
+            <%= form_with(url: root_path(:sort),method: :get,local: true,class:'switch-form') do |f| %>
+            
+            <% if params[:sort]=='deadline asc'%>
+                <%= f.check_box :sort ,{checked: true,class: 'custom-control-input'},'deadline asc','deadline desc'%>
+            <%else%> 
+                <%= f.check_box :sort ,{class: 'custom-control-input'},'deadline asc','deadline desc'%>
+            <%end%>
+            <%= f.label :sort, '昇順表示',class:'custom-control-label'%>
+            <div style="float:right">
+            <%= f.submit 'ok',class:'btn btn-success btn-sm'%>
+            </div>
+            <%end%>
+        </div>
+
     </div>
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
     $('.list-edit-form').hide();///*.list-add-form,*/
-        $('.list-edit').on('click',function(){
-            $(this).next('.list-edit-form').slideToggle();
+    $('.list-edit').on('click',function(){
+        $(this).next('.list-edit-form').slideToggle();
 //            $('.tag-edit-form').not($(this).next('.tag-edit-form')).slideUp();
-        })
-        $('.list-add').on('click',function(){
-            $(this).next('.list-add-form').slideToggle();
-            //$('.tag-add-form').not($(this).next('.tag-add-form')).slideUp();
-        })
+    })
+    $('.list-add').on('click',function(){
+        $(this).next('.list-add-form').slideToggle();
+        //$('.tag-add-form').not($(this).next('.tag-add-form')).slideUp();
+    })
+    
 </script>

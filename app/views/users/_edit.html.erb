@@ -18,10 +18,13 @@
             </div>
 
             <%= f.submit 'OK' , class: 'btn btn-success ml-2' %>
-            
         </div>
         <%end%>
-     </div>
+        <div class="my-2" style="border-bottom: 2px dotted #e6e6e6;width:100%"></div>
+        
+        <%= link_to  logout_path, method: :delete  do%>ログアウト <i class="fas fa-sign-in-alt"></i><%end%>
+
+    </div>
 </div> 
 
 
