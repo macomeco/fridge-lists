@@ -6,7 +6,10 @@
     <!-- リスト名 -->
     <div class="card bg-light m-2" style="width:95%">
         <div class="row no-gutters">
-            <div class="col-md-1"><div style="background-color:#89c997;width:100%;height:100%"></div></div>
+            
+            <% @test = '#a37f60'%>
+            
+            <div class="col-md-1"><%= content_tag(:div, '' , style: 'background-color:'+@test ,class: 'w-100 h-100') %></div>
             
             <div class="col-md-11">
                 <div class="card-body mx-auto">

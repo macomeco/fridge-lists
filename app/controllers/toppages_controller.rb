@@ -10,8 +10,13 @@ class ToppagesController < ApplicationController
       
       #もの
       @thing = current_user.things.build
-      @things = current_user.things.order(params[:sort]).order(id: :asc)#:deadline=>:asc
-  
+      if params[:sort].present?
+        @things = current_user.things.order(params[:sort]).order(id: :asc)#:deadline=>:asc
+      else
+        params[:sort] = 'deadline asc'
+        @things = current_user.things.order(params[:sort]).order(id: :asc)
+        
+      end
       #タグ
       @tag = current_user.tags.build
       @tags = current_user.tags.order(id: :asc)
