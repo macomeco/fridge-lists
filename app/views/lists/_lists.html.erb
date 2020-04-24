@@ -1,11 +1,12 @@
-<div class="card">
+<%= content_tag(:div,'',style:'border-color:'+@theme.clr_font ,class:'card mt-1') do %>
     <div class="card-body">
         <p>お部屋の新規登録</p>
         <div class="list-add-form">
             <%= render 'lists/list_form',list: @list%>
         </div>
     
-        <div class="my-2" style="border-bottom: 2px dotted #e6e6e6;width:100%"></div>
+        <%= content_tag(:div,'', style: "border-bottom: 3px dotted "+@theme.clr_font,class:"w-100 my-2")%>
+
         <p>お部屋一覧</p>
         
         <div class="card" style="height:250px">
@@ -16,9 +17,10 @@
                     <tbody>
                         <% lists.each do |list|%>
                             <tr class="p-0 my-3">
-                                <td class="p-0"><%= link_to list , :method => :delete, data:{ confirm: list.name+'を削除しますか？'},class: 'mx-2' do %><i class="fa fa-times"></i><% end %></td>
+                                <td class="p-0"><%= link_to list , :method => :delete, data:{ confirm: list.name+'を削除しますか？'},class: 'mx-2' ,style:"color:"+@theme.clr_main do %><i class="fa fa-times"></i><% end %></td>
                                 <td class="p-0"><%= list.name %></td>
-                                <td class="p-0"><div class="text-right list-edit btn btn-link p-0"><i class="fas fa-pen"></i></div></td>
+                                <td class="p-0"><%= content_tag(:div,'', style: 'color:'+@theme.clr_main ,class: 'text-right list-edit btn btn-link p-0')do %><i class="fas fa-pen"></i><%end%>
+                                </td>
                                 <div class="list-edit-form">
                                 <%= render 'lists/list_form',list: list%>   
                                 </div>
@@ -42,13 +44,13 @@
             <%end%>
             <%= f.label :sort, '昇順表示',class:'custom-control-label'%>
             <div style="float:right">
-            <%= f.submit 'ok',class:'btn btn-success btn-sm'%>
+            <%= f.submit 'ok',class:'btn btn-success btn-sm',style: 'background-color:'+@theme.clr_sub+';color:'+@theme.clr_font+';border-color:'+@theme.clr_font %>
             </div>
             <%end%>
         </div>
 
     </div>
-</div>
+<%end%>
 
 
 <script>

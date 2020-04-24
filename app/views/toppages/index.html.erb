@@ -5,11 +5,11 @@
 </nav>
 
 <div class="row" style="margin:0">
-    <div class="col-2" style="padding:0;display:block">  
+    <div class="col-2" style="padding:0;display:block;">  
         <%= render 'layouts/navbar'%>
     </div>
     
-    <div class="col-10 p-0" style="display:flex;overflow-x:scroll;background-color:blue">
+    <div class="col-10 p-0" style="display:flex;overflow-x:scroll;height:100%">
         <%= render 'lists/list_all' ,things: @things%>
         <%= render 'lists/list' ,lists: @lists%>
     </div>

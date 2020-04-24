@@ -1,4 +1,4 @@
-<div class="card mt-2">
+<%= content_tag(:div,'',style:'border-color:'+@theme.clr_font ,class:'card mt-1') do %>
     <div class="card-body">
 
         <%= form_with(model: user, local: true)do |f| %>
@@ -17,14 +17,14 @@
                 <%= f.password_field :password, class:'form-control' %>
             </div>
 
-            <%= f.submit 'OK' , class: 'btn btn-success ml-2' %>
+            <%= f.submit 'OK' , class: 'btn btn-success ml-2',style: 'background-color:'+@theme.clr_sub+';color:'+@theme.clr_font+';border-color:'+@theme.clr_font %>
         </div>
         <%end%>
-        <div class="my-2" style="border-bottom: 2px dotted #e6e6e6;width:100%"></div>
-        
+        <%= content_tag(:div,'', style: "border-bottom: 3px dotted "+@theme.clr_font,class:"w-100 my-2")%>
+
         <%= link_to  logout_path, method: :delete  do%>ログアウト <i class="fas fa-sign-in-alt"></i><%end%>
 
     </div>
-</div> 
+<%end%> 
 
 

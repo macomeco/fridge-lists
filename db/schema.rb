@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_070231) do
+ActiveRecord::Schema.define(version: 2020_04_24_065338) do
+
+  create_table "colorthemes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "clr_main"
+    t.string "clr_sub"
+    t.string "clr_list_i"
+    t.string "clr_list_ii"
+    t.string "clr_font"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -20,21 +30,22 @@ ActiveRecord::Schema.define(version: 2020_04_07_070231) do
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
-  create_table "putinlists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "list_id"
-    t.bigint "thing_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["list_id"], name: "index_putinlists_on_list_id"
-    t.index ["thing_id"], name: "index_putinlists_on_thing_id"
-  end
-
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_tags_on_user_id"
+  end
+
+  create_table "themes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "clr_a"
+    t.string "clr_b"
+    t.string "clr_c"
+    t.string "clr_d"
+    t.string "clr_e"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "things", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -60,8 +71,6 @@ ActiveRecord::Schema.define(version: 2020_04_07_070231) do
   end
 
   add_foreign_key "lists", "users"
-  add_foreign_key "putinlists", "lists"
-  add_foreign_key "putinlists", "things"
   add_foreign_key "tags", "users"
   add_foreign_key "things", "lists"
   add_foreign_key "things", "tags"

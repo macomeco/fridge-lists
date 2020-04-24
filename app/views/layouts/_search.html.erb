@@ -1,24 +1,24 @@
-<div class="card">
+<%= content_tag(:div,'',style:'border-color:'+@theme.clr_font ,class:'card mt-1') do %>
+
     <div class="card-body">
         <%= form_with(url: root_path(:search),method: :get,local: true)do |f|%>
             <div class="input-group">
                 <%= f.text_field :search, {class: 'form-control form-control-sm'}%>
                 <span class="input-group-append">
-                    <%= f.submit '検索' , {class: 'btn btn-success btn-sm'} %>
+                    <%= f.submit '検索' , {class: 'btn btn-default btn-sm',style: 'background-color:'+@theme.clr_sub+';color:'+@theme.clr_font} %>
                 </span>
-                <%end%>
             </div>
-            
-
+        <%end%>
+        
+        
     </div>
-</div>
+<%end%>
 <%if search_things==nil then%>
-    なんもないよ
+    キーワードをにゅうりょくしてね
 <%else%>
 <!-- 中身 -->
-<% search_things.each do |tng| %>
-    <div class="card mt-2">
-            
+    <% search_things.each do |tng| %>
+        <%= content_tag(:div,'',style:'border-color:'+@theme.clr_font ,class:'card mt-2') do %>
             <div class="row no-gutters">
                 
                 <div class="col-md-1 py-auto" style="background-color:pink">
@@ -60,6 +60,6 @@
                 </div>
             </div>
             </div>
-        </div>
+        <%end%>
     <%end%>
 <%end%>

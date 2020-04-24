@@ -2,7 +2,7 @@
     <div class="form-group">
         <%= f.text_field :name, class: 'form-control form-control-sm'%>
         <div class="text-right mt-3">
-            <%= f.submit '追加' , class: 'btn btn-success' %>
+            <%= f.submit '追加' , class: 'btn btn-success',style: 'background-color:'+@theme.clr_sub+';color:'+@theme.clr_font+';border-color:'+@theme.clr_font  %>
         </div>
     </div>
 <%end%>

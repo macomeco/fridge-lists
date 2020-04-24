@@ -1,24 +1,25 @@
 <% things.each do |tng| %>
     <%if list_id == tng.list_id then%>
-            <div class="card mb-2">
+            <%=content_tag(:div,'',class:'card mb-2',style:'border-color:'+@theme.clr_font) do %>
                 
                 <div class="row no-gutters">
                     
-                    <div class="col-md-1 py-auto" style="background-color:#a37f60">
-                        <div class="card-body px-0 h-100">
-                            <%= link_to tng , :method => :delete, data:{ confirm: tng.content+'を削除しますか？'},class: 'w-100 h-100' do %>
-                                <div class="text-center w-100 h-100">
-                                    <i class="fa fa-check fa-xs"></i>
-                                </div>
-                            <% end %>
-                        </div>
+                    <div class="col-md-1 px-auto">
+                        <%= content_tag(:div,'',style: 'background-color:'+ @clr, class:'h-100 d-flex align-items-center ') do %>
+                            <div class='text-center w-100'>
+                                <a style="top:50%">
+                                    <%= link_to tng , :method => :delete, data:{ confirm: tng.content+'を削除しますか？'},class: 'w-100 h-100',style: 'color:'+@theme.clr_sub do %><i class="fa fa-check"></i>
+                                </a>
+                                <% end %>
+                            </div>
+                        <%end%>
                     </div>
                 
                     <div class="col-md-11">
                     <div class="card-body">
-                        <a style="text-align:left">
-                            <%= tng.content %>
-                            
+                        <a style="text-align:left;color:#3e9fb5">
+                            <%= content_tag(:a,tng.content,style: 'color:'+@theme.clr_font)%>
+
                             <% if Tag.all.find_by(id: tng.tag_id) == nil then %>
                             <%else%>
                             <% @tag_name = Tag.all.find(tng.tag_id).name%>
@@ -43,6 +44,12 @@
                     </div>
                 </div>
                 </div>
-        </div>
+        <%end%>
     <%end%>
 <%end%>
+
+<style>
+  .i-shadow{
+    text-shadow: #fff 3px 3px 0, #fff -3px -3px 0, #fff -3px 3px 0, #fff 3px -3px 0, #fff 0px 3px 0, #fff 0 -3px 0, #fff -3px 0 0, #fff 3px 0 0;
+  }
+</style>

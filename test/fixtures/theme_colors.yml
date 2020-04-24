@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clr_a: MyString
+  clr_b: MyString
+  clr_c: MyString
+  clr_d: MyString
+  clr_e: MyString
+
+two:
+  clr_a: MyString
+  clr_b: MyString
+  clr_c: MyString
+  clr_d: MyString
+  clr_e: MyString

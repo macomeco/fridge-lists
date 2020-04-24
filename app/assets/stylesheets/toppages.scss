@@ -19,18 +19,20 @@
     right: 3%;
     text-align: center;
 }
-   ::-webkit-scrollbar{
-        width:10px;
-        height:10px;
-    }
-    ::-webkit-scrollbar-track{
-        border-radius: 5px;
-        background: gray;
-    }
-    ::-webkit-scrollbar-thumb{
-        border-radius: 5px;
-        background: #f7e3da;
-    }
+::-webkit-scrollbar{
+    width:10px;
+    height:10px;
+}
+::-webkit-scrollbar-track{
+    border-radius: 5px;
+    //background:;
+    opacity:0;
+    
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background: #bbbbbb;
+}
 
 
 // Place all the styles related to the toppages controller here.

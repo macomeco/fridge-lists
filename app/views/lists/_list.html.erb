@@ -1,15 +1,20 @@
+<%@a = true %>
 <% lists.each do |list|%>
-<div class="col-3 p-0" id="list_col" style="background-color:beige;border-left: 1px solid">
-    
-    
-    <div class="no_"+<%= list.id %>+"_list">
+    <%= content_tag(:div, '' , style: 'border-left: 1px solid;background-color:'+@theme.clr_sub,class:'col-3 p-0',id:'list_col') do %>
     <!-- リスト名 -->
-    <div class="card bg-light m-2" style="width:95%">
+        <%= content_tag(:div, '',class:'card m-2',style:'width:95%;border-color:'+@theme.clr_font ) do%>
         <div class="row no-gutters">
+
+            <!-- 色決め リストで交互に -->            
+            <%if @a == true then%> 
+                <% @clr = @theme.clr_list_i %>
+                <% @a = false %>
+            <%else %>
+                <% @clr = @theme.clr_list_ii %>
+                <% @a = true %>
+            <%end%>
             
-            <% @test = '#a37f60'%>
-            
-            <div class="col-md-1"><%= content_tag(:div, '' , style: 'background-color:'+@test ,class: 'w-100 h-100') %></div>
+            <div class="col-md-1"><%= content_tag(:div, '' , style: 'background-color:'+ @clr,class: 'w-100 h-100') %></div>
             
             <div class="col-md-11">
                 <div class="card-body mx-auto">
@@ -17,26 +22,23 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-
+    <%end%>
 
     <!-- 中身 -->
-    <div class="" id="list-card" style="display:flex;overflow-y:auto;">
+    <div class="mt-3" id="list-card" style="display:flex;overflow-y:auto;height:85%">
         <div class="mx-auto p-1" style="width:95%;">
             <%= render 'things/things' , things: @things , list_id: list.id %>
         </div>
     </div>
     
-</div>
-</div>
+
+<%end%>
 <% end %>
 
 <style>
     #list-card{
         margin-top: auto;
         margin-bottom: auto;
-        height: 84vh;
+        height: 83vh;
     }   
 </style>
