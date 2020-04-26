@@ -5,24 +5,21 @@ class ThingsController < ApplicationController
   
   def create
     
-  #@thing = current_user.things.build(things_params)
-  test = things_params[:quantity].to_i
-  @arr = []
-  
-  test.times do      
-    @arr.push(current_user.things.build(things_params))
-  end
+    #@thing = current_user.things.build(things_params)
+    test = things_params[:quantity].to_i
+    @arr = []
+    
+    test.times do      
+      @arr.push(current_user.things.build(things_params))
+    end
   
     @arr.each do |t|
       if t.save
         flash[:success] = 'ものを追加しました'
-        #redirect_back(fallback_location: root_path)
       else
-        flash.now[:success] = 'ものの追加に失敗しました'
-        redirect_back(fallback_location: root_path)
+        flash[:error] = 'ものの追加に失敗しました'
       end
     end
-    
    redirect_back(fallback_location: root_path)
   end
 
@@ -30,6 +27,7 @@ class ThingsController < ApplicationController
   end
 
   def update
+    
   end
 
   def destroy

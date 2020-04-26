@@ -3,34 +3,34 @@
     <li class="sub-menu">
       <div class="sub-menu-head"><%= content_tag(:div ,'', style:"color:"+@theme.clr_sub )do %><i class="fas fa-plus fa-2x"></i><a class="ml-2 btn btn-link ">モノ</a><% end %></div>
       <ul class="sub-menu-body" id="menu1">
-        <li><%= render 'things/thing_form' %></li>
+        <li id="list-main"><%= render 'things/thing_form' %></li>
       </ul>
     </li>
 
     <li class="sub-menu">
       <div class="sub-menu-head"><%= content_tag(:div ,'', style:"color:"+@theme.clr_sub )do %><i class="fas fa-tag fa-2x"></i><a class="ml-2 btn btn-link">タグ</a><% end %></div>
       <ul class="sub-menu-body" id="menu2">
-        <li><%= render 'tags/tags' , tags: @tags%></li>
+        <li id="list-main"><%= render 'tags/tags' , tags: @tags%></li>
       </ul>
     </li>
     
     <li class="sub-menu">
       <div class="sub-menu-head"><%= content_tag(:div ,'', style:"color:"+@theme.clr_sub )do %><i class="fas fa-search fa-2x"></i><a class="ml-2 btn btn-link">検索</a><% end %></div>
       <ul class="sub-menu-body" id="menu3">
-        <li class="p-0"><%= render 'layouts/search', search_things: @search_things %></li>
+        <li class="p-0" id="list-main"><%= render 'layouts/search', search_things: @search_things %></li>
       </ul>
     </li>
     <li class="sub-menu">
       <div class="sub-menu-head"><%= content_tag(:div ,'', style:"color:"+@theme.clr_sub )do %><i class="fas fa-clipboard-list fa-2x"></i></i><a class="ml-2 btn btn-link">リスト</a><% end %></div>
       <ul class="sub-menu-body" id="menu4">
-        <li><%= render 'lists/lists' , lists: @lists%></li>
+        <li id="list-main"><%= render 'lists/lists' , lists: @lists%></li>
       </ul>
     </li>
     
     <li class="sub-menu">
       <div class="sub-menu-head"><%= content_tag(:div ,'', style:"color:"+@theme.clr_sub )do %><i class="fas fa-user fa-2x"></i><a class="ml-2 btn btn-link">ユーザー</a><% end %></div>
       <ul class="sub-menu-body" id="menu5">
-        <li><%= render 'users/edit',user: current_user%></li>
+        <li id="list-main"><%= render 'users/edit',user: current_user%></li>
       </ul>
     </li>
   <%end%>
@@ -80,6 +80,10 @@
   }
   .sub-menu{
     margin:0px;
+  }
+  #list-main{
+    font-size:14px;
+    padding:0;
   }
   
 </style>

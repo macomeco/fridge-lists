@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       flash[:success] = 'ユーザーを登録しました'
       redirect_back(fallback_location: root_path)
     else
-      flash.now[:danger] = 'ユーザーの登録に失敗しました'
+      flash[:error] = 'ユーザーの登録に失敗しました'
 #     render template: "users/new"
       redirect_back(fallback_location: root_path)
     end
@@ -29,10 +29,10 @@ class UsersController < ApplicationController
 
   def update
       if current_user.update(user_params)
-        flash[:success] = 'タグを編集しました'
+        flash[:success] = 'ユーザーを編集しました'
         redirect_back(fallback_location: root_path)
       else
-        flash.now[:danger] = 'タグは編集されませんでした'
+        flash[:error] = 'ユーザーは編集されませんでした'
         redirect_back(fallback_location: root_path)
       end
   end

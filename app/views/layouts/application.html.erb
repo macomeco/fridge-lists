@@ -5,33 +5,39 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <!--  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>  -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-
+    
+    
   </head>
 
-  <body >
-      <div class="container">
-        <div class="flash-msg" style="position:absolute;width:35%;left:-5px;bottom:10%">
-            <%= render 'layouts/flash_messages' %>
-        </div>
-      </div>
+<body>
+
+
     <div class="container-fluid" style="height:100vh;padding:0;position:relative;">
+      <div class="container">
+
+      </div>
+      <%= render 'layouts/flash_messages'%>
       <%= yield %>
 
     </div>
+    
   </body>
 </html>
 

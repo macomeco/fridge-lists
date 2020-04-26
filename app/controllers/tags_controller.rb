@@ -8,7 +8,7 @@ class TagsController < ApplicationController
       flash[:success] = 'タグを追加しました'
       redirect_back(fallback_location: root_path)
     else
-      flash.now[:success] = 'タグの追加に失敗しました'
+      flash[:error] = 'タグの追加に失敗しました'
       redirect_back(fallback_location: root_path)
     end
   end
@@ -22,7 +22,9 @@ class TagsController < ApplicationController
           flash[:success] = 'タグを編集しました'
       redirect_back(fallback_location: root_path)
       else
-          flash.now[:danger] = 'タグは編集されませんでした'
+          flash[:error] = 'タグは編集されませんでした'
+
+          #flash[:danger] = 'タグは編集されませんでした'
       redirect_back(fallback_location: root_path)
       end
   end

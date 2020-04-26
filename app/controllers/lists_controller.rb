@@ -8,7 +8,7 @@ class ListsController < ApplicationController
       flash[:success] = 'お部屋を追加しました'
       redirect_back(fallback_location: root_path)
     else
-      flash.now[:success] = 'お部屋の追加に失敗しました'
+      flash[:error] = 'お部屋の追加に失敗しました'
       redirect_back(fallback_location: root_path)
     end
   end
@@ -22,7 +22,7 @@ class ListsController < ApplicationController
           flash[:success] = 'お部屋を設定しました'
       redirect_back(fallback_location: root_path)
       else
-          flash[:danger] = 'お部屋の設定に失敗しました'
+          flash[:error] = 'お部屋の設定に失敗しました'
       redirect_back(fallback_location: root_path)
       end
   end
