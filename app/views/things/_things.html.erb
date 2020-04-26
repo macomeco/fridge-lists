@@ -1,6 +1,6 @@
 <% things.each do |tng| %>
     <%if list_id == tng.list_id then%>
-        <%=content_tag(:div,'',class:'card mb-2',style:'border-color:'+@theme.clr_font) do %>    
+        <%=content_tag(:div,'', class:'target-card card mb-2',style:'border-color:'+@theme.clr_font) do %>    
             
             <div class="row no-gutters">
                 
@@ -54,7 +54,7 @@
                 <div class="col-md-2 px-auto">
                     <div class='h-100 d-flex align-items-center'%>
                         <div class='text-center w-100'>
-                            <%= content_tag(:div,'', style: 'color:'+@theme.clr_main ,class: 'tng-edit text-right btn btn-link p-0')do %><i class="fas fa-pen fa-sm"></i><%end%>
+                            <%= content_tag(:div,'', style: 'color:'+@theme.clr_main ,class: 'tng-edit text-right btn btn-link p-0')do %><i class="fas fa-pen "></i><%end%>
                         </div>
                     </div>
                 </div>
@@ -118,10 +118,10 @@
 
 $('.tng-edit-form').css('display','none');
 $('.tng-edit').on('click',function(){
-    $(this).parent().parent().parent().parent().parent().next('.tng-edit-form').slideDown();
-    $('.tng-edit-form').not($(this).parent().parent().parent().parent().parent().next('.tng-edit-form')).slideUp();
+    $(this).parents('.target-card').nextAll('.tng-edit-form:first').stop().slideToggle();
+    //$('.tng-edit-form').not($(this)).slideUp();
+    $('.tag-edit-form').not($(this)).css('background-color','red');
 
-    
 });
     
 </script>

@@ -3,7 +3,7 @@ class ToppagesController < ApplicationController
       if logged_in?
       
       #カラー
-      @theme = Colortheme.find_by(id: 1)  
+      @theme = Colortheme.find_by(id: 1)
       
       if params[:search].present?
         @search_things = current_user.things.where('content LIKE ?',"%#{params[:search]}%")
