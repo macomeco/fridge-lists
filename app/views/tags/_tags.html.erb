@@ -50,12 +50,10 @@
 <script>
 $('.tag-edit-form').hide();
 $('.tag-edit').on('click',function(){
-    if($(this).parent().parent().next('.tag-edit-form').css('display')!='none'){
-           $('.tag-edit-form').slideUp();
-    }else{
-    $(this).parent().parent().next('.tag-edit-form').slideDown();
+
+    $(this).parent().parent().next('.tag-edit-form').stop().slideToggle();
     $('.tag-edit-form').not($(this).parent().parent().next('.tag-edit-form')).slideUp();
-    }
+    
 });
 
 </script>

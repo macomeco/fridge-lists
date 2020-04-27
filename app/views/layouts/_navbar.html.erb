@@ -53,8 +53,8 @@
       //くっきの設定  idの取得 
       $.cookie('menu', $(this).next('.sub-menu-body').attr('id'), {expires: 1 });
 
-      var test= $(this).next('.sub-menu-body').attr('id');
-      console.log(test);
+      //var test= $(this).next('.sub-menu-body').attr('id');
+      //console.log(test);
         
       $('.sub-menu-body').not($(this).next('.sub-menu-body')).slideUp();
     })

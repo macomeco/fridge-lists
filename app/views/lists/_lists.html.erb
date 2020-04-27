@@ -44,21 +44,18 @@
         
             </div>
         </div>
-        
-
 
         <div class="custom-control custom-switch my-3">
             <%= form_with(url: root_path(:sort),method: :get,local: true,class:'switch-form') do |f| %>
-            
-            <% if params[:sort]=='deadline asc'%>
-                <%= f.check_box :sort ,{checked: true,class: 'custom-control-input'},'deadline asc','deadline desc'%>
-            <%else%> 
-                <%= f.check_box :sort ,{class: 'custom-control-input'},'deadline asc','deadline desc'%>
-            <%end%>
-            <%= f.label :sort, '昇順表示',class:'custom-control-label'%>
-            <div style="float:right">
-            <%= f.submit 'ok',class:'btn btn-success btn-sm',style: 'background-color:'+@theme.clr_sub+';color:'+@theme.clr_font+';border-color:'+@theme.clr_font %>
-            </div>
+                <% if params[:sort]=='deadline asc'%>
+                    <%= f.check_box :sort ,{checked: true,class: 'custom-control-input',style:'background-color:red'},'deadline asc','deadline desc'%>
+                <%else%> 
+                    <%= f.check_box :sort ,{class: 'custom-control-input',style:'background-color:red'},'deadline asc','deadline desc'%>
+                <%end%>
+                <%= f.label :sort, '昇順表示',class:'custom-control-label'%>
+                <div style="float:right">
+                <%= f.submit 'ok',class:'btn btn-success btn-sm',style: 'background-color:'+@theme.clr_sub+';color:'+@theme.clr_font+';border-color:'+@theme.clr_font %>
+                </div>
             <%end%>
         </div>
 
@@ -69,12 +66,8 @@
 <script>
 $('.list-edit-form').hide();
 $('.list-edit').on('click',function(){
-    if($(this).parent().parent().next('.list-edit-form').css('display')!='none'){
-           $('.list-edit-form').slideUp();
-    }else{
-    $(this).parent().parent().next('.list-edit-form').slideDown();
+    $(this).parent().parent().next('.list-edit-form').stop().slideToggle();
     $('.list-edit-form').not($(this).parent().parent().next('.list-edit-form')).slideUp();
-    }
 });
     
 </script>
