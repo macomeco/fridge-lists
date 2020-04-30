@@ -4,40 +4,33 @@
         <div class="list-add-form">
             <%= render 'lists/list_form',list: @list%>
         </div>
-    
-        <%= content_tag(:div,'', style: "border-bottom: 2px dotted "+@theme.clr_font,class:"w-100 my-2")%>
+        
+        <%= content_tag(:div,'', style: "border-bottom: 2px dotted "+@theme.clr_point,class:"w-100 my-2")%>
 
         <p>お部屋一覧</p>
         
         <div class="card" style="height:150px">
-            
             <div class="card-body p-1" style="overflow-y:auto">
-        
                 <table class="table table-borderless">
                     <tbody>
                         <% lists.each do |list|%>
                             <tr class="p-0 my-3">
-                                <td class="p-0"><%= link_to list , :method => :delete, data:{ confirm: list.name+'を削除しますか？'},class: 'mx-2' ,style:"color:"+@theme.clr_main do %><i class="fa fa-times"></i><% end %></td>
+                                <td class="p-0"><%= link_to list , :method => :delete, data:{ confirm: list.name+'を削除しますか？'},class: 'mx-2 clr_point_c' do %><i class="fa fa-times"></i><% end %></td>
                                 <td class="p-0"><%= list.name %></td>
-                                <td class="p-0"><%= content_tag(:div,'', style: 'color:'+@theme.clr_main ,class: 'list-edit text-right list-edit btn btn-link p-0')do %><i class="fas fa-pen fa-sm"></i><%end%></td>
-                                
+                                <td class="p-0"><%= content_tag(:div,'', class: 'clr_point_c list-edit text-right list-edit btn btn-link p-0')do %><i class="fas fa-pen fa-sm"></i><%end%></td>
                             </tr>
-                            
                             <tr class="p-0 my-3 list-edit-form">
                                 <td colspan="3" class="w-100 px-1 py-2">
                                     <%= form_with(model: list, local: true)do |f| %>
                                         <div class="input-group">
                                             <%= f.text_field :name, class: 'form-control form-control-sm'%>
                                             <span class="input-group-append">
-                                                <%= f.submit 'OK' , class: 'btn btn-default btn-sm',style: 'background-color:'+@theme.clr_sub+';color:'+@theme.clr_font+';border-color:'+@theme.clr_font  %>
+                                                <%= f.submit 'OK' , class: 'btn btn-default btn-sm clr_sub_b clr_font_c',style:'border-color:'+@theme.clr_font %>
                                             </span>
                                         </div>
                                     <%end%>
                                 </td>
                             </tr>
-                            
-                            
-                            
                         <% end %>
                     </tbody>
                 </table>
@@ -48,13 +41,13 @@
         <div class="custom-control custom-switch my-3">
             <%= form_with(url: root_path(:sort),method: :get,local: true,class:'switch-form') do |f| %>
                 <% if params[:sort]=='deadline asc'%>
-                    <%= f.check_box :sort ,{checked: true,class: 'custom-control-input',style:'background-color:red'},'deadline asc','deadline desc'%>
+                    <%= f.check_box :sort ,{checked: true,class: 'custom-control-input'},'deadline asc','deadline desc'%>
                 <%else%> 
-                    <%= f.check_box :sort ,{class: 'custom-control-input',style:'background-color:red'},'deadline asc','deadline desc'%>
+                    <%= f.check_box :sort ,{class: 'custom-control-input'},'deadline asc','deadline desc'%>
                 <%end%>
-                <%= f.label :sort, '昇順表示',class:'custom-control-label'%>
+                <%= f.label :sort, '昇順表示',class:'custom-control-label' %>
                 <div style="float:right">
-                <%= f.submit 'ok',class:'btn btn-success btn-sm',style: 'background-color:'+@theme.clr_sub+';color:'+@theme.clr_font+';border-color:'+@theme.clr_font %>
+                    <%= f.submit 'ok',class:'btn btn-sm clr_sub_b clr_font_c',style: 'border-color:'+@theme.clr_font %>
                 </div>
             <%end%>
         </div>
@@ -71,3 +64,19 @@ $('.list-edit').on('click',function(){
 });
     
 </script>
+
+<style>
+.custom-control-input:checked~.custom-control-label::before {
+    border-color:<%= @theme.clr_point %>;
+    background-color:<%= @theme.clr_point %>;
+}
+/*
+.custom-control-label::before {
+    border-color:<%= @theme.clr_point %>;
+}
+
+.custom-switch .custom-control-label::after {
+    background-color: <%= @theme.clr_point %>;
+}*/
+
+</style>

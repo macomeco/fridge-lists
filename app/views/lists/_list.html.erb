@@ -1,6 +1,6 @@
 <%@a = true %>
 <% lists.each do |list|%>
-    <%= content_tag(:div, '' , style: 'border-left: 1px solid;background-color:'+@theme.clr_sub,class:'col-3 p-0',id:'list_col') do %>
+    <%= content_tag(:div, '' , style: 'border-left: 1px solid;' ,class:'col-3 p-0 clr_sub_b',id:'list_col') do %>
     <!-- リスト名 -->
         <%= content_tag(:div, '',class:'card m-2',style:'width:95%;border-color:'+@theme.clr_font ) do%>
         <div class="row no-gutters">
@@ -27,7 +27,13 @@
     <!-- 中身 -->
     <div class="mt-3" id="list-card" style="display:flex;overflow-y:auto;height:85%">
         <div class="mx-auto p-1" style="width:95%;" id="target">
-            <%= render 'things/things' , things: @things , list_id: list.id %>
+        
+            <% @things.each do |tng| %>
+                <%if list.id == tng.list_id then%>
+                    <%= render 'things/things' , tng: tng %>
+                <%end%>
+            <%end%>
+        
         </div>
     </div>
     

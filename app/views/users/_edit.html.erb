@@ -14,11 +14,11 @@
 
             <div class="text-right mt-3">
 
-            <%= f.submit 'OK' , class: 'btn btn-success ml-2 btn-sm',style: 'background-color:'+@theme.clr_sub+';color:'+@theme.clr_font+';border-color:'+@theme.clr_font %>
+            <%= f.submit 'OK' , class: 'btn ml-2 btn-sm clr_sub_b clr_font_c',style: 'border-color:'+@theme.clr_font %>
             </div>
         </div>
         <%end%>
-        <%= content_tag(:div,'', style: "border-bottom: 2px dotted "+@theme.clr_font,class:"w-100 my-2")%>
+        <%= content_tag(:div,'', style: "border-bottom: 2px dotted "+@theme.clr_point,class:"w-100 my-2")%>
 
         <%= link_to  logout_path, method: :delete  do%>ログアウト <i class="fas fa-sign-in-alt"></i><%end%>
 

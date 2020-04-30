@@ -6,21 +6,20 @@
             <%= render 'tags/tag_form',tag: @tag%>
         </div>
     
-        <%= content_tag(:div,'', style: "border-bottom: 2px dotted "+@theme.clr_font,class:"w-100 my-2")%>
+        <%= content_tag(:div,'', style: "border-bottom: 2px dotted "+@theme.clr_point,class:"w-100 my-2")%>
 
         <p>タグ一覧</p>
 
         <div class="card" style="height:200px">
-            <div class="card-body p-1" style="overflow-y:scroll">
-                <table class="table table-borderless m-0">
+            <div class="card-body p-1" style="overflow-y:auto">
+                <table class="table table-borderless">
                     <tbody>
                         <% tags.each do |tag|%>
                             <tr class="p-0 my-3">
-                                <td class="p-0"><%= link_to tag , :method => :delete, data:{ confirm: tag.name+'を削除しますか？'},class: 'mx-1' ,style:"color:"+@theme.clr_main do %><i class="fa fa-times"></i><% end %></td>
+                                <td class="p-0"><%= link_to tag , :method => :delete, data:{ confirm: tag.name+'を削除しますか？'},class: 'mx-2 clr_point_c ' do %><i class="fa fa-times"></i><% end %></td>
                                 <td class="p-0"><%= tag.name %></td>
-                                <td class="p-0"><%= content_tag(:div,'', style: 'color:'+@theme.clr_main ,class: 'tag-edit text-right btn btn-link p-0')do %><i class="fas fa-pen fa-sm"></i><%end%></td>
+                                <td class="p-0"><%= content_tag(:div,'' ,class: ' clr_point_c tag-edit text-right btn btn-link p-0')do %><i class="fas fa-pen fa-sm"></i><%end%></td>
                             </tr>
-                            
                             
                             <tr class="p-0 my-3 tag-edit-form">
                                 <td colspan="3" class="w-100 px-1 py-2">
@@ -28,7 +27,7 @@
                                         <div class="input-group">
                                             <%= f.text_field :name, class: 'form-control form-control-sm'%>
                                             <span class="input-group-append">
-                                                <%= f.submit 'OK' , class: 'btn btn-default btn-sm',style: 'background-color:'+@theme.clr_sub+';color:'+@theme.clr_font+';border-color:'+@theme.clr_font  %>
+                                                <%= f.submit 'OK' , class: 'btn btn-sm clr_sub_b clr_font_c',style: 'border-color:'+@theme.clr_font  %>
                                             </span>
                                         </div>
                                     <%end%>

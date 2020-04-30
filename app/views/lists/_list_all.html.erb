@@ -1,11 +1,11 @@
 <!-- 登録したものすべてを表示するぱーしゃる -->
-<%= content_tag(:div , '' , style: 'background-color:'+@theme.clr_sub,class:'col-3 p-0',id: 'list_col') do%>
+<%= content_tag(:div , '' , class:'col-3 p-0 clr_sub_b',id: 'list_col') do%>
 
     <!-- リスト名 -->
-    <div class="card bg-light m-2" style="width:95%">
+    <%= content_tag(:div, '',class:'card m-2',style:'width:95%;border-color:'+@theme.clr_font ) do%>
         <div class="row no-gutters">
             <div class="col-md-1">
-                <%= content_tag(:div, '', style: 'background-color:'+@theme.clr_list_ii,class: 'w-100 h-100')%>
+                <%= content_tag(:div, '', class: 'w-100 h-100 clr_list_ii_b')%>
             </div>
             
             <div class="col-md-11">
@@ -14,47 +14,19 @@
                 </div>
             </div>
         </div>
-    </div>
+    <%end%>
 
     <!-- 検索のやつ -->
 
     <!-- 中身 -->
-    <div class="mt-3" id="list-card" style="display:flex;overflow:auto;height:85%">
-        <div class="mx-auto" style="width:95%;">
-            <% things.each do |tng| %>
-                <div class="card mb-2">
-                    <div class="row no-gutters">
-                        <div class="col-md-1">
-                            <%= content_tag(:div, '', style: 'background-color:'+@theme.clr_list_ii,class: 'w-100 h-100')%>
-                        </div>
-                        <div class="col-md-11">
-                            <div class="card-body p-3">
-                                <a style="text-align:left">
-                                    <%= tng.content %>
-                                    
-                                    <% if Tag.all.find_by(id: tng.tag_id) == nil then%>
-                                    <%else%>
-                                    <% @tag_name = Tag.all.find(tng.tag_id).name%>
-                                    <a class="text-muted"><%= "#"+ @tag_name %></a>
-                                    <%end%>
-                                    <% num = (tng.deadline-Date.today).to_i %>
-                                </a>
-                                <a class="text-right" style="float:right">
-                                    <%if num > 0 %>
-                                        あと<%= num %>日　
-                                    <% elsif num == 0 %>
-                                        本日　
-                                    <%else%>
-                                        <%= num.abs %>日経過　
-                                    <%end%>
-                                <i class="fas fa-pen"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="mt-3" id="list-card" style="display:flex;overflow-y:auto;height:85%">
+        <div class="mx-auto p-1" style="width:95%;" id="target">
+        
+            <% @things.each do |tng| %>
+                <% @clr = @theme.clr_list_ii %>
+                <%= render 'things/things' , tng: tng %>
             <%end%>
+        
         </div>
     </div>
-    
 <%end%>

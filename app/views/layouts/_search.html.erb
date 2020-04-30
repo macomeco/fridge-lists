@@ -5,7 +5,7 @@
             <div class="input-group">
                 <%= f.text_field :search, {class: 'form-control form-control-sm'}%>
                 <span class="input-group-append">
-                    <%= f.submit '検索' , {class: 'btn btn-default btn-sm',style: 'background-color:'+@theme.clr_sub+';color:'+@theme.clr_font} %>
+                    <%= f.submit '検索' , {class: 'btn btn-sm clr_sub_b clr_font_c'} %>
                 </span>
             </div>
         <%end%>
@@ -14,7 +14,7 @@
     </div>
 <%end%>
 <%if search_things==nil then%>
-    キーワードをにゅうりょくしてね
+    <p class="text-center">キーワードをにゅうりょくしてね</p>
 <%else%>
 <!-- 中身 -->
     <% search_things.each do |tng| %>

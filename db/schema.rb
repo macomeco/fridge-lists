@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_24_065338) do
+ActiveRecord::Schema.define(version: 2020_04_28_061006) do
 
   create_table "colorthemes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "clr_main"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_04_24_065338) do
     t.string "clr_font"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "clr_point"
   end
 
   create_table "lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
