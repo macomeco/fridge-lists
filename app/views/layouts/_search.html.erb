@@ -1,3 +1,4 @@
+
 <%= content_tag(:div,'',style:'border-color:'+@theme.clr_font ,class:'card mt-1') do %>
 
     <div class="card-body">
@@ -9,57 +10,26 @@
                 </span>
             </div>
         <%end%>
-        
-        
     </div>
+
 <%end%>
 <%if search_things==nil then%>
     <p class="text-center">キーワードをにゅうりょくしてね</p>
 <%else%>
 <!-- 中身 -->
-    <% search_things.each do |tng| %>
-        <%= content_tag(:div,'',style:'border-color:'+@theme.clr_font ,class:'card mt-2') do %>
-            <div class="row no-gutters">
-                
-                <div class="col-md-1 py-auto" style="background-color:pink">
-                    <div class="card-body px-0 h-100">
-                        <%= link_to tng , :method => :delete, data:{ confirm: tng.content+'を削除しますか？'},class: 'w-100 h-100' do %>
-                            <div class="text-center w-100 h-100">
-                                <i class="fa fa-check fa-xs"></i>
-                            </div>
-                        <% end %>
-                    </div>
-                </div>
-            
-                <div class="col-md-11">
-                <div class="card-body">
-                    <a style="text-align:left">
-                        <%= tng.content %>
-                        
-                        <% if Tag.all.find_by(id: tng.tag_id) == nil then %>
-                        <%else%>
-                        <% @tag_name = Tag.all.find(tng.tag_id).name%>
-                        <a class="text-muted" style="font-size:13px"><%= "#"+ @tag_name %></a>
-                        <%end%>
-                        
-                        <% num = (tng.deadline-Date.today).to_i %>
-                    </a>
-                    <div class="text-right" style="float:right;">
-                        
-                        <a class="mr-2" style="font-size:13px">
-                        <%if num > 0 %>
-                            あと <%= num %>日
-                        <% elsif num == 0 %>
-                            当日
-                        <%else%>
-                            <%= num.abs %>日 経過
-                        <%end%>
-                        </a>
-                        <i class="fas fa-pen"></i>
-                    </div>
-                </div>
-            </div>
-            </div>
+<div class="mt-2 mx-1 list-s" style="display:flex;overflow-y:auto;">
+    <div class="mx-0" style="width:95%;height:80%">
+        <% search_things.each do |tng| %>
+                <% @clr = @theme.clr_list_ii %>
+                <%= render 'things/test' , tng: tng %>
+            <%end%>
         <%end%>
-    <%end%>
-<%end%>
+        
+    </div>
+</div>
+
+<style>
+    .list-s{
+        height:45vh;
+    }
+</style>

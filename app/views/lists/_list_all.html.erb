@@ -1,32 +1,39 @@
 <!-- 登録したものすべてを表示するぱーしゃる -->
-<%= content_tag(:div , '' , class:'col-3 p-0 clr_sub_b',id: 'list_col') do%>
-
+<%= content_tag(:div, ''  ,class:'col-3 p-0 clr_sub_b h-100') do %>
     <!-- リスト名 -->
-    <%= content_tag(:div, '',class:'card m-2',style:'width:95%;border-color:'+@theme.clr_font ) do%>
+        <%= content_tag(:div, '',class:'list-all card my-2 mx-auto',style:'width:95%;border-color:'+@theme.clr_font ) do%>
         <div class="row no-gutters">
+
             <div class="col-md-1">
-                <%= content_tag(:div, '', class: 'w-100 h-100 clr_list_ii_b')%>
+                <%= content_tag(:div, '' ,class: 'w-100 h-100 clr_list_ii_b') %>
             </div>
             
             <div class="col-md-11">
                 <div class="card-body mx-auto">
-                    <h1 style="font-size:20px">すべて</h1>
+                    <h1 style="font-size:20px;margin:0">すべて</h1>
                 </div>
             </div>
+
+            
         </div>
     <%end%>
 
-    <!-- 検索のやつ -->
-
     <!-- 中身 -->
-    <div class="mt-3" id="list-card" style="display:flex;overflow-y:auto;height:85%">
-        <div class="mx-auto p-1" style="width:95%;" id="target">
-        
+    <div class="mt-4 mx-1 list-card" style="display:flex;overflow-y:auto;">
+        <div class="mx-auto" style="width:95%;" id="target">
+                
             <% @things.each do |tng| %>
                 <% @clr = @theme.clr_list_ii %>
-                <%= render 'things/things' , tng: tng %>
+                <%= render 'things/test' , tng: tng %>
             <%end%>
-        
+            
         </div>
     </div>
-<%end%>
+
+<% end %>
+<script>
+    $('.search-list').hide();
+    $('')
+
+</script>
+

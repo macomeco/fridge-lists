@@ -28,10 +28,10 @@ class ThingsController < ApplicationController
 
   def update
     if @thing.update(things_params)
-      flash[:success] = 'タグを付け直しました'
+      flash[:success] = 'ものを編集しました'
       redirect_back(fallback_location: root_path)
     else
-      flash[:error] = 'タグはそのままです'
+      flash[:error] = 'ものの編集に失敗しました'
 
       #flash[:danger] = 'タグは編集されませんでした'
       redirect_back(fallback_location: root_path)

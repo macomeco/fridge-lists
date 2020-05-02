@@ -3,64 +3,92 @@
     <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-plus fa-2x"></i><a class="ml-2 btn btn-link ">モノ</a></div></div>
       <ul class="sub-menu-body" id="menu1">
-        <li id="list-main"><%= render 'things/thing_form' %></li>
+        <li class="list-main"><%= render 'things/thing_form' %></li>
       </ul>
     </li>
 
     <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-tag fa-2x"></i><a class="ml-2 btn btn-link">タグ</a></div></div>
       <ul class="sub-menu-body" id="menu2">
-        <li id="list-main"><%= render 'tags/tags' , tags: @tags%></li>
+        <li class="list-main"><%= render 'tags/tags' , tags: @tags%></li>
       </ul>
     </li>
     
     <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-clipboard-list fa-2x"></i></i><a class="ml-2 btn btn-link">リスト</a></div></div>
-      <ul class="sub-menu-body" id="menu4">
-        <li id="list-main"><%= render 'lists/lists' , lists: @lists%></li>
+      <ul class="sub-menu-body" id="menu3">
+        <li class="list-main"><%= render 'lists/lists' , lists: @lists%></li>
       </ul>
     </li>
     
     <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-search fa-2x"></i><a class="ml-2 btn btn-link">検索</a></div></div>
-      <ul class="sub-menu-body" id="menu3">
-        <li class="p-0" id="list-main"><%= render 'layouts/search', search_things: @search_things %></li>
+      <ul class="sub-menu-body" id="menu4">
+        <li class="list-main"><%= render 'layouts/search' , search_things: @search_things%></li>
       </ul>
     </li>
-    
+
     <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-user fa-2x"></i><a class="ml-2 btn btn-link">ユーザー</a></div></div>
       <ul class="sub-menu-body" id="menu5">
-        <li id="list-main"><%= render 'users/edit',user: current_user%></li>
+        <li class="list-main"><%= render 'users/edit',user: current_user%></li>
       </ul>
     </li>
+    
+
+    
   <%end%>
 <%end%>
 
 
+
 <script>
-  $(function(){
-    $('.sub-menu-body').hide();
-
-    //くっきの保存がされていたらそれをひらく
-    for (var i = 1; i<= 5;i++){
-      if($.cookie('menu') == 'menu'+i ){
-        $('#menu'+ i ).show();
-      }
-    }
+$(function(){
+    //$('.tng-edit-form').hide();
   
-    $('.sub-menu-head').on('click', function(){
-      $(this).next('.sub-menu-body').slideToggle();
-      
-      //くっきの設定  idの取得 
-      $.cookie('menu', $(this).next('.sub-menu-body').attr('id'), {expires: 1 });
+    $('.tng-edit').on('click', function(){
+    $(this).parents('.tng-main').nextAll('.tng-edit-form').slideToggle();
+    $('.tng-edit-form').not($(this).parents('.tng-main').nextAll('.tng-edit-form')).slideUp(); 
 
-      //var test= $(this).next('.sub-menu-body').attr('id');
-      //console.log(test);
-        
-      $('.sub-menu-body').not($(this).next('.sub-menu-body')).slideUp();
     })
-  });
+});
+
+
+$(function(){
+  $('.sub-menu-body').hide();
+
+  //くっきの保存がされていたらそれをひらく
+  for (var i = 1; i<= 5;i++){
+    if($.cookie('menu') == 'menu'+i ){
+      $('#menu'+ i ).show();
+    }
+  }
+
+  $('.sub-menu-head').on('click', function(){
+    $(this).next('.sub-menu-body').slideToggle();
+    
+    //くっきの設定  idの取得 
+    $.cookie('menu', $(this).next('.sub-menu-body').attr('id'), {expires: 1 });
+
+    //var test= $(this).next('.sub-menu-body').attr('id');
+    //console.log(test);
+      
+    $('.sub-menu-body').not($(this).next('.sub-menu-body')).slideUp();
+  })
+});
+
+$(function(){
+  //$('.search-list').hide();
+  $('.tng-search').on('click', function(){
+        if($('.search-list').css('display')=='none'){
+        $('.test-list').css('height','71vh');
+    }
+    if($('.search-list').css('display') !='none'){
+        $('.test-list').css('height','80vh');
+    }
+    $('.search-list').slideToggle();
+  })
+});
 </script>
  
 <style>
@@ -82,9 +110,26 @@
   .sub-menu{
     margin:0px;
   }
-  #list-main{
+  .list-main{
     font-size:14px;
     padding:0;
   }
+::-webkit-scrollbar{
+    width:8px;
+    height:8px;
+}
+::-webkit-scrollbar-track{
+    margin: 0px 8px;
+    border-radius: 4px;
+    background:#888888;
+    //opacity:0;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 4px;
+    background: #ccc;
+}
+.test-list{
+  transition: 0.4s linear ;
+}
   
 </style>

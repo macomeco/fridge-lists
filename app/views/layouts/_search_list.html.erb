@@ -1,0 +1,87 @@
+<%= content_tag(:div, '' , style: 'border-left: 1px solid' ,class:'col-3 p-0 clr_sub_b w-100') do %>
+    <div class="test-list-ii" style="">
+    <!-- リスト名 -->
+        <%= content_tag(:div, '',class:'card my-2 mx-auto',style:'width:95%;border-color:'+@theme.clr_font ) do%>
+        <div class="row no-gutters">
+
+            <div class="col-md-1">
+                <%= content_tag(:div, '' ,class: 'w-100 h-100 clr_list_ii_b') %>
+            </div>
+            
+            <div class="col-md-9">
+                <div class="card-body mx-auto">
+                    <h1 style="font-size:20px;margin:0">検索</h1>
+                </div>
+            </div>
+            
+            
+            <div class="col-md-2">
+                <div class="h-100 d-flex align-items-center">
+                    <div class="tng-search text-center w-100">
+                    <%= content_tag(:div,'' ,class: 'clr_main_c w-100 text-center btn btn-link p-0 ')do %><i class="fas fa-search "></i><%end%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row no-gutters search-list">
+                <div class="col-md-1">
+                    <%= content_tag(:div, '' ,class: 'w-100 h-100 clr_list_ii_b') %>
+                </div>
+                <div class="col-md-11">
+                    <div class="card-body">
+                        <%= form_with(url: root_path(:search),method: :get,local: true)do |f|%>
+                            <div class="input-group">
+                                <%= f.text_field :search, {class: 'form-control form-control-sm'}%>
+                                <span class="input-group-append">
+                                    <%= f.submit '検索' , {class: 'btn btn-sm clr_sub_b clr_font_c'} %>
+                                </span>
+                            </div>
+                        <%end%>
+                    </div>
+                </div>
+            </div>    
+        <%end%>
+
+    <!-- 中身 -->
+    <div class="mt-4 mx-1 test-list" style="display:flex;overflow-y:auto;">
+        <div class="mx-auto" style="width:95%;" id="target">
+            <%if search_things==nil then%>
+                <p class="text-center">キーワードをにゅうりょくしてね</p>
+            <%else%>            
+                <% search_things.each do |tng| %>
+                    <% @clr = @theme.clr_list_ii %>
+                    <%= render 'things/test' , tng: tng %>
+                <%end%>
+            <%end%>
+        </div>
+    </div>
+</div>
+<% end %>
+
+<script>
+$(function(){
+
+      //$('#search_list').hide();
+      /*
+      if($('.search-list').css('display') == 'none'){
+          //$('.test-list').css('height','80vh');
+          console.log('アホ');
+      }else{
+          $('.test-list').css('height','60vh');
+      }*/
+});
+</script>
+<style>
+.test-list-ii{
+    max-height:30%;
+}
+#target{
+    height:auto;
+    min-height:70vh;
+    max-height: 80vh;
+    /*height: auto !important;*/
+
+    
+}
+
+</style>

@@ -1,50 +1,48 @@
 <%@a = true %>
 <% lists.each do |list|%>
-    <%= content_tag(:div, '' , style: 'border-left: 1px solid;' ,class:'col-3 p-0 clr_sub_b',id:'list_col') do %>
+    <%= content_tag(:div, '' , style: 'border-left: 1px solid' ,class:'col-3 p-0 clr_sub_b',id:'list_col') do %>
     <!-- リスト名 -->
-        <%= content_tag(:div, '',class:'card m-2',style:'width:95%;border-color:'+@theme.clr_font ) do%>
-        <div class="row no-gutters">
-
-            <!-- 色決め リストで交互に -->            
-            <%if @a == true then%> 
-                <% @clr = @theme.clr_list_i %>
-                <% @a = false %>
-            <%else %>
-                <% @clr = @theme.clr_list_ii %>
-                <% @a = true %>
-            <%end%>
-            
-            <div class="col-md-1"><%= content_tag(:div, '' , style: 'background-color:'+ @clr,class: 'w-100 h-100') %></div>
-            
-            <div class="col-md-11">
-                <div class="card-body mx-auto">
-                    <h1 style="font-size:20px"><%= list.name%></h1>
+        <%= content_tag(:div, '',class:'card my-2 mx-auto',style:'width:95%;border-color:'+@theme.clr_font ) do%>
+            <div class="row no-gutters">
+    
+                <!-- 色決め リストで交互に -->            
+                <%if @a == true then%> 
+                    <% @clr = @theme.clr_list_i %>
+                    <% @a = false %>
+                <%else %>
+                    <% @clr = @theme.clr_list_ii %>
+                    <% @a = true %>
+                <%end%>
+                
+                <div class="col-md-1"><%= content_tag(:div, '' , style: 'background-color:'+ @clr,class: 'w-100 h-100') %></div>
+                
+                <div class="col-md-11">
+                    <div class="card-body mx-auto">
+                        <h1 style="font-size:20px;margin:0"><%= list.name%></h1>
+                    </div>
                 </div>
             </div>
-        </div>
-    <%end%>
-
-    <!-- 中身 -->
-    <div class="mt-3" id="list-card" style="display:flex;overflow-y:auto;height:85%">
-        <div class="mx-auto p-1" style="width:95%;" id="target">
-        
-            <% @things.each do |tng| %>
-                <%if list.id == tng.list_id then%>
-                    <%= render 'things/things' , tng: tng %>
+        <%end%>
+        <!-- 中身 -->
+        <div class="mt-4 mx-1 list-card" style="display:flex;overflow-y:auto;%">
+            <div class="mx-auto" style="width:95%;" id="target">
+                    
+                <% @things.each do |tng| %>
+                    <%if list.id == tng.list_id then%>
+                        <%= render 'things/test' , tng: tng %>
+                    <%end%>
                 <%end%>
-            <%end%>
-        
+                
+            </div>
         </div>
-    </div>
     
-
-<%end%>
+    <% end %>
 <% end %>
 
 <style>
-    #list-card{
+    .list-card{
         margin-top: auto;
         margin-bottom: auto;
-        height: 83vh;
+        height: 80vh;
     }   
 </style>
