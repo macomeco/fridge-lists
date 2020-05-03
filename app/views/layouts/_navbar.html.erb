@@ -78,17 +78,22 @@ $(function(){
 });
 
 $(function(){
-  //$('.search-list').hide();
-  $('.tng-search').on('click', function(){
-        if($('.search-list').css('display')=='none'){
-        $('.test-list').css('height','71vh');
-    }
-    if($('.search-list').css('display') !='none'){
-        $('.test-list').css('height','80vh');
-    }
-    $('.search-list').slideToggle();
-  })
+  $('.search-form').hide();
+
+  $('.search-btn').on('click',function(){
+      if($('.search-form').css('display')!='none'){  //表示されてる状態のとき
+        //スライドアップ　表示されている時の長さがでてくる
+        $('.search-tngs').css('height', '80vh' );
+        $('.search-form').slideToggle();
+      }else {
+        //スライドダウン　表示されてない時の長さがでてくる　formが隠れてるとき
+          $('.search-tngs').css('height', $('.search-tngs').outerHeight() - $('.search-form').outerHeight() +'px' );
+          $('.search-form').slideToggle();
+      }
+  });
+
 });
+
 </script>
  
 <style>
