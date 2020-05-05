@@ -30,10 +30,18 @@ class ToppagesController < ApplicationController
       #@theme = Colortheme.find_by(id: 56)
       
 
-      if params[:search].present?
+      if params[:search].present?   #もし検索ワードが入っていたら
         @search_things = current_user.things.where('content LIKE ?',"%#{params[:search]}%")
-      else
-        @search_things = nil
+      else    #もし検索ワードが入っていなかったら全部ぶち込む
+#        @search_things = nil
+        if params[:sort].present?
+          @search_things = current_user.things.order(params[:sort]).order(id: :asc)#:deadline=>:asc
+        else
+          params[:sort] = 'deadline asc'
+          @search_things = current_user.things.order(params[:sort]).order(id: :asc)
+        end
+          
+        
       end       
       
       #もの

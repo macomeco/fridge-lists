@@ -1,4 +1,10 @@
-<%=content_tag(:div,'', class:'target-card card my-2',style:'border-color:'+@theme.clr_font) do %>    
+<% if @no == 0%>
+<% @m = 'mb-0' %>
+<%else%>
+<% @m = 'mb-2'%>
+<%end%>
+
+<%=content_tag(:div,'', class:'target-card card '+@m,style:'border-color:'+@theme.clr_font) do %>
 
     <div class="tng-main row no-gutters">
         

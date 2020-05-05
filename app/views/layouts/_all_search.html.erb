@@ -1,16 +1,16 @@
-<%= content_tag(:div, '' , style: 'border-left: 1px solid;height:100%; clear: both; ' ,class:'col-3 p-0 clr_sub_b w-100 h-100 search-list') do %>
+<%= content_tag(:div, ''  , class:'col-3 p-0 clr_sub_b w-100 h-100 search-list') do %>
     <!-- リスト名 -->
-        <%= content_tag(:div, '',class:'h-test card mt-2 mx-auto',style:' width:95%;border-color:'+@theme.clr_font ) do%>
+        <%= content_tag(:div, '',class:'card mt-2 mx-auto',style:' width:95%;border-color:'+@theme.clr_font ) do%>
             
             <div class="row no-gutters search-main">
     
                 <div class="col-md-1">
                     <%= content_tag(:div, '' , class: 'w-100 h-100 clr_list_ii_b') %>
                 </div>
-                
+            
                 <div class="col-md-9">
                     <div class="card-body mx-auto">
-                        <h1 style="font-size:20px;margin:0">検索</h1>
+                        <h1 style="font-size:20px;margin:0">すべて</h1>
                     </div>
                 </div>
                 
@@ -44,34 +44,23 @@
             
         <%end%>
 
-    <!-- 中身 -->
-        <div class="mt-3 mx-1 search-tngs " style="width:95%;display:flex;overflow-y:auto;">
-            <div class="mx-auto" style="width:95%;" id="target">
-                <%if search_things==nil then%>
-                    <p class="text-center">キーワードをにゅうりょくしてね</p>
-                <%else%>            
-                    <% search_things.each do |tng| %>
-                        <% @clr = @theme.clr_list_ii %>
-                        <%= render 'things/test' , tng: tng %>
-                    <%end%>
+        <!-- 中身 -->
+        <div class="mt-4 list-card search-tngs">
+            <div class="w-100 px-2">
+                <% @no = search_things.count %>
+                <% search_things.each do |tng| %>
+                    <% @clr = @theme.clr_list_ii %>
+                    <% @no -= 1 %>
+                    <%= render 'things/test' , tng: tng %>
                 <%end%>
             </div>
         </div>
-    
         
 <% end %>
 
-<script>
-
-</script>
-
 <style>
 .search-tngs{
-    height:80vh;
-    position:absolute;
-    bottom:1%;
     transition: 0.4s ease-in-out ;
-
 }
 
 </style>

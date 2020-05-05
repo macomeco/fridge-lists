@@ -10,9 +10,8 @@
         </div>
         
         <div class="col-10 p-0 clr_sub_b" style="display:flex;overflow-x:scroll;height:100%">
-            <%= render 'layouts/search_list' ,search_things: @search_things%>
-
-            <%= render 'lists/list_all' ,things: @things%>
+            <%= render 'layouts/all_search' ,search_things: @search_things%>
+                <%#<%= render 'lists/list_all' ,things: @things%>
             <%= render 'lists/list' ,lists: @lists%>
         </div>
     </div>

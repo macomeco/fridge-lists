@@ -22,15 +22,8 @@
     </li>
     
     <li class="sub-menu">
-      <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-search fa-2x"></i><a class="ml-2 btn btn-link">検索</a></div></div>
-      <ul class="sub-menu-body" id="menu4">
-        <li class="list-main"><%= render 'layouts/search' , search_things: @search_things%></li>
-      </ul>
-    </li>
-
-    <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-user fa-2x"></i><a class="ml-2 btn btn-link">ユーザー</a></div></div>
-      <ul class="sub-menu-body" id="menu5">
+      <ul class="sub-menu-body" id="menu4">
         <li class="list-main"><%= render 'users/edit',user: current_user%></li>
       </ul>
     </li>
@@ -58,7 +51,7 @@ $(function(){
   $('.sub-menu-body').hide();
 
   //くっきの保存がされていたらそれをひらく
-  for (var i = 1; i<= 5;i++){
+  for (var i = 1; i<= 4;i++){
     if($.cookie('menu') == 'menu'+i ){
       $('#menu'+ i ).show();
     }
@@ -83,11 +76,11 @@ $(function(){
   $('.search-btn').on('click',function(){
       if($('.search-form').css('display')!='none'){  //表示されてる状態のとき
         //スライドアップ　表示されている時の長さがでてくる
-        $('.search-tngs').css('height', '80vh' );
+        $('.search-tngs').css('height', '79vh' );
         $('.search-form').slideToggle();
       }else {
         //スライドダウン　表示されてない時の長さがでてくる　formが隠れてるとき
-          $('.search-tngs').css('height', $('.search-tngs').outerHeight() - $('.search-form').outerHeight() +'px' );
+          $('.search-tngs').css('height', $('.search-tngs').outerHeight() - $('.search-form').outerHeight() -2 +'px' );
           $('.search-form').slideToggle();
       }
   });

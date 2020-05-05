@@ -1,10 +1,11 @@
 <%@a = true %>
+
 <% lists.each do |list|%>
-    <%= content_tag(:div, '' , style: 'border-left: 1px solid' ,class:'col-3 p-0 clr_sub_b',id:'list_col') do %>
+
+    <%= content_tag(:div, '' , style: 'border-left: 1px solid ' ,class:'col-3 p-0 clr_sub_b w-100 h-100') do %>
     <!-- リスト名 -->
-        <%= content_tag(:div, '',class:'card my-2 mx-auto',style:'width:95%;border-color:'+@theme.clr_font ) do%>
+        <%= content_tag(:div, '',class:'card mt-2 mx-auto',style:'width:95%;border-color:'+@theme.clr_font ) do%>
             <div class="row no-gutters">
-    
                 <!-- 色決め リストで交互に -->            
                 <%if @a == true then%> 
                     <% @clr = @theme.clr_list_i %>
@@ -16,33 +17,50 @@
                 
                 <div class="col-md-1"><%= content_tag(:div, '' , style: 'background-color:'+ @clr,class: 'w-100 h-100') %></div>
                 
-                <div class="col-md-11">
+                <div class="col-md-8">
                     <div class="card-body mx-auto">
-                        <h1 style="font-size:20px;margin:0"><%= list.name%></h1>
+                        <h1 style="font-size:20px;margin:0">
+                            <%= list.name%>
+                        </h1>
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="card-body mx-auto">
+                        <a style="font-size:20px;text-align:right;color:#808080;"><%= @no = @things.where(list_id: list.id).count %></a>
+                    </div>
+                </div>
+
             </div>
         <%end%>
+
+
         <!-- 中身 -->
-        <div class="mt-4 mx-1 list-card" style="display:flex;overflow-y:auto;%">
-            <div class="mx-auto" style="width:95%;" id="target">
-                    
+        <div class="mt-4 list-card">
+            <div class="w-100 px-2">
                 <% @things.each do |tng| %>
                     <%if list.id == tng.list_id then%>
+                        <% @no -= 1 %>
                         <%= render 'things/test' , tng: tng %>
                     <%end%>
                 <%end%>
-                
+
             </div>
         </div>
+
     
     <% end %>
 <% end %>
 
 <style>
-    .list-card{
-        margin-top: auto;
-        margin-bottom: auto;
-        height: 80vh;
-    }   
+.list-card{
+    display:flex;
+    overflow-y:auto;
+    width:97%;
+    margin-right:3px;
+    margin-left:3px;
+    
+    height:79vh;
+    position:absolute;
+    bottom:1%;
+}   
 </style>
