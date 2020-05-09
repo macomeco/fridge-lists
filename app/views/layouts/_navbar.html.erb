@@ -1,5 +1,5 @@
-<%= content_tag :nav,'',id: 'nav-bar',class: 'clr_main_b' do%>
-  <%= content_tag :ul, '' ,class:'clr_font_c' do%>
+<nav id='nav-bar' class= 'clr_main_b'>
+  <ul class='clr_font_c'>
     <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-plus fa-2x"></i><a class="ml-2 btn btn-link ">モノ</a></div></div>
       <ul class="sub-menu-body" id="menu1">
@@ -27,25 +27,16 @@
         <li class="list-main"><%= render 'users/edit',user: current_user%></li>
       </ul>
     </li>
-    
-
-    
-  <%end%>
-<%end%>
-
-
+  </nav>
+</ul>
 
 <script>
 $(function(){
-    //$('.tng-edit-form').hide();
-  
     $('.tng-edit').on('click', function(){
     $(this).parents('.tng-main').nextAll('.tng-edit-form').slideToggle();
     $('.tng-edit-form').not($(this).parents('.tng-main').nextAll('.tng-edit-form')).slideUp(); 
-
     })
 });
-
 
 $(function(){
   $('.sub-menu-body').hide();
@@ -56,23 +47,16 @@ $(function(){
       $('#menu'+ i ).show();
     }
   }
-
   $('.sub-menu-head').on('click', function(){
     $(this).next('.sub-menu-body').slideToggle();
-    
     //くっきの設定  idの取得 
     $.cookie('menu', $(this).next('.sub-menu-body').attr('id'), {expires: 1 });
-
-    //var test= $(this).next('.sub-menu-body').attr('id');
-    //console.log(test);
-      
     $('.sub-menu-body').not($(this).next('.sub-menu-body')).slideUp();
   })
 });
 
 $(function(){
   $('.search-form').hide();
-
   $('.search-btn').on('click',function(){
       if($('.search-form').css('display')!='none'){  //表示されてる状態のとき
         //スライドアップ　表示されている時の長さがでてくる

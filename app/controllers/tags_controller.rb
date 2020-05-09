@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy, :edit, :update]
+  before_action :correct_user, only: [:destroy, :update]
 
   def create
     @tag = current_user.tags.build(tags_params)
@@ -12,11 +12,7 @@ class TagsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-  
-  def edit
-    @user = current_user.user.find_by(id: params[:id])
-  end
-  
+
   def update
       if @tag.update(tags_params)
           flash[:success] = 'タグを編集しました'
@@ -28,7 +24,6 @@ class TagsController < ApplicationController
       redirect_back(fallback_location: root_path)
       end
   end
-  
   
   def destroy
     @tag.destroy

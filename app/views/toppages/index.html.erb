@@ -10,9 +10,12 @@
         </div>
         
         <div class="col-10 p-0 clr_sub_b" style="display:flex;overflow-x:scroll;height:100%">
-            <%= render 'layouts/all_search' ,search_things: @search_things%>
+
                 <%#<%= render 'lists/list_all' ,things: @things%>
-            <%= render 'lists/list' ,lists: @lists%>
+                <%#<%= render 'lists/list' ,lists: @lists%>
+            <%= render partial: 'lists/list' ,collection: @lists, as: 'list' %>
+            <%= render 'layouts/all_search' ,search_things: @search_things%>
+
         </div>
     </div>
 
@@ -73,52 +76,4 @@
 .row{
     height:95%;
 }
-/*メイン*/
-.clr_main_c{
-    color:<%= @theme.clr_main %>;
-}
-.clr_main_b{
-    background-color:<%= @theme.clr_main %>;
-}
-
-/*サブ*/
-.clr_sub_c{
-    color:<%= @theme.clr_sub %>;
-}
-.clr_sub_b{
-    background-color:<%= @theme.clr_sub %>;
-}
-
-/*ポイント*/
-.clr_point_c{
-    color:<%= @theme.clr_point %>;
-}
-.clr_point_b{
-    background-color:<%= @theme.clr_point %>;
-}
-
-/*リスト*/
-.clr_list_i_c{
-    color:<%= @theme.clr_list_i %>;
-}
-.clr_list_i_b{
-    background-color:<%= @theme.clr_list_i %>;
-}
-
-/*リスト*/
-.clr_list_ii_c{
-    color:<%= @theme.clr_list_ii %>;
-}
-.clr_list_ii_b{
-    background-color:<%= @theme.clr_list_ii %>;
-}
-
-/*フォント*/
-.clr_font_c{
-    color:<%= @theme.clr_font %>;
-}
-.clr_font_b{
-    background-color:<%= @theme.clr_font %>;
-}
-
 </style>

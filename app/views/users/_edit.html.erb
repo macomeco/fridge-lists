@@ -1,4 +1,4 @@
-<%= content_tag(:div,'',style:'border-color:'+@theme.clr_font ,class:'card mt-1') do %>
+<div class = 'card mt-1 clr_font_bd'>
     <div class="card-body m-0">
 
         <%= form_with(model: user, local: true)do |f| %>
@@ -23,6 +23,6 @@
         <%= link_to  logout_path, method: :delete  do%>ログアウト <i class="fas fa-sign-in-alt"></i><%end%>
 
     </div>
-<%end%> 
+</div> 
 
 

@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy, :edit, :show, :update]
+  before_action :correct_user, only: [:destroy, :update]
 
   def create
     @list = current_user.lists.build(lists_params)
@@ -12,11 +12,7 @@ class ListsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-  
-  def edit
-    @user = current_user.user.find_by(id: params[:id])
-  end
-  
+
   def update
       if @list.update(lists_params)
           flash[:success] = 'お部屋を設定しました'

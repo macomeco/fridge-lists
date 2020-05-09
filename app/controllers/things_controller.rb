@@ -1,10 +1,9 @@
 class ThingsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy, :edit, :update]
+  before_action :correct_user, only: [:destroy, :update]
   
   
   def create
-    
     #@thing = current_user.things.build(things_params)
     test = things_params[:quantity].to_i
     @arr = []
@@ -22,18 +21,13 @@ class ThingsController < ApplicationController
     end
    redirect_back(fallback_location: root_path)
   end
-
-  def edit
-  end
-
+  
   def update
-    if @thing.update(things_params)
+    if @thing.update(things_params_ii)
       flash[:success] = 'ものを編集しました'
       redirect_back(fallback_location: root_path)
     else
       flash[:error] = 'ものの編集に失敗しました'
-
-      #flash[:danger] = 'タグは編集されませんでした'
       redirect_back(fallback_location: root_path)
     end
   end
@@ -47,6 +41,10 @@ class ThingsController < ApplicationController
   private
   def things_params
     params.require(:thing).permit(:list_id, :content, :deadline,:tag_id, :quantity)
+  end
+  
+  def things_params_ii
+    params.require(:thing).permit(:list_id, :content, :deadline,:tag_id, quantity: 1)
   end
   
   def correct_user  #編集するタグがユーザのタグか判定

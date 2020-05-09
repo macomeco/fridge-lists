@@ -1,4 +1,4 @@
-<%= content_tag(:div,'',style:'border-color:'+@theme.clr_font ,class:'card mt-1') do %>
+<div class='card mt-1 clr_font_bd'>
     <div class="card-body">
         <p>お部屋の新規登録</p>
         <div class="list-add-form">
@@ -17,7 +17,7 @@
                             <tr class="p-0 my-3">
                                 <td class="p-0"><%= link_to list , :method => :delete, data:{ confirm: list.name+'を削除しますか？'},class: 'mx-2 clr_point_c' do %><i class="fa fa-times"></i><% end %></td>
                                 <td class="p-0"><%= list.name %></td>
-                                <td class="p-0"><%= content_tag(:div,'', class: 'clr_point_c list-edit text-right list-edit btn btn-link p-0')do %><i class="fas fa-pen fa-sm"></i><%end%></td>
+                                <td class="p-0"><div class= 'clr_point_c list-edit text-right list-edit btn btn-link p-0'><i class="fas fa-pen fa-sm"></i></div></td>
                             </tr>
                             <tr class="p-0 my-3 list-edit-form">
                                 <td colspan="3" class="w-100 px-1 py-2">
@@ -25,7 +25,7 @@
                                         <div class="input-group">
                                             <%= f.text_field :name, class: 'form-control form-control-sm'%>
                                             <span class="input-group-append">
-                                                <%= f.submit 'OK' , class: 'btn btn-default btn-sm clr_sub_b clr_font_c',style:'border-color:'+@theme.clr_font %>
+                                                <%= f.submit 'OK' , class: 'btn btn-default btn-sm clr_sub_b clr_font_c clr_font_bd' %>
                                             </span>
                                         </div>
                                     <%end%>
@@ -40,20 +40,20 @@
 
         <div class="custom-control custom-switch my-3">
             <%= form_with(url: root_path(:sort),method: :get,local: true,class:'switch-form') do |f| %>
-                <% if params[:sort]=='deadline asc'%>
+                <% if params[:sort]=='deadline asc'   #初期値　%>
                     <%= f.check_box :sort ,{checked: true,class: 'custom-control-input'},'deadline asc','deadline desc'%>
                 <%else%> 
                     <%= f.check_box :sort ,{class: 'custom-control-input'},'deadline asc','deadline desc'%>
                 <%end%>
                 <%= f.label :sort, '昇順表示',class:'custom-control-label' %>
                 <div style="float:right">
-                    <%= f.submit 'ok',class:'btn btn-sm clr_sub_b clr_font_c',style: 'border-color:'+@theme.clr_font %>
+                    <%= f.submit 'ok',class:'btn btn-sm clr_sub_b clr_font_c clr_font_bd' %>
                 </div>
             <%end%>
         </div>
 
     </div>
-<%end%>
+</div>
 
 
 <script>

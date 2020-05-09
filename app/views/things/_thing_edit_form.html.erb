@@ -1,0 +1,47 @@
+<%= form_with(model: tng, local: true)do |f| %>
+                    
+                    <div class="input-group input-group-sm mt-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text input-group-sm">
+                                <%= f.label :list_id, 'お部屋',class:'m-0'%>
+                            </span>
+                        </div>
+                        <%= f.collection_select :list_id, @list_w,:id,:name,{} ,class: 'form-control' %>
+                    </div>
+                    
+                    <div class="input-group input-group-sm my-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text input-group-sm">
+                                <%= f.label :content, '&ensp;もの&ensp;'.html_safe,class:'m-0' %>
+                            </span>
+                        </div>
+                        <%= f.text_field :content, class: 'form-control'%>
+                    </div>
+                    
+                    <div class="input-group input-group-sm my-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text input-group-sm">
+                                <%= f.label :deadline, '&ensp;期限&ensp;'.html_safe,class:'m-0' %>
+                                </br>
+                            </span>
+                        </div>
+                        <%= f.date_field :deadline,  class: 'form-control '%>
+                    </div>
+                    
+                    <div class="input-group input-group-sm my-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text input-group-sm">
+                                <%= f.label :tag_id, '&ensp;タグ&ensp;'.html_safe ,class:'m-0'%>
+                                </br>
+                            </span>
+                        </div>
+                        <%= f.collection_select :tag_id, @tag_w ,:id,:name,{},class: 'form-control'%>
+                    </div>
+                    <div>
+                    <%#<%= f.number_field :quantity, value:1 ,class: 'form-control',style: "visibility:hidden;"%>
+                    </div>
+                    <div class="text-right">
+                        <%= f.submit 'OK' , class: 'btn ml-2 btn-sm clr_sub_b clr_font_c',style: 'border-color:'+@theme.clr_font %>
+                    </div>
+                
+                <%end%>

@@ -1,66 +1,79 @@
-<%= content_tag(:div, ''  , class:'col-3 p-0 clr_sub_b w-100 h-100 search-list') do %>
+<div class="col-3 p-0 clr_sub_b w-100 h-100 search-list" >
     <!-- リスト名 -->
-        <%= content_tag(:div, '',class:'card mt-2 mx-auto',style:' width:95%;border-color:'+@theme.clr_font ) do%>
-            
-            <div class="row no-gutters search-main">
-    
-                <div class="col-md-1">
-                    <%= content_tag(:div, '' , class: 'w-100 h-100 clr_list_ii_b') %>
-                </div>
-            
-                <div class="col-md-9">
-                    <div class="card-body mx-auto">
-                        <h1 style="font-size:20px;margin:0">すべて</h1>
-                    </div>
-                </div>
-                
-                
-                <div class="col-md-2">
-                    <div class="h-100 d-flex align-items-center">
-                        <div class="search-btn text-center w-100">
-                        <%= content_tag(:div,'' ,class: 'clr_main_c w-100 text-center btn btn-link p-0 ')do %><i class="fas fa-search "></i><%end%>
-                        </div>
-                    </div>
+    <div class='card mt-2 mx-auto clr_font_bd' style='width:95%;'>
+        
+        <div class="row no-gutters search-main">
+            <div class="col-md-1">
+                <div class= 'w-100 h-100 clr_list_ii_b'></div>
+            </div>
+        
+            <div class="col-md-9">
+                <div class="card-body mx-auto">
+                    <h1 style="font-size:20px;margin:0">検索</h1>
                 </div>
             </div>
             
-            <div class="row no-gutters search-form">
-                <div class="col-md-1">
-                    <%= content_tag(:div, '' ,class: 'w-100 h-100 clr_list_ii_b') %>
-                </div>
-                <div class="col-md-11">
-                    <div class="card-body">
-                        <%= form_with(url: root_path(:search),method: :get,local: true)do |f|%>
-                            <div class="input-group">
-                                <%= f.text_field :search, {class: 'form-control form-control-sm'}%>
-                                <span class="input-group-append">
-                                    <%= f.submit '検索' , {class: 'btn btn-sm clr_sub_b clr_font_c'} %>
-                                </span>
-                            </div>
-                        <%end%>
+            <div class="col-md-2">
+                <div class="h-100 d-flex align-items-center">
+                    <div class="search-btn text-center w-100">
+                    <div class= 'clr_main_c w-100 text-center btn btn-link p-0 '><i class="fas fa-search "></i></div>
                     </div>
                 </div>
-            </div> 
-            
-        <%end%>
-
-        <!-- 中身 -->
-        <div class="mt-4 list-card search-tngs">
-            <div class="w-100 px-2">
-                <% @no = search_things.count %>
-                <% search_things.each do |tng| %>
-                    <% @clr = @theme.clr_list_ii %>
-                    <% @no -= 1 %>
-                    <%= render 'things/test' , tng: tng %>
-                <%end%>
             </div>
         </div>
         
-<% end %>
+        <div class="row no-gutters search-form">
+            <div class="col-md-1">
+                <div class= 'w-100 h-100 clr_list_ii_b'></div>
+            </div>
+            <div class="col-md-11">
+                <div class="card-body">
+                    <%= form_with(url: root_path(:search),method: :get,local: true)do |f|%>
+                        <div class="input-group">
+                            <%= f.text_field :search, {class: 'form-control form-control-sm'}%>
+                            <span class="input-group-append">
+                                <%= f.submit '検索' , {class: 'btn btn-sm clr_sub_b clr_font_c'} %>
+                            </span>
+                        </div>
+                    <%end%>
+                </div>
+            </div>
+        </div> 
+        
+    </div>
+
+    <!-- 中身 -->
+    <div class="mt-4 list-card search-tngs">
+        <div class="w-100 px-2">
+            <% @no = @test.size %>
+            <% @clr = @theme.clr_list_ii %>
+            
+            <%if @search_things == nil%>
+                <div class='card mx-auto clr_font_bd w-100'>
+                    <div class="row no-gutters">
+                        <div class="col-md-1">
+                            <div class= 'w-100 h-100 clr_list_ii_b'></div>
+                        </div>
+                    
+                        <div class="col-md-11 px-auto w-100 py-3">
+                            <div class="h-100 d-flex align-items-center">
+                                <div class="tng-edit text-center w-100">
+                                    <div class='clr_main_c w-100 text-center btn btn-link p-0 '>aaa</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <%else%>
+                <%= render partial: 'things/tng' , collection: search_things, as: 'tng'%>
+            <%end%>
+        </div>
+    </div>
+        
+</div>
 
 <style>
 .search-tngs{
     transition: 0.4s ease-in-out ;
 }
-
 </style>
