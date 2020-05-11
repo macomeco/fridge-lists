@@ -37,21 +37,20 @@ class ToppagesController < ApplicationController
         @things = current_user.things.order(params[:sort]).order(id: :asc)#:deadline=>:asc
       else  #初期値はasc
         params[:sort] = 'deadline asc'
-        @things = current_user.things.select('list_id','content','tag_id','id','deadline','quantity').order(params[:sort]).order(id: :asc)
+        @things = current_user.things.order(params[:sort]).order(id: :asc)
         
       end
       #タグ
       @tag = current_user.tags.build
-      @tags = current_user.tags.select('name','id').order(id: :asc)
+      @tags = current_user.tags.select('name','id','user_id').order(id: :asc)
 
       #リスト
       @list = current_user.lists.build
-      @lists = current_user.lists.select('name','id').order(id: :asc)
-      
-      @list_w = List.select('user_id','id','name').where(user_id: current_user.id)
+      @lists = current_user.lists.select('name','id','user_id').order(id: :asc)
 
-      @tag_w= Tag.select('user_id','id','name').where(user_id: current_user.id)
-      @tag_names = Tag.select('name').all
+      @list_w = current_user.lists.select('user_id','id','name').where(user_id: current_user.id)
+      @tag_w=  current_user.tags.select('user_id','id','name').where(user_id: current_user.id)
+      
       @today = Date.today
       
       @test = current_user.things.select('list_id')

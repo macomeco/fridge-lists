@@ -1,3 +1,4 @@
+
 <div class='card mt-1 clr_font_bd'>
     <div class="card-body">
         <p>タグの新規登録</p>
@@ -12,7 +13,8 @@
             <div class="card-body p-1" style="overflow-y:auto">
                 <table class="table table-borderless">
                     <tbody>
-                        <% tags.each do |tag|%>
+                        
+                        <% @tags.each do |tag|%>
                             <tr class="p-0 my-3">
                                 <td class="p-0"><%= link_to tag , :method => :delete, data:{ confirm: tag.name+'を削除しますか？'},class: 'mx-2 clr_point_c ' do %><i class="fa fa-times"></i><% end %></td>
                                 <td class="p-0"><%= tag.name %></td>
@@ -31,24 +33,15 @@
                                     <%end%>
                                 </td>
                             </tr>
-                            
+                        
                         <% end %>
                     </tbody>
                 </table>
-
             </div>
         </div>
-
     </div>
-
 </div>
-
 
 <script>
 $('.tag-edit-form').hide();
-$('.tag-edit').on('click',function(){
-    $(this).parent().parent().next('.tag-edit-form').stop().slideToggle();
-    $('.tag-edit-form').not($(this).parent().parent().next('.tag-edit-form')).slideUp();
-});
-
 </script>

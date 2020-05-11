@@ -14,15 +14,14 @@ class ListsController < ApplicationController
   end
 
   def update
-      if @list.update(lists_params)
-          flash[:success] = 'お部屋を設定しました'
-      redirect_back(fallback_location: root_path)
-      else
-          flash[:error] = 'お部屋の設定に失敗しました'
-      redirect_back(fallback_location: root_path)
-      end
+    if @list.update(lists_params)
+        flash[:success] = 'お部屋を設定しました'
+    redirect_back(fallback_location: root_path)
+    else
+        flash[:error] = 'お部屋の設定に失敗しました'
+    redirect_back(fallback_location: root_path)
+    end
   end
-  
   
   def destroy
     @list.destroy

@@ -13,6 +13,7 @@
             <div class="card-body p-1" style="overflow-y:auto">
                 <table class="table table-borderless">
                     <tbody>
+                        
                         <% lists.each do |list|%>
                             <tr class="p-0 my-3">
                                 <td class="p-0"><%= link_to list , :method => :delete, data:{ confirm: list.name+'を削除しますか？'},class: 'mx-2 clr_point_c' do %><i class="fa fa-times"></i><% end %></td>
@@ -55,14 +56,8 @@
     </div>
 </div>
 
-
 <script>
 $('.list-edit-form').hide();
-$('.list-edit').on('click',function(){
-    $(this).parent().parent().next('.list-edit-form').stop().slideToggle();
-    $('.list-edit-form').not($(this).parent().parent().next('.list-edit-form')).slideUp();
-});
-    
 </script>
 
 <style>
@@ -70,13 +65,4 @@ $('.list-edit').on('click',function(){
     border-color:<%= @theme.clr_point %>;
     background-color:<%= @theme.clr_point %>;
 }
-/*
-.custom-control-label::before {
-    border-color:<%= @theme.clr_point %>;
-}
-
-.custom-switch .custom-control-label::after {
-    background-color: <%= @theme.clr_point %>;
-}*/
-
 </style>

@@ -1,25 +1,19 @@
 <% if logged_in? %>
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-0" style="height:5%">
         <h1 style="color:white;font-size:20px" class="m-0"><%= current_user.name %>さんの冷蔵庫</h1>
     </nav>
-
     <div class="row" style="margin:0">
         <div class="col-2" style="padding:0;display:block;">  
-            <%= render 'layouts/navbar'%>
+            
+                <%= render 'layouts/navbar'%>
         </div>
-        
         <div class="col-10 p-0 clr_sub_b" style="display:flex;overflow-x:scroll;height:100%">
-
-                <%#<%= render 'lists/list_all' ,things: @things%>
-                <%#<%= render 'lists/list' ,lists: @lists%>
             <%= render partial: 'lists/list' ,collection: @lists, as: 'list' %>
             <%= render 'layouts/all_search' ,search_things: @search_things%>
-
         </div>
     </div>
-
 <% else %>
+<% cache 'top',expires_in: 30.minutes do%>
     <div class="row align-items-center top">
         <div class="col-lg-7 col-12 top-img">
             <div class="top-text">
@@ -51,8 +45,8 @@
                 </div>
             </div>
         </div>
-    
     </div>
+<%end%>
 <%end%>
 
 <script>
@@ -69,7 +63,6 @@
         $('.form-btn , .signup-form').hide();
         $('.login-form').fadeIn();
     });
-
 </script>
 
 <style>

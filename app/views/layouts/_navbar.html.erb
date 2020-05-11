@@ -1,4 +1,4 @@
-<nav id='nav-bar' class= 'clr_main_b'>
+<nav id='nav-bar' class= 'clr_main_b left_nav'>
   <ul class='clr_font_c'>
     <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-plus fa-2x"></i><a class="ml-2 btn btn-link ">モノ</a></div></div>
@@ -10,7 +10,7 @@
     <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-tag fa-2x"></i><a class="ml-2 btn btn-link">タグ</a></div></div>
       <ul class="sub-menu-body" id="menu2">
-        <li class="list-main"><%= render 'tags/tags' , tags: @tags%></li>
+        <li class="list-main"><%= render 'tags/tags' %></li>
       </ul>
     </li>
     
@@ -29,89 +29,3 @@
     </li>
   </nav>
 </ul>
-
-<script>
-$(function(){
-    $('.tng-edit').on('click', function(){
-    $(this).parents('.tng-main').nextAll('.tng-edit-form').slideToggle();
-    $('.tng-edit-form').not($(this).parents('.tng-main').nextAll('.tng-edit-form')).slideUp(); 
-    })
-});
-
-$(function(){
-  $('.sub-menu-body').hide();
-
-  //くっきの保存がされていたらそれをひらく
-  for (var i = 1; i<= 4;i++){
-    if($.cookie('menu') == 'menu'+i ){
-      $('#menu'+ i ).show();
-    }
-  }
-  $('.sub-menu-head').on('click', function(){
-    $(this).next('.sub-menu-body').slideToggle();
-    //くっきの設定  idの取得 
-    $.cookie('menu', $(this).next('.sub-menu-body').attr('id'), {expires: 1 });
-    $('.sub-menu-body').not($(this).next('.sub-menu-body')).slideUp();
-  })
-});
-
-$(function(){
-  $('.search-form').hide();
-  $('.search-btn').on('click',function(){
-      if($('.search-form').css('display')!='none'){  //表示されてる状態のとき
-        //スライドアップ　表示されている時の長さがでてくる
-        $('.search-tngs').css('height', '79vh' );
-        $('.search-form').slideToggle();
-      }else {
-        //スライドダウン　表示されてない時の長さがでてくる　formが隠れてるとき
-          $('.search-tngs').css('height', $('.search-tngs').outerHeight() - $('.search-form').outerHeight() -2 +'px' );
-          $('.search-form').slideToggle();
-      }
-  });
-
-});
-
-</script>
- 
-<style>
-  ul {
-    list-style: none;
-    margin:0;
-    padding:0;
-    text-align:left;
-  }
-
-  li{
-    padding:10px;
-  }
-  
-  #nav-bar{
-    width:100%;
-    height:100%;
-  }
-  .sub-menu{
-    margin:0px;
-  }
-  .list-main{
-    font-size:14px;
-    padding:0;
-  }
-::-webkit-scrollbar{
-    width:8px;
-    height:8px;
-}
-::-webkit-scrollbar-track{
-    margin: 0px 8px;
-    border-radius: 4px;
-    background:#888888;
-    //opacity:0;
-}
-::-webkit-scrollbar-thumb{
-    border-radius: 4px;
-    background: #ccc;
-}
-.test-list{
-  transition: 0.4s linear ;
-}
-  
-</style>
