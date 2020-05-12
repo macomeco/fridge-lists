@@ -13,7 +13,7 @@
             <div class="card-body p-1" style="overflow-y:auto">
                 <table class="table table-borderless">
                     <tbody>
-                        
+                        <% cache @tags , expired_in: 10.minutes do%>
                         <% @tags.each do |tag|%>
                             <tr class="p-0 my-3">
                                 <td class="p-0"><%= link_to tag , :method => :delete, data:{ confirm: tag.name+'を削除しますか？'},class: 'mx-2 clr_point_c ' do %><i class="fa fa-times"></i><% end %></td>
@@ -33,7 +33,7 @@
                                     <%end%>
                                 </td>
                             </tr>
-                        
+                        <%end%>
                         <% end %>
                     </tbody>
                 </table>

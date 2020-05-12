@@ -1,6 +1,6 @@
 <%@a = true %>
 <% @listid = list.id%>
-<div class="col-3 p-0 clr_sub_b w-100 h-100" style='border-left: 1px solid'>
+<div class="col-3 p-0 clr_sub_b w-100 h-100 clr_font_c " >
     <!-- リスト名 -->
     <div class='card mt-2 mx-auto clr_font_bd' style='width:95%;'>
         <div class="row no-gutters">
@@ -15,16 +15,14 @@
             
             <div class="col-md-1"><%= content_tag(:div, '' , style: 'background-color:'+ @clr,class: 'w-100 h-100') %></div>
             
-            <div class="col-md-7">
-                <div class="card-body mx-auto">
-                    <h1 style="font-size:20px;margin:0">
-                        <%= list.name %>
-                    </h1>
+            <div class="col-md-8">
+                <div class="card-body mx-auto h-100 pr-0">
+                    <h1 style="font-size:20px;margin:0"><%= list.name %></h1>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="text-right card-body mx-auto">
-                    <a style="font-size:20px;text-align:right;color:#808080;"><%= @no = @test.where(list_id: list.id).size %></a>
+            <div class="col-md-3">
+                <div class="text-right card-body mx-auto pl-0">
+                    <a style="font-size:16px;text-align:right;color:#808080;"><%= @no = @test.where(list_id: list.id).size %></a>
                 </div>
             </div>
 
@@ -34,7 +32,7 @@
     <!-- 中身 -->
     <div class="mt-4 list-card">
         <div class="w-100 px-2">
-            <%= render partial: 'things/tng' , collection: @things.where(list_id: list.id), as: 'tng'%>
+            <%= render partial: 'things/tng' , collection: @things.where(list_id: list.id), as: 'tng', cached: true%>
         </div>
     </div>
 

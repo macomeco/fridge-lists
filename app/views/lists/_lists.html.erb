@@ -13,8 +13,8 @@
             <div class="card-body p-1" style="overflow-y:auto">
                 <table class="table table-borderless">
                     <tbody>
-                        
-                        <% lists.each do |list|%>
+                        <% cache @lists, expired_in: 10.minutes do%>
+                        <% @lists.each do |list|%>
                             <tr class="p-0 my-3">
                                 <td class="p-0"><%= link_to list , :method => :delete, data:{ confirm: list.name+'を削除しますか？'},class: 'mx-2 clr_point_c' do %><i class="fa fa-times"></i><% end %></td>
                                 <td class="p-0"><%= list.name %></td>
@@ -32,6 +32,7 @@
                                     <%end%>
                                 </td>
                             </tr>
+                            <%end%>
                         <% end %>
                     </tbody>
                 </table>
