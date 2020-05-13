@@ -5,7 +5,7 @@
         <div class="row no-gutters search-main">
             
             <div class="col-md-1">
-                <div class= 'w-100 h-100 clr_list_ii_b'></div>
+                <div class= 'w-100 h-100 clr_main_b'></div>
             </div>
         
             <div class="col-md-9">
@@ -25,7 +25,7 @@
         
         <div class="row no-gutters search-form">
             <div class="col-md-1">
-                <div class= 'w-100 h-100 clr_list_ii_b'></div>
+                <div class= 'w-100 h-100 clr_main_b'></div>
             </div>
             <div class="col-md-11">
                 <div class="card-body">
@@ -47,13 +47,11 @@
     <div class="mt-4 list-card search-tngs">
         <div class="w-100 px-2">
             <% @no = @test.size %>
-            <% @clr = @theme.clr_list_ii %>
-            
             <%if @search_things == nil%>
                 <div class='card mx-auto clr_font_bd w-100'>
                     <div class="row no-gutters">
                         <div class="col-md-1">
-                            <div class= 'w-100 h-100 clr_list_ii_b'></div>
+                            <div class= 'w-100 h-100 clr_main_b '></div>
                         </div>
                     
                         <div class="col-md-11 px-auto w-100 py-3 px-3">
@@ -66,6 +64,7 @@
                     </div>
                 </div>
             <%else%>
+                <% @a = 'search' %>
                 <%= render partial: 'things/tng' , collection: search_things, as: 'tng'%>
             <%end%>
         </div>

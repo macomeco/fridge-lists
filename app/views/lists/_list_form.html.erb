@@ -1,8 +1,10 @@
-<%= form_with(model: list, local: true)do |f| %>
+<%= form_with(model: list, local: true,class:'mb-3')do |f| %>
     <div class="form-group">
+        <%= f.label :name, 'お部屋の新規登録',class:'mb-2'%>
         <%= f.text_field :name, class: 'form-control form-control-sm'%>
-        <div class="text-right mt-3">
-            <%= f.submit '追加' , class: 'btn btn-success btn-sm clr_sub_b clr_font_c clr_font_bd' %>
-        </div>
     </div>
+    <div class="text-right">
+        <%= f.submit '追加' , class: 'btn btn-success btn-sm clr_sub_b clr_font_c clr_font_bd' %>
+    </div>
+
 <%end%>

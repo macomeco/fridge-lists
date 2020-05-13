@@ -1,20 +1,21 @@
 <div class='card mt-1 clr_font_bd'>
     <div class="card-body">
-        <p>お部屋の新規登録</p>
+        
         <div class="list-add-form">
             <%= render 'lists/list_form',list: @list%>
         </div>
         
-        <%= content_tag(:div,'', style: "border-bottom: 2px dotted "+@theme.clr_point,class:"w-100 my-2")%>
+        <%= content_tag(:div,'', style: "border-bottom: 2px dotted "+@theme['clr_point'],class:"w-100 my-2")%>
 
-        <p>お部屋一覧</p>
+        <div class="my-3">
+        <p class="mb-2">お部屋一覧</p>
         
         <div class="card" style="height:150px">
             <div class="card-body p-1" style="overflow-y:auto">
-                <table class="table table-borderless">
+                <table class="table table-borderless m-0">
                     <tbody>
-                        <% cache @lists, expired_in: 10.minutes do%>
                         <% @lists.each do |list|%>
+                        <% cache list.updated_at, expires_in: 10.minutes do%>
                             <tr class="p-0 my-3">
                                 <td class="p-0"><%= link_to list , :method => :delete, data:{ confirm: list.name+'を削除しますか？'},class: 'mx-2 clr_point_c' do %><i class="fa fa-times"></i><% end %></td>
                                 <td class="p-0"><%= list.name %></td>
@@ -39,8 +40,10 @@
         
             </div>
         </div>
+        </div>
+        <%= content_tag(:div,'', style: "border-bottom: 2px dotted "+@theme['clr_point'],class:"w-100")%>
 
-        <div class="custom-control custom-switch my-3">
+        <div class="custom-control custom-switch mt-3">
             <%= form_with(url: root_path(:sort),method: :get,local: true,class:'switch-form') do |f| %>
                 <% if params[:sort]=='deadline asc'   #初期値　%>
                     <%= f.check_box :sort ,{checked: true,class: 'custom-control-input'},'deadline asc','deadline desc'%>
@@ -49,7 +52,7 @@
                 <%end%>
                 <%= f.label :sort, '昇順表示',class:'custom-control-label' %>
                 <div style="float:right">
-                    <%= f.submit 'ok',class:'btn btn-sm clr_sub_b clr_font_c clr_font_bd' %>
+                    <%= f.submit 'OK',class:'btn btn-sm clr_sub_b clr_font_c clr_font_bd' %>
                 </div>
             <%end%>
         </div>
@@ -63,7 +66,7 @@ $('.list-edit-form').hide();
 
 <style>
 .custom-control-input:checked~.custom-control-label::before {
-    border-color:<%= @theme.clr_point %>;
-    background-color:<%= @theme.clr_point %>;
+    border-color:<%= @theme['clr_point'] %>;
+    background-color:<%= @theme['clr_point'] %>;
 }
 </style>

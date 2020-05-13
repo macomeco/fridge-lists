@@ -2,7 +2,6 @@ class ThingsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy, :update]
   
-  
   def create
     #@thing = current_user.things.build(things_params)
     test = things_params[:quantity].to_i

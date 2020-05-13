@@ -1,4 +1,3 @@
-
 <% @no -= 1 %>
 
 <% if @no == 0 %>
@@ -7,7 +6,11 @@
 <% @m = 'mb-2'%>
 <%end%>
 
-<%=content_tag(:div,'', class:'target-card card '+@m,style:'border-color:'+@theme.clr_font) do %>
+<%if @a == 'search' %>
+<% @clr = @theme['clr_main'] %>
+<%end%>
+<% cache '@'+tng.to_s ,expires_in: 30.minutes do%>
+<%=content_tag(:div,'', class:'target-card card '+@m,style:'border-color:'+@theme['clr_font']) do %>
 
     <div class="tng-main row no-gutters">
         
@@ -49,7 +52,7 @@
         <div class="col-md-2 px-auto w-100 py-3">
             <div class="h-100 d-flex align-items-center">
                 <div class="tng-edit text-center w-100">
-                    <div class='clr_main_c w-100 text-center btn btn-link p-0 '><i class="fas fa-pen"></i></div>
+                    <%= content_tag(:div, '' , style: 'color:'+ @clr,class: 'w-100 text-center btn btn-link p-0' ) do %><i class="fas fa-pen"></i><%end%>
                 </div>
             </div>
         </div>
@@ -108,7 +111,7 @@
                     <%#<%= f.number_field :quantity, value:1 ,class: 'form-control',style: "visibility:hidden;"%>
                     </div>
                     <div class="text-right">
-                        <%= f.submit 'OK' , class: 'btn ml-2 btn-sm clr_sub_b clr_font_c',style: 'border-color:'+@theme.clr_font %>
+                        <%= f.submit 'OK' , class: 'btn ml-2 btn-sm clr_sub_b clr_font_c',style: 'border-color:'+@theme['clr_font'] %>
                     </div>
                 
                 <%end%>
@@ -117,7 +120,7 @@
         </div>                   
     </div>
 <%end%>
-
+<%end%>
 
 <script>
 $('.tng-edit-form').hide();

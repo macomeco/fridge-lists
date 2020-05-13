@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_061006) do
+ActiveRecord::Schema.define(version: 2020_05_13_125724) do
 
   create_table "colorthemes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "clr_main"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_04_28_061006) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "theme"
   end
 
   add_foreign_key "lists", "users"

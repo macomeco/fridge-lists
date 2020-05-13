@@ -1,29 +1,19 @@
 class ToppagesController < ApplicationController
      
   def index
-
-      if logged_in?
-        
-      #カラー
+    if logged_in?
       
-    #  @theme =  Colortheme.new(clr_main: "#9BC1BC", clr_sub: "#F4F1BB", clr_list_i: "#F49683", clr_list_ii: "#AEC59E", clr_font: "#5D576B")
+      #初期値はラムネ
+      @set = current_user.theme
+#          instance_variable_set('@theme',$sodapop )
       
-    #ラムネ 
-    #  @theme = Colortheme.new(clr_main: "#46b1c9", clr_sub: "#E2F2DA", clr_list_i: "#84c0c6", clr_list_ii: "#9fb7b9", clr_font: "#717570")
-    
-    #モノクロ  
-    #  @theme = Colortheme.new(clr_main: "#262626", clr_sub: "#ebebeb", clr_list_i: "#7f7f7f", clr_list_ii: "#696969", clr_font: "#3f3f3f" ,clr_point:"#E57E7E")
-
-    #クリームソーダ
-      @theme = Colortheme.new(clr_main: "#72BF96", clr_sub: "#F9F9D1", clr_list_i: "#98B59C", clr_list_ii: "#96CCB2", clr_font: "#592C2C",clr_point:"#E57E7E")
-
-    #なぞカラー
-    #  @theme =  Colortheme.new(clr_main: "#7E9F98", clr_sub: "#F8F7C2", clr_list_i: "#F49683", clr_list_ii: "#9DB28E", clr_font: "#5D576B")
-    
-    #
-      
-      @theme.save
-      #@theme = Colortheme.find_by(id: 56)
+      if @set == nil  || @set == 'sodapop'
+          instance_variable_set('@theme',$sodapop )
+        elsif @set == 'melon'
+          instance_variable_set('@theme',$melon )
+        elsif @set == 'mono'
+          instance_variable_set('@theme',$mono )
+      end  
       
       if params[:search].present?   #もし検索ワードが入っていたら
         @search_things = current_user.things.where('content LIKE ?',"%#{params[:search]}%")
@@ -42,11 +32,11 @@ class ToppagesController < ApplicationController
       end
       #タグ
       @tag = current_user.tags.build
-      @tags = current_user.tags.select('name','id','user_id').order(id: :asc)
+      @tags = current_user.tags.select('name','id','user_id','updated_at').order(id: :asc)
 
       #リスト
       @list = current_user.lists.build
-      @lists = current_user.lists.select('name','id','user_id').order(id: :asc)
+      @lists = current_user.lists.select('name','id','user_id','updated_at').order(id: :asc)
 
       @list_w = current_user.lists.select('user_id','id','name').where(user_id: current_user.id)
       @tag_w=  current_user.tags.select('user_id','id','name').where(user_id: current_user.id)

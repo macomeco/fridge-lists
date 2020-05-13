@@ -1,4 +1,4 @@
-<% @listid = list.id%>
+<% list.id == nil%>
 <div class="col-3 p-0 clr_sub_b w-100 h-100 clr_font_c " >
     <!-- リスト名 -->
     <div class='card mt-2 mx-auto clr_font_bd' style='width:95%;'>
@@ -30,7 +30,7 @@
     <!-- 中身 -->
     <div class="mt-4 list-card">
         <div class="w-100 px-2">
-            <%= render partial: 'things/tng' , collection: @things.where(list_id: list.id), as: 'tng'%>
+            <%= render partial: 'things/tng' , collection: @things, as: 'tng'%>
         </div>
     </div>
 
