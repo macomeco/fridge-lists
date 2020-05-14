@@ -4,15 +4,19 @@
     <div class='card mt-2 mx-auto clr_font_bd' style='width:95%;'>
         <div class="row no-gutters">
             <!-- 色決め リストで交互に -->            
-            <%if @a == true then%> 
-                <% @clr = @theme['clr_list_i'] %>
-                <% @a = false %>
+            <%if @clr_flag == true then%>
+                <% @clr_flag = false %>
             <%else %>
-                <% @clr = @theme['clr_list_ii'] %>
-                <% @a = true %>
+                <% @clr_flag = true %>
             <%end%>
             
-            <div class="col-md-1"><%= content_tag(:div, '' , style: 'background-color:'+ @clr,class: 'w-100 h-100') %></div>
+            <div class="col-md-1">
+                <%if @clr_flag == true then%>
+                    <div class="w-100 h-100 clr_list_i_b"></div>
+                <%elsif @clr_flag == false then%>
+                    <div class="w-100 h-100 clr_list_ii_b"></div>
+                <%end%>
+            </div>
             
             <div class="col-md-8">
                 <div class="card-body mx-auto h-100 pr-0">

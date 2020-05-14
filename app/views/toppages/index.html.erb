@@ -1,18 +1,19 @@
 <% if logged_in? %>
+    <%cache current_user.updated_at.to_s do%>
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-0" style="height:5%">
         <h1 style="color:white;font-size:20px" class="m-0"><%= current_user.name %>さんの冷蔵庫</h1>
     </nav>
+    <%end%>
     <div class="row" style="margin:0">
         <div class="col-2" style="padding:0;display:block;">
-            
             <%= render 'layouts/navbar'%>
-            
         </div>
         <div class="col-10 p-0 clr_sub_b" style="display:flex;overflow-x:scroll;height:100%">
-            <%@a = true %>
+            <%@clr_flag = true %>
             <%= render partial: 'lists/list' ,collection: @lists, as: 'list' %>
-<%#            <%= render partial: 'layouts/nil_list' ,collection: @lists, as: 'list' %>
-
+            <% if @test.where(list_id: nil).size != 0 then%>
+                <%= render partial: 'layouts/nil_list'%>
+            <%end%>
             <%= render 'layouts/all_search' ,search_things: @search_things%>
         </div>
     </div>

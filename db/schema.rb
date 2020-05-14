@@ -12,17 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_05_13_125724) do
 
-  create_table "colorthemes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "clr_main"
-    t.string "clr_sub"
-    t.string "clr_list_i"
-    t.string "clr_list_ii"
-    t.string "clr_font"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "clr_point"
-  end
-
   create_table "lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id"
@@ -37,16 +26,6 @@ ActiveRecord::Schema.define(version: 2020_05_13_125724) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_tags_on_user_id"
-  end
-
-  create_table "themes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "clr_a"
-    t.string "clr_b"
-    t.string "clr_c"
-    t.string "clr_d"
-    t.string "clr_e"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "things", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

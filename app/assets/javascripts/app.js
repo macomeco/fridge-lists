@@ -1,5 +1,4 @@
 /* global $ */
-
 //////////// left_nav ////////////
 $(function(){
   $('.sub-menu-body').hide();
@@ -16,23 +15,20 @@ $(function(){
     $('.sub-menu-body').not($(this).next('.sub-menu-body')).slideUp();
   })
 });
-
 //////////// tag_edit ////////////
 $(function(){
-    $('.tag-edit').on('click',function(){
-        $(this).parent().parent().next('.tag-edit-form').stop().slideToggle();
-        $('.tag-edit-form').not($(this).parent().parent().next('.tag-edit-form')).slideUp();
-    });
+    $('.tag-edit').on('click', function(){
+    $(this).parents('.tag-flag').next('.tag-edit-form').slideToggle();
+    $('.tag-edit-form').not($(this).parents('.tag-flag').next('.tag-edit-form')).slideUp(); 
+    })
 });
-
 //////////// list_edit ////////////
 $(function(){
-   $('.list-edit').on('click',function(){
-        $(this).parent().parent().next('.list-edit-form').stop().slideToggle();
-        $('.list-edit-form').not($(this).parent().parent().next('.list-edit-form')).slideUp();
-    });
+    $('.list-edit').on('click', function(){
+    $(this).parents('.list-flag').next('.list-edit-form').slideToggle();
+    $('.list-edit-form').not($(this).parents('.list-flag').next('.list-edit-form')).slideUp(); 
+    })
 });
-
 //////////// tng_edit ////////////
 $(function(){
     $('.tng-edit').on('click', function(){
@@ -40,7 +36,6 @@ $(function(){
     $('.tng-edit-form').not($(this).parents('.tng-main').nextAll('.tng-edit-form')).slideUp(); 
     })
 });
-
 //////////// all_search ////////////
 $(function(){
   $('.search-form').hide();
@@ -56,5 +51,4 @@ $(function(){
       }
   });
 });
-
 /////自作jsを一番上にやるといろいろとヤバイ

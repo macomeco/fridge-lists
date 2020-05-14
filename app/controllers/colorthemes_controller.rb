@@ -1,2 +1,0 @@
-class ColorthemesController < ApplicationController
-end

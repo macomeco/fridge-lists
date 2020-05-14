@@ -3,11 +3,14 @@ class ToppagesController < ApplicationController
   def index
     if logged_in?
       
+      #@things_deadline = current_user.things.select(:deadline).where(deadline: Date.today).size.to_s
+      #flash[:success] = '期限が今日で切れるモノは'+@things_deadline+'コです'
+      
       #初期値はラムネ
       @set = current_user.theme
 #          instance_variable_set('@theme',$sodapop )
       
-      if @set == nil  || @set == 'sodapop'
+      if @set == nil  || @set == 'sodapop' then
           instance_variable_set('@theme',$sodapop )
         elsif @set == 'melon'
           instance_variable_set('@theme',$melon )
@@ -18,7 +21,7 @@ class ToppagesController < ApplicationController
       if params[:search].present?   #もし検索ワードが入っていたら
         @search_things = current_user.things.where('content LIKE ?',"%#{params[:search]}%")
       else    #もし検索ワードが入っていなかったら全部ぶち込む→えらいことになるのでやめとく
-        #@search_things = 'キーワードを入力してください'
+        @search_things = nil
       end       
       
       #もの
@@ -28,7 +31,6 @@ class ToppagesController < ApplicationController
       else  #初期値はasc
         params[:sort] = 'deadline asc'
         @things = current_user.things.order(params[:sort]).order(id: :asc)
-        
       end
       #タグ
       @tag = current_user.tags.build
@@ -45,9 +47,6 @@ class ToppagesController < ApplicationController
       
       @test = current_user.things.select('list_id')
       
-      end
+    end
   end
-  
-
-
 end

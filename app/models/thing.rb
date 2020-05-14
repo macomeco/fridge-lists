@@ -6,10 +6,7 @@ class Thing < ApplicationRecord
   belongs_to :user
   belongs_to :tag
   belongs_to :list
-  
-  has_many :putinlists
-  has_many :listofthings, through: :putinlists, source: :thing
-  
+
   def list_in(list) #thing.list_in(list)
     putinlists.find_or_create_by(list_id: list.id)
   end

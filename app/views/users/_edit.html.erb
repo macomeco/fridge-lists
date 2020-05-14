@@ -15,13 +15,12 @@
                 <%= f.select :theme, [["ラムネ", 'sodapop'],["メロンソーダ", 'melon'],["モノクロ", 'mono']],{},class: 'form-control form-control-sm'%>
             </div>
             <div class="text-right">
-                <%= f.submit 'OK' , class: 'btn ml-2 btn-sm clr_sub_b clr_font_c',style: 'border-color:'+@theme['clr_font'] %>
+                <%= f.submit 'OK' , class: 'btn ml-2 btn-sm clr_sub_b clr_font_c clr_font_bd' %>
             </div>            
         <%end%>
 
-        
-        <%= content_tag(:div,'', style: "border-bottom: 2px dotted "+@theme['clr_point'],class:"w-100")%>
-        
+        <div class="w-100 clr_point_l"></div>
+
         <div class="mt-3">
             <%= link_to  logout_path, method: :delete  do%>ログアウト <i class="fas fa-sign-in-alt"></i><%end%>
         </div>
