@@ -8,7 +8,7 @@ class ToppagesController < ApplicationController
       
       #初期値はラムネ
       @set = current_user.theme
-#          instance_variable_set('@theme',$sodapop )
+          instance_variable_set('@theme',$sodapop )
       
       if @set == nil  || @set == 'sodapop' then
           instance_variable_set('@theme',$sodapop )
@@ -16,9 +16,11 @@ class ToppagesController < ApplicationController
           instance_variable_set('@theme',$melon )
         elsif @set == 'mono'
           instance_variable_set('@theme',$mono )
+        elsif @set == 'cake'
+          instance_variable_set('@theme',$cake )
       end  
       
-      if params[:search].present?   #もし検索ワードが入っていたら
+      if params[:search].present? #もし検索ワードが入っていたら
         @search_things = current_user.things.where('content LIKE ?',"%#{params[:search]}%")
       else    #もし検索ワードが入っていなかったら全部ぶち込む→えらいことになるのでやめとく
         @search_things = nil

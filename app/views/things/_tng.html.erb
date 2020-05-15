@@ -7,7 +7,7 @@
 <%end%>
 
 <% cache 'tng'+tng.updated_at.to_s ,expires_in: 30.minutes do%>
-<%=content_tag(:div,'', class:'target-card card '+@m,style:'border-color:'+@theme['clr_font']) do %>
+<%=content_tag(:div,'', class:'target-card card clr_font_bd clr_font_c '+@m) do %>
 
     <div class="tng-main row no-gutters">
         
@@ -25,13 +25,11 @@
         </div>
 
         <%#メイン%>
-        <div class="col-md-6 px-auto w-100  pl-3"style="padding: 0.56rem;">
-            <div class="h-100">
-            <%= tng.content %>
-            <% if tng.tag_id == nil then %>
-            <%else%>
-                
-                <%= content_tag(:p, '#'+@tags.find(tng.tag_id).name ,style:'font-size:10px' ,class:'mt-1 mb-0') %>
+        <div class="col-md-6 w-100 pr-0 pl-2"style="padding: 0.56rem;">
+            <div class="h-100 ml-1">
+            <p class="m-0" style='font-size:15.5px'><%= tng.content %></p>
+            <% unless tng.tag_id == nil then %>
+                <%= content_tag(:p, '#'+@tags.find(tng.tag_id).name ,style:'font-size:11px' ,class:'mt-1 mb-0') %>
             <%end%>
             </div>
         </div>
@@ -44,7 +42,7 @@
                     <%if num > 0 %>
                         あと <a style="font-size:14px"><%= num %></a> 日
                     <% elsif num == 0 %>
-                        <a style="font-size:13px;color:red">当日</a>
+                        <p class=" m-0 clr_point_c" style="font-size:14px;font-weight: bold;">当日</p>
                     <%else%>
                         <a style="font-size:14px"><%= num.abs %></a> 日 経過
                     <%end%>
@@ -81,7 +79,7 @@
         </div>
         
         <div class="col-md-11">
-            <div class="w-100 p-3">
+            <div class="w-100 pb-3 px-3 pt-1">
                 
                 <%= form_with(model: tng, local: true)do |f| %>
                     

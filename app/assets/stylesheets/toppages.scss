@@ -32,7 +32,7 @@ body{
 ::-webkit-scrollbar-track{
     margin: 0px 8px;
     border-radius: 4px;
-    background:#888888;
+    background:#999999;
     //opacity:0;
 }
 ::-webkit-scrollbar-thumb{
@@ -73,11 +73,10 @@ li{
     margin-right:3px;
     margin-left:3px;
     
-    height:79vh;
+    height:79.5vh;
     position:absolute;
     bottom:1%;
 }
-
 //////////// all_search ////////////
 .search-tngs{
     transition: 0.4s ease-in-out ;

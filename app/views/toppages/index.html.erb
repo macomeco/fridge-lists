@@ -1,15 +1,79 @@
 <% if logged_in? %>
+<style>
+        /*メイン*/
+    .clr_main_c{
+        color:<%= @theme['clr_main'] %>;
+    }
+    .clr_main_b{
+        background-color:<%= @theme['clr_main'] %>;
+    }
+    
+    /*サブ*/
+    .clr_sub_c{
+        color:<%= @theme['clr_sub'] %>;
+    }
+    .clr_sub_b{
+        background-color:<%= @theme['clr_sub'] %>;
+    }
+    
+    /*ポイント*/
+    .clr_point_c{
+        color:<%= @theme['clr_point'] %>;
+    }
+    .clr_point_b{
+        background-color:<%= @theme['clr_point'] %>;
+    }
+    .clr_point_l{
+        border-bottom: 2px dotted <%= @theme['clr_point'] %>;
+    }
+    
+    /*リスト*/
+    .clr_list_i_c{
+        color:<%= @theme['clr_list_i'] %>;
+    }
+    .clr_list_i_b{
+        background-color:<%= @theme['clr_list_i'] %>;
+    }
+    
+    /*リスト*/
+    .clr_list_ii_c{
+        color:<%= @theme['clr_list_ii'] %>;
+    }
+    .clr_list_ii_b{
+        background-color:<%= @theme['clr_list_ii'] %>;
+    }
+    
+    /*フォント*/
+    .clr_font_c{
+        color:<%= @theme['clr_font'] %>;
+    }
+    .clr_font_b{
+        background-color:<%= @theme['clr_font'] %>;
+    }
+    .clr_font_bd{
+        border-color:<%=@theme['clr_font'] %> 
+    }
+  </style>
+
+
     <%cache current_user.updated_at.to_s do%>
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-0" style="height:5%">
         <h1 style="color:white;font-size:20px" class="m-0"><%= current_user.name %>さんの冷蔵庫</h1>
     </nav>
+
+    <div class="row load-flag w-100" style="margin:0;height:95vh">
+    <div class="col-12 clr_sub_b">
+        <div class="loader clr_main_c" style="top:30%">Now Loading...</div>
+    </div>
+    </div>
     <%end%>
-    <div class="row" style="margin:0">
+
+    <div class="row main-flag" style="margin:0;display:none">
         <div class="col-2" style="padding:0;display:block;">
             <%= render 'layouts/navbar'%>
         </div>
         <div class="col-10 p-0 clr_sub_b" style="display:flex;overflow-x:scroll;height:100%">
-            <%@clr_flag = true %>
+            <%@clr_flag = false %>
             <%= render partial: 'lists/list' ,collection: @lists, as: 'list' %>
             <% if @test.where(list_id: nil).size != 0 then%>
                 <%= render partial: 'layouts/nil_list'%>
@@ -19,7 +83,7 @@
     </div>
 <% else %>
 <% cache 'top',expires_in: 30.minutes do%>
-    <div class="row align-items-center top">
+    <div class="m-0 row align-items-center top">
         <div class="col-lg-7 col-12 top-img">
             <div class="top-text">
                 <div class="align-items-center">
@@ -74,4 +138,5 @@
 .row{
     height:95%;
 }
+
 </style>

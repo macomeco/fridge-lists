@@ -31,12 +31,14 @@ class UsersController < ApplicationController
 
   def update
       if current_user.update(user_params)
-        if user_params[:theme].to_s == 'theme_sodapop'
+        if user_params[:theme].to_s == 'sodapop'
           instance_variable_set('@theme',$sodapop )
-        elsif user_params[:theme].to_s == 'theme_melon'
+        elsif user_params[:theme].to_s == 'melon'
           instance_variable_set('@theme',$melon )
-        elsif user_params[:theme].to_s == 'theme_mono'
+        elsif user_params[:theme].to_s == 'mono'
           instance_variable_set('@theme',$mono )
+        elsif user_params[:theme].to_s == 'cake'
+          instance_variable_set('@theme',$cake )
         end  
         flash[:success] = 'ユーザーを編集しました'
         redirect_back(fallback_location: root_path)
