@@ -29,6 +29,7 @@ test:
   database: fridge-lists_test
   
 production:
+  adapter: postgresql
   encoding: unicode
   pool: 5
   <<: *default
