@@ -1,6 +1,8 @@
 class ToppagesController < ApplicationController
      
   def index
+    @user = User.new
+
     if logged_in?
       
       #@things_deadline = current_user.things.select(:deadline).where(deadline: Date.today).size.to_s
@@ -8,7 +10,7 @@ class ToppagesController < ApplicationController
       
       #初期値はラムネ
       @set = current_user.theme
-          instance_variable_set('@theme',$sodapop )
+      instance_variable_set('@theme',$sodapop )
       
       if @set == nil  || @set == 'sodapop' then
           instance_variable_set('@theme',$sodapop )
@@ -48,7 +50,6 @@ class ToppagesController < ApplicationController
       @today = Date.today
       
       @test = current_user.things.select('list_id')
-      
     end
   end
 end

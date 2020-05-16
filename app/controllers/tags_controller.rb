@@ -15,13 +15,11 @@ class TagsController < ApplicationController
 
   def update
       if @tag.update(tags_params)
-          flash[:success] = 'タグを編集しました'
-      redirect_back(fallback_location: root_path)
+        flash[:success] = 'タグを編集しました'
+        redirect_back(fallback_location: root_path)
       else
-          flash[:error] = 'タグは編集されませんでした'
-
-          #flash[:danger] = 'タグは編集されませんでした'
-      redirect_back(fallback_location: root_path)
+        flash[:error] = 'タグは編集されませんでした'
+        redirect_back(fallback_location: root_path)
       end
   end
   
