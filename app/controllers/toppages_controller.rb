@@ -24,6 +24,9 @@ class ToppagesController < ApplicationController
       
       if params[:search].present? #もし検索ワードが入っていたら
         @search_things = current_user.things.where('content LIKE ?',"%#{params[:search]}%")
+        @tag_search_id = current_user.tags.select('id').where('name LIKE ?',"%#{params[:search]}%").all.ids #同じ単語
+        @search_things += current_user.things.where(:tag_id => @tag_search_id)
+
       else    #もし検索ワードが入っていなかったら全部ぶち込む→えらいことになるのでやめとく
         @search_things = nil
       end       
