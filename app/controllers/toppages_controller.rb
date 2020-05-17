@@ -2,7 +2,6 @@ class ToppagesController < ApplicationController
      
   def index
     @user = User.new
-
     if logged_in?
       
       #@things_deadline = current_user.things.select(:deadline).where(deadline: Date.today).size.to_s
@@ -26,19 +25,14 @@ class ToppagesController < ApplicationController
         @search_things = current_user.things.where('content LIKE ?',"%#{params[:search]}%")
         @tag_search_id = current_user.tags.select('id').where('name LIKE ?',"%#{params[:search]}%").all.ids #同じ単語
         @search_things += current_user.things.where(:tag_id => @tag_search_id)
-
       else    #もし検索ワードが入っていなかったら全部ぶち込む→えらいことになるのでやめとく
         @search_things = nil
       end       
       
       #もの
       @thing = current_user.things.build
-      if params[:sort].present?
-        @things = current_user.things.order(params[:sort]).order(id: :asc)#:deadline=>:asc
-      else  #初期値はasc
-        params[:sort] = 'deadline asc'
-        @things = current_user.things.order(params[:sort]).order(id: :asc)
-      end
+      @things = current_user.things.order(deadline: :desc).order(id: :asc)
+      
       #タグ
       @tag = current_user.tags.build
       @tags = current_user.tags.select('name','id','user_id','updated_at').order(id: :asc)

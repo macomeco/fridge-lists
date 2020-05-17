@@ -9,10 +9,10 @@
         
         <div class="w-100 clr_point_l"></div>
 
-        <div class="my-3">
+        <div class="mt-3">
         <p class="mb-2">お部屋一覧</p>
         
-        <div class="card mb-3" style="height:155px">
+        <div class="card mb-0" style="height:155px">
             <div class="card-body px-2 py-0" style="overflow-y:auto">
                 <div class="">
                 <% @lists.each do |list|%>
@@ -41,23 +41,8 @@
                 </div>    
             </div>
         </div>
-
-        <div class="w-100 clr_point_l"></div>
-
-        <div class="custom-control custom-switch mt-3">
-            <%= form_with(url: root_path(:sort),method: :get,local: true,class:'switch-form') do |f| %>
-                <% if params[:sort]=='deadline asc'   #初期値　%>
-                    <%= f.check_box :sort ,{checked: true,class: 'custom-control-input'},'deadline asc','deadline desc'%>
-                <%else%> 
-                    <%= f.check_box :sort ,{class: 'custom-control-input'},'deadline asc','deadline desc'%>
-                <%end%>
-                <%= f.label :sort, '昇順表示',class:'custom-control-label' %>
-                <div style="float:right">
-                    <%= f.submit 'OK',class:'btn btn-sm clr_sub_b clr_font_c clr_font_bd' %>
-                </div>
-            <%end%>
         </div>
-
+        
     </div>
 </div>
 

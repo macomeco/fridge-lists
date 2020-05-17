@@ -6,24 +6,20 @@
 <% @m = 'mb-2'%>
 <%end%>
 
-<% cache 'tng'+tng.updated_at.to_s ,expires_in: 30.minutes do%>
 <%=content_tag(:div,'', class:'target-card card clr_font_bd clr_font_c '+@m) do %>
+<% cache tng.updated_at ,expires_in: 30.minutes do%>
 
     <div class="tng-main row no-gutters">
-        
         <%# ✓ %>
         <div class="col-md-1 px-auto w-100">
             <%if @clr_flag == true then%>
                 <div class="w-100 h-100 d-flex align-items-center clr_list_i_b">
             <%elsif @clr_flag == false then%>
                 <div class="w-100 h-100 d-flex align-items-center clr_list_ii_b">
-            <%elsif @clr_flag == 'search' then%>
-                <div class="w-100 h-100 d-flex align-items-center clr_main_b">
             <%end%>
                 <%= link_to tng , :method => :delete, data:{ confirm: tng.content+'を削除しますか？'},class: 'clr_sub_c text-center w-100' do %><i class="fa fa-check fa-sm"></i><%end%>
             </div>
         </div>
-
         <%#メイン%>
         <div class="col-md-6 w-100 pr-0 pl-2"style="padding: 0.56rem;">
             <div class="h-100 ml-1">
@@ -57,8 +53,6 @@
                         <div class="w-100 text-center btn btn-link p-0 clr_list_i_c">
                     <%elsif @clr_flag == false then %>
                         <div class="w-100 text-center btn btn-link p-0 clr_list_ii_c">
-                    <%elsif @clr_flag == 'search' then %>
-                        <div class="w-100 text-center btn btn-link p-0 clr_main_c">
                     <%end%>
                         <i class="fas fa-pen"></i>
                     </div>
@@ -73,8 +67,6 @@
                 <div class="h-100 d-flex align-items-center clr_list_i_b"></div>
             <%elsif @clr_flag == false then %>
                 <div class="h-100 d-flex align-items-center clr_list_ii_b"></div>
-            <%elsif @clr_flag == 'search' then %>
-                <div class="h-100 d-flex align-items-center clr_main_b"></div>
             <%end%>
         </div>
         
@@ -132,6 +124,7 @@
             </div>            
         </div>                   
     </div>
+
 <%end%>
 <%end%>
 
