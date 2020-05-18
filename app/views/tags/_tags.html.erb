@@ -14,13 +14,13 @@
                 <% @tags.each do |tag|%>
                     <%cache tag ,expires_in: 1.hours do%>
                     <div class="tag-flag row no-gutters mx-1 d-flex align-items-center" style="height:30px">
-                        <div class="col-md-2 w-100 "><%= link_to tag , :method => :delete, data:{ confirm: tag.name+'を削除しますか？'},class: 'clr_point_c' do %><i class="fa fa-times"></i><% end %></div>
-                        <div class="col-md-8 w-100"><div class="text-left"><%= tag.name%></div></div>
-                        <div class="col-md-2 w-100"><div class="text-right"><div class= 'tag-edit clr_point_c text-right btn btn-link p-0'><i class="fas fa-pen fa-sm"></i></div></div></div>
+                        <div class="col-2 w-100 "><%= link_to tag , :method => :delete, data:{ confirm: tag.name+'を削除しますか？'},class: 'clr_point_c' do %><i class="fa fa-times"></i><% end %></div>
+                        <div class="col-8 w-100"><div class="text-left"><%= tag.name%></div></div>
+                        <div class="col-2 w-100"><div class="text-right"><div class= 'tag-edit clr_point_c text-right btn btn-link p-0'><i class="fas fa-pen fa-sm"></i></div></div></div>
                     </div>
                     <div class="tag-edit-form mb-1">
                     <div class=" row no-gutters d-flex align-items-center my-0" style="height:30px">
-                        <div class="col-md-12">
+                        <div class="col-12">
                             <%= form_with(model: tag, local: true)do |f| %>
                                 <div class="input-group">
                                     <%= f.text_field :name, class: 'form-control form-control-sm'%>

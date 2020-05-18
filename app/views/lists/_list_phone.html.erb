@@ -1,7 +1,7 @@
 <% @listid = list.id%>
-<div class="col-md-3 col-12 p-0 clr_sub_b w-100 h-100 clr_font_c " >
+<div class="col-md-3 col-12 p-0 clr_sub_b w-100 clr_font_c " >
     <!-- リスト名 -->
-    <div class='card mt-2 mx-auto clr_font_bd' style='width:95%;'>
+    <div class='card mt-2 mx-auto clr_font_bd list-p-flag' style='width:95%;'>
         <div class="row no-gutters">
             <!-- 色決め リストで交互に -->            
             <%if @clr_flag == true then%>
@@ -23,17 +23,28 @@
                     <h1 style="font-size:20px;margin:0"><%= list.name %></h1>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-1">
+                <div class="text-center card-body mx-auto px-0">
+                    <a style="font-size:16px;color:#808080;"><%= @no = @test.where(list_id: list.id).size %></a>
+                </div>
+            </div>
+            <div class="col-2">
                 <div class="text-right card-body mx-auto pl-0">
-                    <a style="font-size:16px;text-align:right;color:#808080;"><%= @no = @test.where(list_id: list.id).size %></a>
+                    <%if @clr_flag == true then%>
+                        <div class="w-100 text-center btn btn-link p-0 clr_list_i_c list-down">
+                    <%elsif @clr_flag == false then %>
+                        <div class="w-100 text-center btn btn-link p-0 clr_list_ii_c list-down">
+                    <%end%>
+                        <i class="fas fa-caret-down fa-lg"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- 中身 -->
-    <div class="mt-4 list-card">
-        <div class="w-100 px-2">
+    <div class="mt-0 mx-auto list-card list-p" style="width:95%">
+        <div class="w-100 mt-3">
             <%= render partial: 'things/tng' , collection: @things.where(list_id: list.id), as: 'tng'%>
         </div>
     </div>

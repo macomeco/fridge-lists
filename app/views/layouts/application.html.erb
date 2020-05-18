@@ -4,7 +4,9 @@
     <title>FridgeLists</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
@@ -22,10 +24,8 @@
     
   </head>
   
-
   <body>
     <div class="container-fluid" style="height:100vh;padding:0;position:relative;">
-      <div class="container"></div>
       <%= render 'layouts/flash_messages'%>
       <%= yield %>
     </div>

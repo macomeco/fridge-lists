@@ -56,5 +56,47 @@ $(document).ready(function(){
   $('.load-flag').fadeOut();
   $('.main-flag').fadeIn(800);    
   },2000);
+  
+  
+  //////////////////////////////////smart_phone/////////////////////////////////
+  
+  //////////// list ////////////
+  $('.list-p').hide();
+  $('.list-down').on('click',function(){
+    $(this).parents('.list-p-flag').nextAll('.list-p').slideToggle(650);
+    $('.list-p').not($(this).parents('.list-p-flag').next('.list-p')).slideUp(650); 
+  });
+  
+  //nav
+  //$('.tng-form-p , .tag-form-p , .list-form-p , .user-form-p').hide();
+  $('.form-p').hide();
+  $('.btn-p').on('click',function(){
+    //console.log(this);
+    for(var i=0;i<4;i++){
+
+        if ($(this).hasClass('bp-'+i)){
+        $('.form-p').slideDown();
+        $('.fp-'+i).slideToggle();
+
+        break;
+        
+      }             
+    }
+    
+  });
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 });
 /////自作jsを一番上にやるといろいろとヤバイ

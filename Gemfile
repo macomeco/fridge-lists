@@ -72,3 +72,5 @@ group :production do
 end
 
 gem 'rack-mini-profiler', require: false
+
+gem 'jpmobile', '~> 5.0.0'

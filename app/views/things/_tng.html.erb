@@ -11,7 +11,7 @@
 
     <div class="tng-main row no-gutters">
         <%# ✓ %>
-        <div class="col-md-1 px-auto w-100">
+        <div class="col-1 px-auto w-100">
             <%if @clr_flag == true then%>
                 <div class="w-100 h-100 d-flex align-items-center clr_list_i_b">
             <%elsif @clr_flag == false then%>
@@ -21,7 +21,7 @@
             </div>
         </div>
         <%#メイン%>
-        <div class="col-md-6 w-100 pr-0 pl-2"style="padding: 0.56rem;">
+        <div class="col-6 w-100 pr-0 pl-2"style="padding: 0.56rem;">
             <div class="h-100 ml-1">
             <p class="m-0" style='font-size:15.5px'><%= tng.content %></p>
             <% unless tng.tag_id == nil then %>
@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <div class="col-md-3 px-auto w-100 py-3 pr-1">
+        <div class="col-3 px-auto w-100 py-3 pr-1">
             <div class="h-100 d-flex align-items-center" style="float:right;">
             
                 <div style="font-size:10px">
@@ -46,7 +46,7 @@
             </div>
         </div>
         
-        <div class="col-md-2 px-auto w-100 py-3">
+        <div class="col-2 px-auto w-100 py-3">
             <div class="h-100 d-flex align-items-center">
                 <div class="tng-edit text-center w-100">
                     <%if @clr_flag == true then%>
@@ -62,7 +62,7 @@
     </div>
     
     <div class="row no-gutters tng-edit-form ">
-        <div class="col-md-1 px-auto w-100">
+        <div class="col-1 px-auto w-100">
             <%if @clr_flag == true then%>
                 <div class="h-100 d-flex align-items-center clr_list_i_b"></div>
             <%elsif @clr_flag == false then %>
@@ -70,7 +70,7 @@
             <%end%>
         </div>
         
-        <div class="col-md-11">
+        <div class="col-11">
             <div class="w-100 pb-3 px-3 pt-1">
                 
                 <%= form_with(model: tng, local: true)do |f| %>

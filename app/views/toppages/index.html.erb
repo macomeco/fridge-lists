@@ -56,16 +56,31 @@
 </style>
 
     <%cache current_user.updated_at.to_s do%>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-0" style="height:5%">
-        <h1 style="color:white;font-size:20px" class="m-0"><%= current_user.name %>さんの冷蔵庫</h1>
-    </nav>
-
-    <div class="row load-flag w-100" style="margin:0;height:95vh">
-    <div class="col-12 clr_sub_b">
-        <div class="loader clr_main_c" style="top:30%">Now Loading...</div>
-    </div>
-    </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-0" style="height:5%">
+            <h1 style="color:white;font-size:20px" class="m-0"><%= current_user.name %>さんの冷蔵庫</h1>
+        </nav>
+    
+        <div class="row load-flag w-100" style="margin:0;height:95vh">
+            <div class="col-12 clr_sub_b">
+                <div class="loader clr_main_c" style="top:30%">Now Loading...</div>
+            </div>
+        </div>
     <%end%>
+    <%#phone%>    <%= render 'layouts/nav_phone'%>
+    <%#phone%>
+    <div class="row main-flag" style="margin:0;display:none">
+        <div class="col-12 p-0 clr_sub_b" style="display:inline-block;overflow-x:scroll;height:100%">
+            <%@clr_flag = false %>
+            <%= render partial: 'lists/list_phone' ,collection: @lists, as: 'list' %>
+            <% if @test.where(list_id: nil).size != 0 then%>
+                <%= render partial: 'layouts/nil_list'%>
+            <%end%>
+            <%= render 'layouts/all_search' ,search_things: @search_things%>
+        </div>
+    </div>
+    
+    
+    
 
     <div class="row main-flag" style="margin:0;display:none">
         <div class="col-2" style="padding:0;display:block;">

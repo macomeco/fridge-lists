@@ -1,5 +1,5 @@
 <nav id='nav-bar' class= 'clr_main_b left_nav'>
-  <ul class='clr_font_c'>
+  <ul class='clr_font_c nav-pc'>
     <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-plus fa-2x"></i><a class="ml-2 btn btn-link ">モノ</a></div></div>
       <ul class="sub-menu-body" id="menu1">
@@ -27,5 +27,5 @@
         <li class="list-main"><%cache 'user_edit'+current_user.updated_at.to_s , expires_in: 1.hours do%><%= render 'users/edit',user: current_user%><%end%></li>
       </ul>
     </li>
-  </nav>
-</ul>
+  </ul>
+</nav>
