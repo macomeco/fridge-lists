@@ -73,4 +73,4 @@ end
 
 gem 'rack-mini-profiler', require: false
 
-gem 'jpmobile', '~> 5.0.0'
+gem 'jpmobile', '~> 5.2.4'

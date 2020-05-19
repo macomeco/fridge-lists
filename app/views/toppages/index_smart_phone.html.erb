@@ -1,31 +1,29 @@
 <% if logged_in? %>
-<%=render 'layouts/color'%>
-    <%cache current_user.updated_at.to_s do%>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-0" style="height:5%">
-            <h1 style="color:white;font-size:20px" class="m-0"><%= current_user.name %>さんの冷蔵庫</h1>
-        </nav>
-    
-        <div class="row load-flag w-100" style="margin:0;height:95vh">
-            <div class="col-12 clr_sub_b">
-                <div class="loader clr_main_c" style="top:30%">Now Loading...</div>
-            </div>
-        </div>
-    <%end%>
-    
+<%=render 'layouts/color' %>
 
-    <div class="row main-flag" style="margin:0;">
-        <div class="col-2" style="padding:0;display:block;">
-            <%= render 'layouts/navbar'%>
-        </div>
-        <div class="col-10 p-0 clr_sub_b" style="display:flex;overflow-x:scroll;height:100%">
-            <%@clr_flag = false %>
-            <%= render partial: 'lists/list' ,collection: @lists, as: 'list' %>
-            <% if @test.where(list_id: nil).size != 0 then%>
-                <%= render partial: 'layouts/nil_list'%>
-            <%end%>
-            <%= render 'layouts/all_search' ,search_things: @search_things%>
+<div class="row load-flag w-100" style="margin:0;height:95vh">
+    <div class="col-12 clr_sub_b">
+        <div class="loader clr_main_c" style="top:30%">Now Loading...</div>
+    </div>
+</div>
+    <%#phone%>
+    <div class="clr_main_b clr_sub_c rounded-circle" style="height:60px;width:60px">
+        <div class="text-center d-flex align-items-center">
+            <i class="fas fa-cube fa-lg"></i>
         </div>
     </div>
+    <div class="row main-flag" style="margin:0;display:none">
+        <div class="col-12 p-0 clr_sub_b" style="display:inline-block;overflow-x:scroll;height:100%">
+            <%@clr_flag = false %>
+            <%= render partial: 'lists/list_phone' ,collection: @lists, as: 'list' %>
+            <%#<% if @test.where(list_id: nil).size != 0 then%>
+            <%#    <%= render partial: 'layouts/nil_list'%>
+            <%#<%end%>
+            <%#<%= render 'layouts/all_search' ,search_things: @search_things%>
+        </div>
+    </div>
+    
+    
 <% else %>
 <% cache 'top',expires_in: 30.minutes do%>
     <div class="m-0 row align-items-center top">

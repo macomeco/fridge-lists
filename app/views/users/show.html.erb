@@ -1,6 +1,6 @@
 <div class = 'card mt-1 clr_font_bd'>
     <div class="card-body m-0">
-        <%= form_with(model: user, local: true,class:'mb-3')do |f| %>
+        <%= form_with(model: @user, local: true,class:'mb-3')do |f| %>
             <div class="form-group">
                 <%= f.label :name, 'ユーザーネーム',class:'mb-2'%>
                 <%= f.text_field :name, class: 'form-control form-control-sm'%>

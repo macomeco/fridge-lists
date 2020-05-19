@@ -2,6 +2,11 @@ class ListsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy, :update]
 
+  def show
+    @list = current_user.lists.build
+    @lists = current_user.lists.select('name','id','user_id','updated_at').order(id: :asc)
+  end
+
   def create
     @list = current_user.lists.build(lists_params)
     if @list.save

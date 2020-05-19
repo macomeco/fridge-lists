@@ -6,11 +6,12 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
-  #get 'signup', to: 'users#new'
+  #phone
+  #get 'tag_phone', to: 'tags#new'
 
-  resources :users, only: [:create, :edit, :update]
-  resources :tags, only: [:create, :destroy, :update]
-  resources :lists, only: [:create, :destroy, :update]
-  resources :things, only: [:create, :destroy, :update]
+  resources :users, only: [:show,:create, :edit, :update]
+  resources :tags, only: [:show,:create, :destroy, :update]
+  resources :lists, only: [:show,:create, :destroy, :update]
+  resources :things, only: [:show,:create, :destroy, :update]
 
 end

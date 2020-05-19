@@ -1,6 +1,12 @@
 class TagsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy, :update]
+  
+  def show
+    @tag = current_user.tags.build
+    @tags = current_user.tags.select('name','id','user_id','updated_at').order(id: :asc)
+
+  end
 
   def create
     @tag = current_user.tags.build(tags_params)

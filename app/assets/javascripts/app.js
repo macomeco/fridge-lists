@@ -70,19 +70,14 @@ $(document).ready(function(){
   //nav
   //$('.tng-form-p , .tag-form-p , .list-form-p , .user-form-p').hide();
   $('.form-p').hide();
+
   $('.btn-p').on('click',function(){
-    //console.log(this);
     for(var i=0;i<4;i++){
-
-        if ($(this).hasClass('bp-'+i)){
-        $('.form-p').slideDown();
-        $('.fp-'+i).slideToggle();
-
-        break;
-        
-      }             
+      if ($(this).hasClass('bp-'+i)){
+        $('.fp-'+i).slideToggle(500);
+        $('.form-p').not($('.fp-'+i)).slideUp(500);
+      }
     }
-    
   });
   
   

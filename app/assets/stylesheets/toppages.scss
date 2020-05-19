@@ -18,7 +18,9 @@ ul{
 
 /*pc*/
 @media screen and(min-width: 960px){
-
+#nav-bar{
+    display:block;
+}
 
     body{
         width:100vw;

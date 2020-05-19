@@ -8,48 +8,33 @@
       box-sizing: border-box;
       display: inline-block;
       text-align: center;
-      width:25%;
+      width:20%;
     }
 </style>
+<% if logged_in? %>
+
+<%=render 'layouts/color'%>
 <div class="bottom-nav-p w-100">
-  
-  <div class="mb-2 w-100 form-p fp-0">
-      <div class="mx-auto" style="width:96%">
-        <%= render 'things/thing_form'%>
-      </div>    
-  </div>
-  <div class="mb-2 w-100 fp-1 form-p">
-      <div class="mx-auto" style="width:96%">
-        <%= render 'tags/tags' %>
-      </div>    
-  </div>
-  <div class="mb-2 w-100 fp-2 form-p">
-      <div class="mx-auto" style="width:96%">
-        <%= render 'lists/lists' %>
-      </div>    
-  </div>
-  <div class="mb-2 w-100 fp-3 form-p">
-      <div class="mx-auto" style="width:96%">
-        <%= render 'users/edit',user: current_user%>
-      </div>    
-  </div>
-  
   <nav id='navbar_p' class= 'clr_main_b left_nav w-100 py-2' style='box-sizing: border-box;'>
     <ul class='w-100 clr_font_c m-0 p-0'>
       <div class="row w-100 m-0">
         <li class="sub-menu btn-p bp-0">
+          <div class="sub-menu-head"><div class="clr_sub_c"><%= link_to root_path(current_user.id),class:'clr_sub_c' do %><i class="fas fa-home fa-lg"></i><%end%></div></div>
+        </li>
+        <li class="sub-menu btn-p bp-0">
           <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-cube fa-lg"></i></div></div>
         </li>
         <li class="sub-menu btn-p bp-1">
-          <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-tag fa-lg"></i></div></div>
+          <div class="sub-menu-head"><div class="clr_sub_c"><%= link_to tag_path(current_user.id),class:'clr_sub_c' do%><i class="fas fa-tag fa-lg"></i><%end%></div></div>
         </li>
         <li class="sub-menu btn-p bp-2">
-          <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-clipboard-list fa-lg"></i></i></div></div>
+          <div class="sub-menu-head"><div class="clr_sub_c"><%= link_to list_path(current_user.id),class:'clr_sub_c' do %><i class="fas fa-clipboard-list fa-lg"></i><%end%></div></div>
         </li>
         <li class="sub-menu btn-p bp-3">
-          <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-user fa-lg"></i></div></div>
+          <div class="sub-menu-head"><div class="clr_sub_c"><%= link_to user_path(current_user.id),class:'clr_sub_c' do %><i class="fas fa-user fa-lg"></i><%end%></div></div>
         </li>
       </div>
     </ul>
   </nav>
 </div>
+<%end%>

@@ -5,21 +5,7 @@ class ToppagesController < ApplicationController
     if logged_in?
       
       #@things_deadline = current_user.things.select(:deadline).where(deadline: Date.today).size.to_s
-      #flash[:success] = '期限が今日で切れるモノは'+@things_deadline+'コです'
-      
-      #初期値はラムネ
-      @set = current_user.theme
-      instance_variable_set('@theme',$sodapop )
-      
-      if @set == nil  || @set == 'sodapop' then
-          instance_variable_set('@theme',$sodapop )
-        elsif @set == 'melon'
-          instance_variable_set('@theme',$melon )
-        elsif @set == 'mono'
-          instance_variable_set('@theme',$mono )
-        elsif @set == 'cake'
-          instance_variable_set('@theme',$cake )
-      end  
+      #flash[:success] = '期限が今日で切れるモノは'+@things_deadline+'コです' dateでリセットさせる　flagで一回のみ
       
       if params[:search].present? #もし検索ワードが入っていたら
         @search_things = current_user.things.where('content LIKE ?',"%#{params[:search]}%")
