@@ -1,21 +1,23 @@
 <% if logged_in? %>
 <%=render 'layouts/color' %>
-
-<div class="row load-flag w-100" style="margin:0;height:95vh">
-    <div class="col-12 clr_sub_b">
-        <div class="loader clr_main_c" style="top:30%">Now Loading...</div>
-    </div>
-</div>
     <%#phone%>
-    <div class="clr_main_b clr_sub_c rounded-circle" style="height:60px;width:60px">
-        <div class="text-center d-flex align-items-center">
+    <div class="clr_main_b btn-link clr_sub_c rounded-circle nav-cube">
+        <div class="py-3 text-center h-100">
             <i class="fas fa-cube fa-lg"></i>
         </div>
     </div>
-    <div class="row main-flag" style="margin:0;display:none">
-        <div class="col-12 p-0 clr_sub_b" style="display:inline-block;overflow-x:scroll;height:100%">
+    
+    <div class="tng-form-p">
+        <%=render 'things/thing_form' %>
+    </div>
+    <div class="tng-form-p-b"></div>
+    
+    <div class="row main-flag" style="margin:0;display:none"> <%# 最初は消す %>
+        <div class="col-12 p-0 clr_sub_b" style="display:inline-block;overflow-x:scroll;height:90%">
             <%@clr_flag = false %>
+            <div class="p-3 pb-5">
             <%= render partial: 'lists/list_phone' ,collection: @lists, as: 'list' %>
+            </div>
             <%#<% if @test.where(list_id: nil).size != 0 then%>
             <%#    <%= render partial: 'layouts/nil_list'%>
             <%#<%end%>
@@ -75,11 +77,12 @@
         $('.form-btn , .signup-form').hide();
         $('.login-form').fadeIn();
     });
-</script>
+    
+    $('.tng-form-p,.tng-form-p-b').hide();
 
+</script>
 <style>
 .row{
     height:95%;
 }
-
 </style>

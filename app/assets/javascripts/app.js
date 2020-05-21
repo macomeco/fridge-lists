@@ -1,6 +1,6 @@
 /* global $ */
 //////////// left_nav ////////////
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
   $(function(){
     $('.sub-menu-body').hide();
     //くっきの保存がされていたらそれをひらく
@@ -52,13 +52,11 @@ $(document).ready(function(){
         }
     });
   });
-  setTimeout(function(){
-  $('.load-flag').fadeOut();
-  $('.main-flag').fadeIn(800);    
-  },2000);
-  
-  
+
   //////////////////////////////////smart_phone/////////////////////////////////
+
+
+  
   
   //////////// list ////////////
   $('.list-p').hide();
@@ -67,31 +65,33 @@ $(document).ready(function(){
     $('.list-p').not($(this).parents('.list-p-flag').next('.list-p')).slideUp(650); 
   });
   
-  //nav
-  //$('.tng-form-p , .tag-form-p , .list-form-p , .user-form-p').hide();
-  $('.form-p').hide();
+  //////////// thing_form ////////////
 
-  $('.btn-p').on('click',function(){
-    for(var i=0;i<4;i++){
-      if ($(this).hasClass('bp-'+i)){
-        $('.fp-'+i).slideToggle(500);
-        $('.form-p').not($('.fp-'+i)).slideUp(500);
-      }
+  $('.nav-cube').on('click',function(){
+    if($('.tng-form-p').css('display')=='block'){
+       $.when(
+        $('.tng-form-p').fadeOut(200)
+      ).done(function(){
+        $('.tng-form-p-b').fadeOut(100);
+      });
+    }else{
+    $.when(
+      $('.tng-form-p-b').fadeIn(100)
+    ).done(function(){
+    $('.tng-form-p').fadeIn(300);
+      });
     }
   });
   
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 });
+  $(document).on('click',function(e){
+    if(!$(e.target).closest('.tng-form-p,.nav-cube').length){
+      $.when(
+        $('.tng-form-p').fadeOut(200)
+      ).done(function(){
+        $('.tng-form-p-b').fadeOut(100);
+      });
+    }
+  });  
+  
 /////自作jsを一番上にやるといろいろとヤバイ

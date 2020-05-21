@@ -5,22 +5,37 @@ html{
 ul{
     list-style: none;
 }
-#nav-bar{
-    display:none;
-}
-/*スマホ　横*/
-@media screen and(min-width: 768px){
-}
-
-/*タブレット*/
-@media screen and(min-width: 600px) and (max-width: 959px){
-}
+    //////////// nav_phone ////////////
+    .btn-p{
+        width:25%;
+        height:100%;
+    }
+    .nav-cube{
+        height: 55px;
+        width: 55px;
+        position: absolute;
+        z-index: 3;
+        bottom: 11%;
+        right: 2%;
+    }
+    .tng-form-p{
+        position: absolute;
+        top: 15%;
+        z-index: 3;
+        width: 80%;
+        left: 10%
+    }
+    .tng-form-p-b{
+        position: absolute;
+        opacity: 0.5;
+        background-color: black;
+        z-index: 1;
+        width: 100vh;
+        height: 100vh
+    }
 
 /*pc*/
 @media screen and(min-width: 960px){
-#nav-bar{
-    display:block;
-}
 
     body{
         width:100vw;
@@ -101,6 +116,7 @@ ul{
     .search-tngs{
         transition: 0.4s ease-in-out ;
     }
+    
 }
 // Place all the styles related to the toppages controller here.
 // They will automatically be included in application.css.

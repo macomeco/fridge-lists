@@ -29,6 +29,7 @@
       <%= render 'layouts/top_nav'%>
       <%= render 'layouts/flash_messages'%>
       <%= render 'layouts/nav_phone'%>
+<%#      <%= render 'layouts/loading' %>
       <%= yield %>
 
     </div>
@@ -37,6 +38,12 @@
 
 <script>
   $(function(){
-    setTimeout("$('.flash-msg').fadeOut(100)", 2000) 
-  })
+    setTimeout("$('.flash-msg').fadeOut(100)", 2000)
+  /*  setTimeout(function(){
+    $('.load-flag').fadeOut();
+    $('.main-flag').fadeIn(800);    
+  },1000);*/
+  $('.main-flag').show();    
+
+  });
 </script>
