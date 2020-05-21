@@ -10,6 +10,6 @@ class User < ApplicationRecord
     has_many :tags
     has_many :lists
     has_many :things
-    has_many :colorthemes    
+    #has_many :colorthemes    
 
 end
