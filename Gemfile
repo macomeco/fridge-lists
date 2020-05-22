@@ -74,3 +74,5 @@ end
 gem 'rack-mini-profiler', require: false
 
 gem 'jpmobile', '~> 5.2.4'
+
+gem 'devise'

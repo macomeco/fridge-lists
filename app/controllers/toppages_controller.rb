@@ -1,8 +1,9 @@
 class ToppagesController < ApplicationController
-     
+  before_action :authenticate_user!
   def index
-    @user = User.new
-    if logged_in?
+    @tes = 'aaa'
+    #@user = User.new
+    if user_signed_in?
       
       #@things_deadline = current_user.things.select(:deadline).where(deadline: Date.today).size.to_s
       #flash[:success] = '期限が今日で切れるモノは'+@things_deadline+'コです' dateでリセットさせる　flagで一回のみ

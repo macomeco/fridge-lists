@@ -3,8 +3,25 @@ class ApplicationController < ActionController::Base
     include Jpmobile::ViewSelector
     include SessionsHelper
     
-    private
+    protect_from_forgery with: :exception
+    
+    before_action :configure_permitted_parameters, if: :devise_controller?
 
+    
+    def after_sign_in_path_for(resource)
+        root_path # ログイン後に遷移するpath
+    end
+
+
+
+
+    protected
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :theme])
+    end
+    
+    
+    private
     def require_user_logged_in
         unless logged_in?
             redirect_to login_url

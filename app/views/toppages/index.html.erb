@@ -1,4 +1,6 @@
-<% if logged_in? %>
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+<%if user_signed_in? %>
+<%=@tes%>
 <%=render 'layouts/color'%>
     <%cache current_user.updated_at.to_s do%>
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-0" style="height:5%">
@@ -11,7 +13,6 @@
             </div>
         </div>
     <%end%>
-    
 
     <div class="row main-flag" style="margin:0;">
         <div class="col-2" style="padding:0;display:block;">
@@ -38,22 +39,23 @@
                 </div>
             </div>
         </div>
-        
         <div class="col-lg-3 col-12 offset-lg-1" style="padding:0">
             <div class="align-items-center">
+                
                 <a class="btn btn-success btn-block form-btn login-btn" style="color:white">ログイン</a>
                 <a class="btn btn-success btn-block form-btn signup-btn" style="color:white">新規登録</a>
             </div>
             
+            
             <div class='signup-form'>
-                <%= render 'users/new' %>
+                <%= render 'devise/registrations/new' %>
                 <div class="text-right">
                     <a class="btn btn-link login-btn">ログイン</a>
                 </div>
             </div>
             
-            <div class='login-form'>
-                <%= render 'sessions/new' %>
+            <div class='login-form' style="display:block">
+                <%= render 'devise/sessions/new' %>
                 <div class="text-right">
                     <a class="btn btn-link signup-btn">新規登録</a>
                 </div>

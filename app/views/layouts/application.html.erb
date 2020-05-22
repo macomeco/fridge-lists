@@ -27,6 +27,8 @@
   <body>
     <div class="container-fluid" style="height:100vh;padding:0;position:relative;">
       <%= render 'layouts/flash_messages'%>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
     </div>
   </body>
