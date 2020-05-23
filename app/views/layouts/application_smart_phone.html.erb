@@ -20,8 +20,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    
-    
   </head>
   
   <body>
@@ -29,9 +27,8 @@
       <%= render 'layouts/top_nav'%>
       <%= render 'layouts/flash_messages'%>
       <%= render 'layouts/nav_phone'%>
-<%#      <%= render 'layouts/loading' %>
+      <%#<%= render 'layouts/loading' %>
       <%= yield %>
-
     </div>
   </body>
 </html>
@@ -39,11 +36,11 @@
 <script>
   $(function(){
     setTimeout("$('.flash-msg').fadeOut(100)", 2000)
-  /*  setTimeout(function(){
-    $('.load-flag').fadeOut();
-    $('.main-flag').fadeIn(800);    
-  },1000);*/
-  $('.main-flag').show();    
-
+    setTimeout(function(){
+      //$('.load-flag').fadeOut(300);
+    },2000);
+    
+    
   });
 </script>
+

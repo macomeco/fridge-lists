@@ -1,4 +1,4 @@
-/*スマホ　縦　無記述*/
+/*スマホ*/
 html{
     width:100vw;
 }
@@ -33,7 +33,10 @@ ul{
         width: 100vh;
         height: 100vh
     }
-
+    .list-card{
+        height:auto;
+    }
+    
 /*pc*/
 @media screen and(min-width: 960px){
 

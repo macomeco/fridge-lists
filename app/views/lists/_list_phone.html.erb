@@ -1,6 +1,6 @@
 <% @listid = list.id%>
 
-<div class="col-md-3 p-0 pb-2 col-12 clr_sub_b w-100 clr_font_c " >
+<div class="col-md-3 p-0 pb-3 col-12 clr_sub_b w-100 clr_font_c " >
     <!-- リスト名 -->
     <div class='card clr_font_bd list-p-flag' style='width:100%;'>
         <div class="row no-gutters">
@@ -46,7 +46,7 @@
     </div>
 
     <!-- 中身 -->
-    <div class="mt-0 mx-auto list-card list-p" style="width:100%">
+    <div class="mt-0 mx-auto list-card list-p" style="width:100%;display:none">
         <div class="w-100 mt-3">
             <%= render partial: 'things/tng' , collection: @things.where(list_id: list.id), as: 'tng'%>
         </div>

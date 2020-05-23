@@ -82,6 +82,7 @@ $(document).on('turbolinks:load', function() {
       });
     }
   });
+  $('.load-flag').fadeOut();
   
 });
   $(document).on('click',function(e){
@@ -93,5 +94,5 @@ $(document).on('turbolinks:load', function() {
       });
     }
   });  
-  
+
 /////自作jsを一番上にやるといろいろとヤバイ

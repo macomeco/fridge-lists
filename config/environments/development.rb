@@ -61,7 +61,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   
-    config.web_console.whitelisted_ips = '114.190.66.135'
+  config.web_console.whitelisted_ips = '114.190.66.135'
 
 end
 

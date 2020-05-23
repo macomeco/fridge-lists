@@ -1,4 +1,4 @@
-<% if logged_in? %>
+<% if user_signed_in? %>
 <%=render 'layouts/color' %>
     <%#phone%>
     <div class="clr_main_b btn-link clr_sub_c rounded-circle nav-cube">
@@ -6,25 +6,24 @@
             <i class="fas fa-cube fa-lg"></i>
         </div>
     </div>
-    
-    <div class="tng-form-p">
+
+    <div class="tng-form-p" style="display:none">
         <%=render 'things/thing_form' %>
     </div>
-    <div class="tng-form-p-b"></div>
+    <div class="tng-form-p-b" style="display:none"></div>
     
-    <div class="row main-flag" style="margin:0;display:none"> <%# 最初は消す %>
-        <div class="col-12 p-0 clr_sub_b" style="display:inline-block;overflow-x:scroll;height:90%">
+    <div class="row main-flag" style="margin:0;">
+        <div class="p-3 pb-5 col-12 p-0 clr_sub_b" style="display:inline-block;overflow-x:scroll;height:90%">
             <%@clr_flag = false %>
-            <div class="p-3 pb-5">
+            <div class="">
             <%= render partial: 'lists/list_phone' ,collection: @lists, as: 'list' %>
             </div>
-            <%#<% if @test.where(list_id: nil).size != 0 then%>
-            <%#    <%= render partial: 'layouts/nil_list'%>
-            <%#<%end%>
-            <%#<%= render 'layouts/all_search' ,search_things: @search_things%>
+            <% if @test.where(list_id: nil).size != 0 then%>
+                <%= render partial: 'layouts/nil_list'%>
+            <%end%>
+            <%= render 'layouts/search_phone' ,search_things: @search_things%>
         </div>
     </div>
-    
     
 <% else %>
 <% cache 'top',expires_in: 30.minutes do%>
@@ -77,8 +76,10 @@
         $('.form-btn , .signup-form').hide();
         $('.login-form').fadeIn();
     });
-    
-    $('.tng-form-p,.tng-form-p-b').hide();
+    setTimeout(function(){
+      //$('.load-flag').fadeOut(300);
+    },2000);
+    //$('.tng-form-p,.tng-form-p-b').hide();
 
 </script>
 <style>
