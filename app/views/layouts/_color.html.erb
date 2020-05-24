@@ -1,3 +1,4 @@
+<%cache current_user.updated_at,expires_in: 30.minutes do %>
 <% @set = current_user.theme
     instance_variable_set('@theme',$sodapop )
     if @set == nil  || @set == 'sodapop' then
@@ -64,3 +65,4 @@
         border-color:<%=@theme['clr_font'] %> 
     }
 </style>
+<%end%>

@@ -7,7 +7,7 @@
 <%end%>
 
 <%=content_tag(:div,'', class:'target-card card clr_font_bd clr_font_c '+@m) do %>
-<% cache tng.updated_at ,expires_in: 30.minutes do%>
+<% cache tng.updated_at.to_s ,expires_in: 30.minutes do%>
 
     <div class="tng-main row no-gutters">
         <%# ✓ %>
@@ -72,16 +72,16 @@
         
         <div class="col-11">
             <div class="w-100 pb-3 px-3 pt-1">
-                
                 <%= form_with(model: tng, local: true)do |f| %>
-                    
                     <div class="input-group input-group-sm mt-1">
                         <div class="input-group-prepend">
                             <span class="input-group-text input-group-sm">
                                 <%= f.label :list_id, 'お部屋',class:'m-0'%>
                             </span>
                         </div>
-                        <%= f.collection_select :list_id, @list_w,:id,:name,{} ,class: 'form-control' %>
+                        <%cache @lists.last.updated_at.to_s ,expires_in:30.minutes do%>
+                            <%= f.collection_select :list_id, @lists.where(user_id: current_user.id),:id,:name,{} ,class: 'form-control' %>
+                        <%end%>
                     </div>
                     
                     <div class="input-group input-group-sm my-2">
@@ -103,20 +103,24 @@
                         <%= f.date_field :deadline,  class: 'form-control '%>
                     </div>
                     
-                    <div class="input-group input-group-sm my-2">
+                    <div class="input-group input-group-sm my-2 mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text input-group-sm">
                                 <%= f.label :tag_id, '&ensp;タグ&ensp;'.html_safe ,class:'m-0'%>
                                 </br>
                             </span>
                         </div>
-                        <%= f.collection_select :tag_id, @tag_w ,:id,:name,{},class: 'form-control'%>
+                        <%= f.collection_select :tag_id, @tags.where(user_id: current_user.id) ,:id,:name,{},class: 'form-control'%>
                     </div>
                     <div>
                     <%#<%= f.number_field :quantity, value:1 ,class: 'form-control',style: "visibility:hidden;"%>
                     </div>
                     <div class="text-right">
-                        <%= f.submit 'OK' , class: 'btn ml-2 btn-sm clr_sub_b clr_font_c clr_font_bd' %>
+                        <%if @clr_flag == true then%>
+                            <%= f.submit 'OK' , class: 'btn btn-sm clr_list_i_b clr_sub_c w-100' %>
+                        <%elsif @clr_flag == false then%>
+                            <%= f.submit 'OK' , class: 'btn btn-sm clr_list_ii_b clr_sub_c w-100' %>
+                        <%end%>
                     </div>
                 
                 <%end%>

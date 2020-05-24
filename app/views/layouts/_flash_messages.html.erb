@@ -1,10 +1,10 @@
-<script>
-    toastr.options = {
-      "positionClass": "toast-bottom-right",
-    }
-</script>
 <% flash.each do |message_type, message| %>
-<script>
-  toastr['<%= message_type %>']('<%= message %>');
- </script>
+  <%if message_type == 'notice' then %>
+    <% message_type = 'success'%>
+  <%elsif message_type == 'alert' then%>
+    <% message_type = 'error'%>
+  <%end%>
+    <script>
+      toastr['<%= message_type %>']('<%= message %>','<%= message_type.upcase %>');
+    </script>
 <% end %>

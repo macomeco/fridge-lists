@@ -15,9 +15,9 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions'
   }
 
-  resources :users, only: [:show,:create, :edit, :update]
-  resources :tags, only: [:show,:create, :destroy, :update]
-  resources :lists, only: [:show,:create, :destroy, :update]
-  resources :things, only: [:show,:create, :destroy, :update]
+  resources :users, only: [:show, :create, :edit, :update]
+  resources :tags, only: [:show, :create, :destroy, :update]
+  resources :lists, only: [:show, :create, :destroy, :update]
+  resources :things, only: [:create, :destroy, :update]
 
 end

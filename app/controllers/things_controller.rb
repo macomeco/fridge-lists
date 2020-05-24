@@ -1,5 +1,4 @@
 class ThingsController < ApplicationController
-  #before_action :require_user_logged_in
   before_action :authenticate_user!
   before_action :correct_user, only: [:destroy, :update]
   
@@ -48,7 +47,7 @@ class ThingsController < ApplicationController
   def correct_user  #編集するタグがユーザのタグか判定
     @thing = current_user.things.find_by(id: params[:id])
     unless @thing
-    redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: root_path)
     end
   end
   

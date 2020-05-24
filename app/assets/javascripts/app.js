@@ -1,6 +1,6 @@
 /* global $ */
-//////////// left_nav ////////////
 $(document).on('turbolinks:load', function() {
+  //////////// left_nav ////////////
   $(function(){
     $('.sub-menu-body').hide();
     //くっきの保存がされていたらそれをひらく
@@ -41,32 +41,27 @@ $(document).on('turbolinks:load', function() {
   });
   //////////// all_search ////////////
   $(function(){
-    $('.search-form').hide();
     $('.search-btn').on('click',function(){
-        if($('.search-form').css('display')!='none'){  //display == block
-          $('.search-tngs').css('height', '79vh' );
+      if($('.search-form').css('display')!='none'){  //display == block
+        $('.search-tngs').css('height', '79vh' );
+        $('.search-form').slideToggle();
+      }else { //slide down
+          $('.search-tngs').css('height', $('.search-tngs').outerHeight() - $('.search-form').outerHeight() -2 +'px' );
           $('.search-form').slideToggle();
-        }else { //slide down
-            $('.search-tngs').css('height', $('.search-tngs').outerHeight() - $('.search-form').outerHeight() -2 +'px' );
-            $('.search-form').slideToggle();
-        }
+      }
     });
   });
 
+
   //////////////////////////////////smart_phone/////////////////////////////////
 
-
-  
-  
   //////////// list ////////////
   $('.list-p').hide();
   $('.list-down').on('click',function(){
     $(this).parents('.list-p-flag').nextAll('.list-p').slideToggle(650);
     $('.list-p').not($(this).parents('.list-p-flag').next('.list-p')).slideUp(650); 
   });
-  
   //////////// thing_form ////////////
-
   $('.nav-cube').on('click',function(){
     if($('.tng-form-p').css('display')=='block'){
        $.when(

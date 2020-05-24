@@ -22,12 +22,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
   </head>
   
+  <script>
+    toastr.options = {
+      "positionClass": "toast-top-right",
+    }
+  </script>
+  
   <body>
     <div class="container-fluid" style="height:100vh;padding:0;position:relative;">
       <%= render 'layouts/top_nav'%>
       <%= render 'layouts/flash_messages'%>
       <%= render 'layouts/nav_phone'%>
-      <%#<%= render 'layouts/loading' %>
       <%= yield %>
     </div>
   </body>
@@ -35,12 +40,7 @@
 
 <script>
   $(function(){
-    setTimeout("$('.flash-msg').fadeOut(100)", 2000)
-    setTimeout(function(){
-      //$('.load-flag').fadeOut(300);
-    },2000);
-    
-    
+    setTimeout("$('.toast').fadeOut(200)", 2000)
   });
 </script>
 

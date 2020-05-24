@@ -5,37 +5,38 @@ html{
 ul{
     list-style: none;
 }
-    //////////// nav_phone ////////////
-    .btn-p{
-        width:25%;
-        height:100%;
-    }
-    .nav-cube{
-        height: 55px;
-        width: 55px;
-        position: absolute;
-        z-index: 3;
-        bottom: 11%;
-        right: 2%;
-    }
-    .tng-form-p{
-        position: absolute;
-        top: 15%;
-        z-index: 3;
-        width: 80%;
-        left: 10%
-    }
-    .tng-form-p-b{
-        position: absolute;
-        opacity: 0.5;
-        background-color: black;
-        z-index: 1;
-        width: 100vh;
-        height: 100vh
-    }
-    .list-card{
-        height:auto;
-    }
+
+//////////// nav_phone ////////////
+.btn-p{
+    width:25%;
+    height:100%;
+}
+.nav-cube{
+    height: 70px;
+    width: 70px;
+    position: absolute;
+    z-index: 3;
+    bottom: 12%;
+    right: 3%;
+}
+.tng-form-p{
+    position: absolute;
+    top: 15%;
+    z-index: 3;
+    width: 80%;
+    left: 10%
+}
+.tng-form-p-b{
+    position: absolute;
+    opacity: 0.5;
+    background-color: black;
+    z-index: 1;
+    width: 100vh;
+    height: 100vh
+}
+.list-card{
+    height:auto;
+}
     
 /*pc*/
 @media screen and(min-width: 960px){
