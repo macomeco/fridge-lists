@@ -3,7 +3,9 @@
         <%= form_with(model: @thing, local: true)do |f| %>
         <div class="form-group my-1">
             <%= f.label :list_id, 'お部屋' %>
-            <%= f.collection_select :list_id, @lists.where(user_id: current_user.id) ,:id,:name,{} ,class: 'form-control form-control-sm'%>
+            <%cache lists.last.updated_at.to_s ,expires_in: 30.minutes do%>
+                <%= f.collection_select :list_id, lists.where(user_id: current_user.id) ,:id,:name,{} ,class: 'form-control form-control-sm'%>
+            <%end%>
         </div>
         <div class="form-group my-1">
             <%= f.label :content, 'もの' %>
@@ -17,7 +19,9 @@
         <div class="form-group my-1">
             <%= f.label :tag_id, 'タグ' %>
             </br>
-            <%= f.collection_select :tag_id, @tags.where(user_id: current_user.id),:id,:name,{},class: 'form-control form-control-sm'%>
+            <%cache tags.last.updated_at.to_s ,expires_in: 30.minutes do%>
+                <%= f.collection_select :tag_id, tags.where(user_id: current_user.id),:id,:name,{},class: 'form-control form-control-sm'%>
+            <%end%>
         </div>
         
         <div class="form-group mt-1 mb-3 ">

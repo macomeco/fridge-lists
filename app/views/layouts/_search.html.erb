@@ -1,7 +1,7 @@
 <div class="col-md-3 col-12 p-0 w-100 h-100 search-list clr_font_c" >
     <!-- リスト名 -->
+ <%cache 'search_layoutes',expires_in:1.hours do%>
     <div class='card mt-2 mx-auto clr_font_bd' style='width:95%;'>
-        
         <div class="row no-gutters search-main">
             
             <div class="col-1">
@@ -38,9 +38,9 @@
                 </div>
             </div>
         </div> 
-        
-    </div>
 
+    </div>
+  <%end%>
     <!-- 中身 -->
     <div class="mt-4 list-card search-tngs">
         <div class="w-100 px-2">
@@ -67,5 +67,6 @@
             <%end%>
         </div>
     </div>
+    
 </div>
 

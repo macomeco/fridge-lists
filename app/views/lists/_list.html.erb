@@ -9,7 +9,6 @@
             <%else %>
                 <% @clr_flag = true %>
             <%end%>
-            
             <div class="col-1">
                 <%if @clr_flag == true then%>
                     <div class="w-100 h-100 clr_list_i_b"></div>
@@ -17,7 +16,6 @@
                     <div class="w-100 h-100 clr_list_ii_b"></div>
                 <%end%>
             </div>
-            
             <div class="col-8">
                 <div class="card-body mx-auto h-100 pr-0">
                     <h1 style="font-size:20px;margin:0"><%= list.name %></h1>
@@ -25,7 +23,9 @@
             </div>
             <div class="col-3">
                 <div class="text-right card-body mx-auto pl-0">
-                    <a style="font-size:16px;text-align:right;color:#808080;"><%= @no = @test.where(list_id: list.id).size %></a>
+                    <a style="font-size:16px;text-align:right;color:#808080;">
+                        <%= @no = current_user.things.where(list_id: list.id).to_a.size %>
+                    </a>
                 </div>
             </div>
         </div>

@@ -7,8 +7,7 @@
 <%end%>
 
 <%=content_tag(:div,'', class:'target-card card clr_font_bd clr_font_c '+@m) do %>
-<% cache tng.updated_at.to_s ,expires_in: 30.minutes do%>
-
+    <% cache tng.updated_at.to_s ,expires_in: 30.minutes do%>
     <div class="tng-main row no-gutters">
         <%# ✓ %>
         <div class="col-1 px-auto w-100">
@@ -60,7 +59,9 @@
             </div>
         </div>
     </div>
+    <%end%>
     
+    <%cache @lists.last.updated_at.to_s + @tags.last.updated_at.to_s + tng.updated_at.to_s ,expires_in: 30.minutes do%>
     <div class="row no-gutters tng-edit-form ">
         <div class="col-1 px-auto w-100">
             <%if @clr_flag == true then%>
@@ -79,9 +80,7 @@
                                 <%= f.label :list_id, 'お部屋',class:'m-0'%>
                             </span>
                         </div>
-                        <%cache @lists.last.updated_at.to_s ,expires_in:30.minutes do%>
-                            <%= f.collection_select :list_id, @lists.where(user_id: current_user.id),:id,:name,{} ,class: 'form-control' %>
-                        <%end%>
+                        <%= f.collection_select :list_id, @lists.where(user_id: current_user.id),:id,:name,{} ,class: 'form-control' %>
                     </div>
                     
                     <div class="input-group input-group-sm my-2">
@@ -128,8 +127,7 @@
             </div>            
         </div>                   
     </div>
-
-<%end%>
+    <%end%>
 <%end%>
 
 <script>

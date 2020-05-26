@@ -4,13 +4,14 @@
   position:absolute;
   z-index:2;
 }
-    #navbar_p {
-      box-sizing: border-box;
-      display: inline-block;
-      text-align: center;
-      width:25%;
-    }
+#navbar_p {
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  width:25%;
+}
 </style>
+
 <% if user_signed_in?%>
 <%=render 'layouts/color'%>
 <% cache current_user.updated_at,expires_in: 30.minutes do %>

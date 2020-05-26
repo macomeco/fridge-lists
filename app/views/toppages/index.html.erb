@@ -7,15 +7,14 @@
             </div>
         </div>
     <%end%>
-
     <div class="row main-flag" style="margin:0">
         <div class="col-2" style="padding:0;display:block;">
-            <%= render 'layouts/navbar'%>
+            <%= render 'layouts/navbar' %>
         </div>
         <div class="col-10 p-0 clr_sub_b" style="display:flex;overflow-x:auto;height:100%">
             <%@clr_flag = false %>
             <%= render partial: 'lists/list' ,collection: @lists, as: 'list' %>
-            <% if @test.where(list_id: nil).size != 0 then%>
+            <% if @things.select(:list_id).where(list_id: nil).size != 0 then%>
                 <%= render partial: 'layouts/nil_list'%>
             <%end%>
             <%= render 'layouts/search' ,search_things: @search_things%>
@@ -52,10 +51,7 @@
             </div>
         </div>
     </div>
-<%end%>
-<%end%>
-
-<script>
+    <script>
     //button
     $('.signup-form , .login-form,.forget-form').hide();
 
@@ -74,8 +70,9 @@
         $('.form-btn , .login-form').hide();
         $('.forget-form').fadeIn();
     });
-    
-</script>
+    </script>
+<%end%>
+<%end%>
 
 <style>
 .row{

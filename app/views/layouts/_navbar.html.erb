@@ -3,14 +3,14 @@
     <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-plus fa-2x"></i><a class="ml-2 btn btn-link ">モノ</a></div></div>
       <ul class="sub-menu-body" id="menu1">
-        <li class="list-main"><%= render 'things/thing_form' %></li>
+        <li class="list-main"><%= render 'things/thing_form' ,lists: @lists,tags: @tags %></li>
       </ul>
     </li>
 
     <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-tag fa-2x"></i><a class="ml-2 btn btn-link">タグ</a></div></div>
       <ul class="sub-menu-body" id="menu2">
-        <li class="list-main"><%= render 'tags/tags' %></li>
+        <li class="list-main"><%= render 'tags/tags' , tags: @tags%></li>
       </ul>
     </li>
     
