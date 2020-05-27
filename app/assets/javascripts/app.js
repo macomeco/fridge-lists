@@ -1,5 +1,6 @@
 /* global $ */
-$(document).on('turbolinks:load', function() {
+//$(document).on('turbolinks:load', function() {
+$(document).ready(function(){
   //////////// left_nav ////////////
   $(function(){
     $('.sub-menu-body').hide();
@@ -78,8 +79,8 @@ $(document).on('turbolinks:load', function() {
     }
   });
   $('.load-flag').fadeOut();
-  
 });
+//});
   $(document).on('click',function(e){
     if(!$(e.target).closest('.tng-form-p,.nav-cube').length){
       $.when(
