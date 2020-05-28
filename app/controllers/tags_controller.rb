@@ -5,7 +5,6 @@ class TagsController < ApplicationController
   def show
     @tag = current_user.tags.build
     @tags = current_user.tags.select('name','id','user_id','updated_at').order(id: :asc)
-
   end
 
   def create

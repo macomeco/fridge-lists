@@ -1,32 +1,25 @@
 <% if user_signed_in? %>
 <%=render 'layouts/color' %>
-    <%#phone%>
-    <div class="clr_main_b btn-link clr_sub_c rounded-circle nav-cube ">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <i class="fas fa-cube fa-lg fa-2x"></i>
-        </div>
+    <div class="clr_main_b btn-link clr_sub_c rounded-circle nav-cube">
+        <div class="h-100 d-flex align-items-center justify-content-center"><i class="fas fa-cube fa-lg fa-2x"></i></div>
     </div>
-    <div class="tng-form-p" style="display:none">
-        <%=render 'things/thing_form' %>
-    </div>
+    <div class="tng-form-p" style="display:none"><%=render 'things/thing_form',lists: @lists,tags: @tags  %></div>
     <div class="tng-form-p-b" style="display:none"></div>
-    
     <div class="row main-flag" style="margin:0;">
         <div class="p-3 pb-5 col-12 p-0 clr_sub_b" style="display:inline-block;overflow-x:scroll;height:90%">
             <%@clr_flag = false %>
-            <%= render partial: 'lists/list_phone' ,collection: @lists, as: 'list' %>
-            <% if @test.where(list_id: nil).size != 0 then%>
-                <%= render partial: 'layouts/nil_list'%>
-            <%end%>
-            <%= render 'layouts/search_phone' ,search_things: @search_things%>
+            <%= render partial: 'lists/list_phone' ,collection: @lists, as: 'list' ,locals:{lists: @lists,tags: @tags}%>
+            <% if @things.select(:list_id).where(list_id: nil).size != 0 then%><%= render partial: 'layouts/nil_list'%><%end%>
+            <%= render 'layouts/search_phone' ,search_things: @search_things,lists: @lists,tags: @tags%>
         </div>
     </div>
 <% else %>
-<% cache 'top',expires_in: 30.minutes do%>
-    <div class="w-100 h-25 p-2 d-flex align-items-end justify-content-center">
+<% cache 'top_s',expires_in: 30.minutes do%>
+    <div class="w-100 h-25 p-3 d-flex align-items-end justify-content-center">
         <div>
-        <h1>冷蔵庫タスク</h1>
-        <p>整理整頓しよう!</p></div>
+            <h1>冷蔵庫タスク</h1>
+            <p class="m-0">整理整頓しよう!</p>
+        </div>
     </div>
     <div class=" w-100 p-3 h-75 d-flex align-items-center justify-content-center" style="background-color:">
         <div class="w-100">
@@ -43,13 +36,9 @@
             </div>
         </div>
     </div>
-<%end%>
-<%end%>
-
-<script>
+    <script>
     //button
     $('.signup-form , .login-form,.forget-form').hide();
-
     //signupを選んだ場合
     $('.signup-btn').on('click', function(){
         $('.form-btn, .login-form,.forget-form').hide();
@@ -65,10 +54,9 @@
         $('.form-btn , .login-form').hide();
         $('.forget-form').fadeIn();
     });
-
-</script>
+    </script>
+<%end%>
+<%end%>
 <style>
-.row{
-    height:95%;
-}
+.row{height:95%;}
 </style>

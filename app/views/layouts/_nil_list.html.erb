@@ -1,38 +1,21 @@
 <div class="col-3 p-0 clr_sub_b w-100 h-100 clr_font_c " >
-    <!-- リスト名 -->
     <div class='card mt-2 mx-auto clr_font_bd' style='width:95%;'>
         <div class="row no-gutters">
             <!-- 色決め リストで交互に -->            
-            <%if @a == true then%>
-                <% @clr_flag = false %>
-            <%else %>
-                <% @clr_flag = true %>
-            <%end%>
-            
-            <div class="col-md-1">
-                <div class="w-100 h-100 clr_main_b"></div>
-            </div>
-            
+            <%if @a == true then @clr_flag = false else @clr_flag = true end%>
+            <div class="col-md-1"><div class="w-100 h-100 clr_main_b"></div></div>
             <div class="col-md-8">
-                <div class="card-body mx-auto h-100 pr-0">
-                    <h1 style="font-size:20px;margin:0">未収納</h1>
-                </div>
+                <div class="card-body mx-auto h-100 pr-0"><h1 style="font-size:20px;margin:0">未収納</h1></div>
             </div>
             <div class="col-md-3">
                 <div class="text-right card-body mx-auto pl-0">
-                    <a style="font-size:16px;text-align:right;color:#808080;"><%= @no = @test.where(list_id: nil).size %></a>
+                    <a style="font-size:16px;text-align:right;color:#808080;"><%= @no = current_user.things.where(list_id: nil).to_a.size  %></a>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- 中身 -->
+<!-- 中身 -->
     <div class="mt-4 list-card">
-        <div class="w-100 px-2">
-            <%= render partial: 'things/tng' , collection: @things.where(list_id: nil), as: 'tng'%>
-        </div>
+        <div class="w-100 px-2"><%= render partial: 'things/tng' , collection: current_user.things.where(list_id: nil), as: 'tng',locals:{lists: lists,tags: tags}%></div>
     </div>
-
 </div>
-
-

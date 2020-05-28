@@ -3,34 +3,25 @@
         <%= form_with(model: @thing, local: true)do |f| %>
         <div class="form-group my-1">
             <%= f.label :list_id, 'お部屋' %>
-            <%cache lists.last.updated_at.to_s ,expires_in: 30.minutes do%>
-                <%= f.collection_select :list_id, lists.where(user_id: current_user.id) ,:id,:name,{} ,class: 'form-control form-control-sm'%>
-            <%end%>
+            <%cache [lists.last.updated_at,lists.size] ,expires_in: 30.minutes do%><%= f.collection_select :list_id, lists.where(user_id: current_user.id) ,:id,:name,{} ,class: 'form-control form-control-sm'%><%end%>
         </div>
         <div class="form-group my-1">
             <%= f.label :content, 'もの' %>
             <%= f.text_field :content, class: 'form-control form-control-sm'%>
         </div>
         <div class="form-group my-1">
-            <%= f.label :deadline, '消費 / 賞味期限' %>
-            </br>
+            <%= f.label :deadline, '消費 / 賞味期限' %></br>
             <%= f.date_field :deadline, class: 'form-control form-control-sm'%>
         </div>
         <div class="form-group my-1">
-            <%= f.label :tag_id, 'タグ' %>
-            </br>
-            <%cache tags.last.updated_at.to_s ,expires_in: 30.minutes do%>
-                <%= f.collection_select :tag_id, tags.where(user_id: current_user.id),:id,:name,{},class: 'form-control form-control-sm'%>
-            <%end%>
+            <%= f.label :tag_id, 'タグ' %></br>
+            <%cache [tags.last.updated_at,tags.size] ,expires_in: 30.minutes do%><%= f.collection_select :tag_id, tags.where(user_id: current_user.id),:id,:name,{},class: 'form-control form-control-sm'%><%end%>
         </div>
-        
         <div class="form-group mt-1 mb-3 ">
             <%= f.label :quantity, '個数'%>
             <%= f.number_field :quantity, value: 1,min: 1, class: 'form-control form-control-sm', size: '5x5' %>
         </div>
-        <div class="text-right">
-            <%= f.submit '追加' , class: 'btn ml-2 btn-sm clr_sub_b clr_font_c clr_font_bd' %>
-            <%end%>
+        <div class="text-right"><%= f.submit '追加' , class: 'btn ml-2 btn-sm clr_sub_b clr_font_c clr_font_bd' %><%end%>
         </div>
     </div>
 </div>

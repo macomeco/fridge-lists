@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
    
-    #include Jpmobile::ViewSelector
+    include Jpmobile::ViewSelector
     include SessionsHelper
     
     protect_from_forgery with: :exception

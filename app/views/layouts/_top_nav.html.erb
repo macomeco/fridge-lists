@@ -1,7 +1,5 @@
 <% if user_signed_in? %>
     <%cache current_user.updated_at.to_s do%>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-0" style="height:5%">
-            <h1 style="color:white;font-size:20px" class="m-0"><%= current_user.name %>さんの冷蔵庫</h1>
-        </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-0" style="height:5%"><h1 style="color:white;font-size:20px" class="m-0"><%= current_user.name %>さんの冷蔵庫</h1></nav>
     <%end%>
 <%end%>

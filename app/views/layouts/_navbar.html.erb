@@ -2,25 +2,16 @@
   <ul class='clr_font_c nav-pc'>
     <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-plus fa-2x"></i><a class="ml-2 btn btn-link ">モノ</a></div></div>
-      <ul class="sub-menu-body" id="menu1">
-        <li class="list-main"><%= render 'things/thing_form' ,lists: @lists,tags: @tags %></li>
-      </ul>
+      <ul class="sub-menu-body" id="menu1"><li class="list-main"><%= render 'things/thing_form' ,lists: @lists,tags: @tags %></li></ul>
     </li>
-
     <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-tag fa-2x"></i><a class="ml-2 btn btn-link">タグ</a></div></div>
-      <ul class="sub-menu-body" id="menu2">
-        <li class="list-main"><%= render 'tags/tags' , tags: @tags%></li>
-      </ul>
+      <ul class="sub-menu-body" id="menu2"><li class="list-main"><%= render 'tags/tags' , tags: @tags%></li></ul>
     </li>
-    
     <li class="sub-menu">
-      <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-clipboard-list fa-2x"></i></i><a class="ml-2 btn btn-link">リスト</a></div></div>
-      <ul class="sub-menu-body" id="menu3">
-        <li class="list-main"><%= render 'lists/lists' , lists: @lists%></li>
-      </ul>
+      <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-clipboard-list fa-2x"></i><a class="ml-2 btn btn-link">リスト</a></div></div>
+      <ul class="sub-menu-body" id="menu3"><li class="list-main"><%= render 'lists/lists' , lists: @lists%></li></ul>
     </li>
-    
     <li class="sub-menu">
       <div class="sub-menu-head"><div class="clr_sub_c"><i class="fas fa-user fa-2x"></i><a class="ml-2 btn btn-link">ユーザー</a></div></div>
       <ul class="sub-menu-body" id="menu4">

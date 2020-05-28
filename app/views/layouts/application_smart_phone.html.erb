@@ -4,30 +4,19 @@
     <title>FridgeLists</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
-    <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>    
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
   </head>
-  
   <script>
-    toastr.options = {
-      "positionClass": "toast-top-right",
-    }
+    toastr.options = {"positionClass": "toast-top-right"}
   </script>
-  
   <body>
     <div class="container-fluid" style="height:100vh;padding:0;position:relative;">
       <%= render 'layouts/top_nav'%>
@@ -36,11 +25,8 @@
       <%= yield %>
     </div>
   </body>
+  <%= javascript_include_tag 'application'%>
 </html>
-
 <script>
-  $(function(){
-    setTimeout("$('.toast').fadeOut(200)", 2000)
-  });
+  $(function(){setTimeout("$('.toast').fadeOut(200)", 2000)});
 </script>
-

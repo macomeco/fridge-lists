@@ -3,7 +3,6 @@ class ToppagesController < ApplicationController
     if user_signed_in?
       #@things_deadline = current_user.things.select(:deadline).where(deadline: Date.today).size.to_s
       #flash[:success] = '期限が今日で切れるモノは'+@things_deadline+'コです' dateでリセットさせる　flagで一回のみ
-    
     #検索  
       if params[:search].present? #もし検索ワードが入っていたら
         if params[:search][0,1] == '#'  #tag検索
@@ -16,7 +15,6 @@ class ToppagesController < ApplicationController
       else
         @search_things = nil
       end
-      
     #もの
       @thing = current_user.things.build
       @things = current_user.things.joins(:tag, :list).order(deadline: :asc)
