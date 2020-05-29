@@ -1,15 +1,12 @@
 <% if user_signed_in? %>
 <%=render 'layouts/color' %>
-    <div class="clr_main_b btn-link clr_sub_c rounded-circle nav-cube">
-        <div class="h-100 d-flex align-items-center justify-content-center"><i class="fas fa-cube fa-lg fa-2x"></i></div>
-    </div>
-    <div class="tng-form-p" style="display:none"><%=render 'things/thing_form',lists: @lists,tags: @tags  %></div>
-    <div class="tng-form-p-b" style="display:none"></div>
+    <button type="button" class="btn clr_main_b clr_sub_c rounded-circle nav-cube" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-cube fa-lg fa-2x"></i></button>
+    <%= render 'things/tng_phone',lists: @lists,tags: @tags%>
     <div class="row main-flag" style="margin:0;">
         <div class="p-3 pb-5 col-12 p-0 clr_sub_b" style="display:inline-block;overflow-x:scroll;height:90%">
             <%@clr_flag = false %>
             <%= render partial: 'lists/list_phone' ,collection: @lists, as: 'list' ,locals:{lists: @lists,tags: @tags}%>
-            <% if @things.select(:list_id).where(list_id: nil).size != 0 then%><%= render partial: 'layouts/nil_list'%><%end%>
+            <% unless current_user.things.select(:list_id).where(list_id: nil).size == 0 then%><%= render partial: 'lists/nil_list_phone', things: @things%><%end%>
             <%= render 'layouts/search_phone' ,search_things: @search_things,lists: @lists,tags: @tags%>
         </div>
     </div>
