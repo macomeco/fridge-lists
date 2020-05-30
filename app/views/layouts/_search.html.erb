@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <%= form_with(url: root_path(:search),method: :get,local: true)do |f|%>
                         <div class="input-group">
-                            <%= f.text_field :search, {class: 'form-control form-control-sm'}%>
+                            <%= f.text_field :search, {class: 'form-control form-control-sm',placeholder:"タグ検索 : #タグ"}%>
                             <span class="input-group-append"><%= f.submit '検索' , {class: 'btn btn-sm clr_sub_b clr_font_c'} %></span>
                         </div>
                     <%end%>

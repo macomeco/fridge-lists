@@ -1,8 +1,18 @@
 <% flash.each do |message_type, message| %>
-  <%if message_type == 'notice' then %>
-    <% message_type = 'success'%>
-  <%elsif message_type == 'alert' then%>
-    <% message_type = 'error'%>
+  <script>
+    toastr.options = {"positionClass": "toast-bottom-right", "timeOut": "2000"}
+  </script>
+  <% if request.smart_phone? %>
+    <script>
+      toastr.options = {"positionClass": "toast-top-full-width", "timeOut": "2000"}
+    </script>
+  <%end%>
+  <%if message_type == 'notice' then message_type = 'success'%>
+  <%elsif message_type == 'alert' then message_type = 'error'%>
+  <%elsif message_type == 'warning' then %>
+    <script>
+      toastr.options = {"positionClass": "toast-bottom-full-width", "timeOut": "5000"}
+    </script>
   <%end%>
     <script>
       toastr['<%= message_type %>']('<%= message %>','<%= message_type.upcase %>');

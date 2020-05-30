@@ -13,12 +13,14 @@ class ApplicationController < ActionController::Base
     def after_sign_out_path_for(resource)
         root_path   #ログアウト後
     end
+    def after_sign_up_path_for(resource)
+        root_path   #サインアップ後　多分いらない
+    end
 
     protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :theme])
     end
-    
     
     #カラーテーマ
     $melon = {'clr_main'=>"#72BF96", 'clr_sub'=> "#F9F9D1", 'clr_list_i'=> "#96CCB2",'clr_list_ii'=> "#98B59C",  'clr_font'=> "#592C2C",'clr_point'=>"#E57E7E"}

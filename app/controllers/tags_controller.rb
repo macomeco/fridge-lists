@@ -10,7 +10,7 @@ class TagsController < ApplicationController
   def create
     @tag = current_user.tags.build(tags_params)
     if @tag.save
-      flash[:success] = 'タグを追加しました'
+      flash[:success] = @tag.name.to_s + 'を追加しました'
       redirect_back(fallback_location: root_path)
     else
       flash[:error] = 'タグの追加に失敗しました'
@@ -20,10 +20,10 @@ class TagsController < ApplicationController
 
   def update
       if @tag.update(tags_params)
-        flash[:success] = 'タグを編集しました'
+        flash[:success] = @tag.name.to_s + 'を編集しました'
         redirect_back(fallback_location: root_path)
       else
-        flash[:error] = 'タグは編集されませんでした'
+        flash[:error] = @tag.name.to_s + 'の編集に失敗しました'
         redirect_back(fallback_location: root_path)
       end
   end

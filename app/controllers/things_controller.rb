@@ -14,7 +14,7 @@ class ThingsController < ApplicationController
   
     @arr.each do |t|
       if t.save
-        flash[:success] = 'ものを追加しました'
+        flash[:success] = t.content.to_s + 'を追加しました'
       else
         flash[:error] = 'ものの追加に失敗しました'
       end
@@ -25,10 +25,10 @@ class ThingsController < ApplicationController
   def update
     if @thing.update(things_params)
       @thing.quantity ||= 1
-      flash[:success] = 'ものを編集しました'
+      flash[:success] = @things.content.to_s + 'を編集しました'
       redirect_back(fallback_location: root_path)
     else
-      flash[:error] = 'ものの編集に失敗しました'
+      flash[:error] = @things.content.to_s + 'の編集に失敗しました'
       redirect_back(fallback_location: root_path)
     end
   end

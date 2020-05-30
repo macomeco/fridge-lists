@@ -7,14 +7,11 @@ Rails.application.routes.draw do
 #  post 'login', to: 'devise/sessions#create'
 #  delete 'logout', to: 'devise/sessions#destroy'
   
-  #phone
-  #get 'tag_phone', to: 'tags#new'
-  
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
   }
-
+  
   resources :users, only: [:show, :create, :edit, :update]
   resources :tags, only: [:show, :create, :destroy, :update]
   resources :lists, only: [:show, :create, :destroy, :update]

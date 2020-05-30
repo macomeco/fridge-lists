@@ -11,7 +11,7 @@ class ListsController < ApplicationController
   def create
     @list = current_user.lists.build(lists_params)
     if @list.save
-      flash[:success] = 'お部屋を追加しました'
+      flash[:success] = @list.name.to_s + 'を追加しました'
       redirect_back(fallback_location: root_path)
     else
       flash[:error] = 'お部屋の追加に失敗しました'
@@ -21,10 +21,10 @@ class ListsController < ApplicationController
 
   def update
     if @list.update(lists_params)
-        flash[:success] = 'お部屋を設定しました'
+        flash[:success] = @list.name.to_s + 'を編集しました'
     redirect_back(fallback_location: root_path)
     else
-        flash[:error] = 'お部屋の設定に失敗しました'
+        flash[:error] = @list.name.to_s + 'の編集に失敗しました'
     redirect_back(fallback_location: root_path)
     end
   end

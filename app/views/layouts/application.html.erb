@@ -12,9 +12,6 @@
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
     <%= stylesheet_link_tag 'application', media: 'all'%>
   </head>
-  <script>
-    toastr.options = {"positionClass": "toast-bottom-right"}
-  </script>
   <body>
     <div class="container-fluid" style="height:100vh;padding:0;position:relative;">
       <%= render 'layouts/top_nav'%>
@@ -25,6 +22,5 @@
   <%= javascript_include_tag 'application' %>
 </html>
 <script>
-  $(function(){
-    setTimeout("$('.toast').fadeOut(200)", 2000) });
+     // $(function(){ $('.toast').fadeOut(200) });
 </script>

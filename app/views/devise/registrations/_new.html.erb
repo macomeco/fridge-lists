@@ -20,6 +20,7 @@
     
       <div class="field my-2">
         <%= f.label :password ,class:'mb-1'%>
+        <small class="text-muted">※6文字以上</small>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
@@ -33,6 +34,7 @@
       
       <div class="field my-2">
         <%= f.label :theme, class:'mb-1'%>
+        <small class="text-muted">※後から変更できます</small>
         <%= f.select :theme, [["ラムネ", 'sodapop'],["メロンソーダ", 'melon'],["ショートケーキ",'cake'],["モノクロ", 'mono']],{},class: 'form-control form-control-sm'%>
       </div>
     
