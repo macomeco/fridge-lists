@@ -13,7 +13,7 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
-    <div class="container-fluid" style="height:100vh;padding:0;position:relative;">
+    <div class="container-fluid" style="padding:0;position:relative;">
       <%= render 'layouts/top_nav'%>
       <%= render 'layouts/flash_messages'%>
       <%= render 'layouts/nav_phone'%>
@@ -24,4 +24,5 @@
 </html>
 <script>
   //$(function(){setTimeout("$('.toast').fadeOut(200)", 2000)});
+  $('.container-fluid').css('height',$(window).height());
 </script>
