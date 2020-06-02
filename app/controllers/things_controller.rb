@@ -25,10 +25,10 @@ class ThingsController < ApplicationController
   def update
     if @thing.update(things_params)
       @thing.quantity ||= 1
-      flash[:success] = @things.content.to_s + 'を編集しました'
+      flash[:success] = @thing.content.to_s + 'を編集しました'
       redirect_back(fallback_location: root_path)
     else
-      flash[:error] = @things.content.to_s + 'の編集に失敗しました'
+      flash[:error] = @thing.content.to_s + 'の編集に失敗しました'
       redirect_back(fallback_location: root_path)
     end
   end
