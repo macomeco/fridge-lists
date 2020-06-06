@@ -1,0 +1,6 @@
+$(function(){
+    $('.lists_update').html('<%= j(render 'lists/partial_list' , lists: @lists)%>');
+    $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
+    $('.tng_update').html('<%= j(render 'things/thing_form' ,lists: @lists,tags: @tags)%>');
+
+});

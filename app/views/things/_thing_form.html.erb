@@ -1,6 +1,6 @@
 <div class='card mt-1 clr_font_bd'>
     <div class="card-body">
-        <%= form_with(model: @thing, local: true)do |f| %>
+        <%= form_with(model: @thing,local: true)do |f| %>
         <div class="form-group my-1">
             <%= f.label :list_id, 'お部屋' %>
             <%cache_unless lists.last.nil? , [lists.last,lists.size] , expires_in: 30.minutes do%><%= f.collection_select :list_id, lists.where(user_id: current_user.id) ,:id,:name,{} ,class: 'form-control form-control-sm'%><%end%>

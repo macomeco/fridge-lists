@@ -10,16 +10,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>    
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
-    <%= stylesheet_link_tag 'application', media: 'all'%>
+    <%= stylesheet_link_tag 'application', media: 'all','data-turbolinks-track': 'reload'%>
   </head>
   <body>
     <div class="container-fluid" style="height:100vh;padding:0;position:relative;">
       <%= render 'layouts/top_nav'%>
-      <%= render 'layouts/flash_messages'%>
+      <div class="fls_msg">
+        <%= render 'layouts/flash_messages'%>
+      </div>
       <%= yield %>
     </div>
   </body>
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </html>
 <script>
      // $(function(){ $('.toast').fadeOut(200) });

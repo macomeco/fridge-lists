@@ -14,6 +14,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require toastr
+//= require turbolinks
 // Bootstrap
 //= require bootstrap
 

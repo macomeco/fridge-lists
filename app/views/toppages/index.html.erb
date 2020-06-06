@@ -11,9 +11,10 @@
         </div>
         <div class="col-10 p-0 clr_sub_b" style="display:flex;overflow-x:auto;height:100%">
             <%@clr_flag = false %>
+            <div class="add_list"></div>
             <%= render partial: 'lists/list' ,collection: @lists, as: 'list' ,locals:{lists: @lists,tags: @tags}%>
             <% unless current_user.things.select(:list_id).where(list_id: nil).size == 0 then%><%= render 'layouts/nil_list',things: @things,lists: @lists,tags: @tags%><%end%>
-            <%= render 'layouts/search' ,search_things: @search_things,lists: @lists,tags: @tags%>
+                <%= render 'layouts/search' ,search_things: @search_things,lists: @lists,tags: @tags%>
         </div>
     </div>
 <% else %>

@@ -5,13 +5,11 @@ class ThingsController < ApplicationController
   def create
     test = things_params[:quantity].to_i
     @arr = []
-    
     test.times do      
       @tng = current_user.things.build(things_params)
       @tng.deadline ||= Date.today
       @arr.push(@tng)
     end
-  
     @arr.each do |t|
       if t.save
         flash[:success] = t.content.to_s + 'を追加しました'
@@ -21,7 +19,7 @@ class ThingsController < ApplicationController
     end
    redirect_back(fallback_location: root_path)
   end
-  
+
   def update
     if @thing.update(things_params)
       @thing.quantity ||= 1
@@ -32,13 +30,23 @@ class ThingsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-
+#=begin  
   def destroy
     @thing.destroy
     flash[:success] = '削除しました'
     redirect_back(fallback_location: root_path)
   end
+#=end
   
+=begin  
+  def destroy
+    @thing.destroy
+    flash[:success] = '削除しました'
+    #render :json => {:thing => @thing}
+    #redirect_back(fallback_location: root_path)
+  end
+=end
+
   private
   def things_params
     params.require(:thing).permit(:list_id, :content, :deadline,:tag_id, :quantity)

@@ -20,10 +20,10 @@ class ToppagesController < ApplicationController
       @things = current_user.things.joins(:tag, :list).order(deadline: :asc)
     #タグ
       @tag = current_user.tags.build
-      @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :asc)
+      @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     #リスト
       @list = current_user.lists.build
-      @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :asc)
+      @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     #日付
       @today = Date.current
     end

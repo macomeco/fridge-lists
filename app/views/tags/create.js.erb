@@ -1,0 +1,6 @@
+$(function(){
+    $(':text').val("");
+    $('.tag_add_update').html('<%= j(render 'tags/partial_tag' , tags: @tags)%>');
+    $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
+    $('.tng_update').html('<%= j(render 'things/thing_form' ,lists: @lists,tags: @tags)%>');
+});

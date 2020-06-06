@@ -11,27 +11,30 @@ class TagsController < ApplicationController
     @tag = current_user.tags.build(tags_params)
     if @tag.save
       flash[:success] = @tag.name.to_s + 'を追加しました'
-      redirect_back(fallback_location: root_path)
     else
       flash[:error] = 'タグの追加に失敗しました'
-      redirect_back(fallback_location: root_path)
     end
+    @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
+    @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
   end
 
   def update
-      if @tag.update(tags_params)
-        flash[:success] = @tag.name.to_s + 'を編集しました'
-        redirect_back(fallback_location: root_path)
-      else
-        flash[:error] = @tag.name.to_s + 'の編集に失敗しました'
-        redirect_back(fallback_location: root_path)
-      end
+    if @tag.update(tags_params)
+      flash[:success] = @tag.name.to_s + 'を編集しました'
+      #    redirect_back(fallback_location: root_path)
+    else
+      flash[:error] = @tag.name.to_s + 'の編集に失敗しました'
+    end
+    @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
+    @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
   end
   
   def destroy
     @tag.destroy
     flash[:success] = 'タグを削除しました'
-    redirect_back(fallback_location: root_path)
+    #redirect_back(fallback_location: root_path)
+    @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
+    @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
   end
   
   private
