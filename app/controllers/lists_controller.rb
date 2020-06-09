@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   #before_action :require_user_logged_in
   before_action :authenticate_user!
   before_action :correct_user, only: [:destroy, :update]
-
+  
   def show
     @list = current_user.lists.build
     @lists = current_user.lists.select('name','id','user_id','updated_at').order(id: :asc)
@@ -20,7 +20,6 @@ class ListsController < ApplicationController
     @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     @things = current_user.things.joins(:tag, :list).order(deadline: :asc)
-
   end
 
   def update
@@ -36,6 +35,7 @@ class ListsController < ApplicationController
   def destroy
     @list.destroy
     flash[:success] = 'お部屋を削除しました'
+    @things = current_user.things.joins(:tag, :list).order(deadline: :asc)
     @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
   end

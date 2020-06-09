@@ -3,5 +3,6 @@ $(function(){
     $('.lists_update').html('<%= j(render 'lists/partial_list' , lists: @lists)%>');
     $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
     $('.tng_update').html('<%= j(render 'things/thing_form' ,lists: @lists,tags: @tags)%>');
-    $('.add_list').prepend(' <%= j(render 'lists/list' , list: nil,lists: @lists,tags: @tags) %> ');
+    if( $('.list_update').children().first().hasClass('col-md-3 col-12 p-0 w-100 h-100 clr_font_c flag_true') == true ){<%@clr_flag=true%>$('.list_update').prepend(' <%= j(render 'lists/list' ,list: @list,lists: @lists,tags: @tags) %> ');}
+    else{<%@clr_flag=false%>$('.list_update').prepend(' <%= j(render 'lists/list' ,list: @list,lists: @lists,tags: @tags) %> ');}
 });

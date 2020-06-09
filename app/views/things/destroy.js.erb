@@ -1,0 +1,5 @@
+$(function(){
+    $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
+    if( $('.list_clr_<%= @thing.list_id %>').children().hasClass("w-100 h-100 clr_list_ii_b") == true ){$('.tng_size_<%= @thing.list_id%>').html(' <%= @no = current_user.things.where(list_id: @thing.list_id).to_a.size %> ');<% @clr_flag = false %>$('.list_no_<%= @thing.list_id%>_tng').html('<%= j(render partial: 'things/tng' , collection: @things.where(list_id: @thing.list_id), as: 'tng',locals:{lists: @lists,tags: @tags}) %>');}
+    if( $('.list_clr_<%= @thing.list_id %>').children().hasClass("w-100 h-100 clr_list_i_b") == true ){$('.tng_size_<%= @thing.list_id%>').html(' <%= @no = current_user.things.where(list_id: @thing.list_id).to_a.size %> ');<% @clr_flag = true %>$('.list_no_<%= @thing.list_id%>_tng').html('<%= j(render partial: 'things/tng' , collection: @things.where(list_id: @thing.list_id), as: 'tng',locals:{lists: @lists,tags: @tags}) %>');}
+});
