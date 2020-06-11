@@ -1,11 +1,11 @@
 $(function(){
-    $(':text').val("");
+    $('.tng-field').val("");
     $('#thing_quantity').val(1);
     if( $('.list_clr_<%= @tng_list %>').children().hasClass("w-100 h-100 clr_list_i_b") == true ){
         <% @clr_flag = true %>
         $('.list_no_<%= @tng_list%>_tng').html('<%= j(render partial: 'things/tng' , collection: @things.where(list_id: @tng_list), as: 'tng',locals:{lists: @lists,tags: @tags}) %>');
     }else{
         <%@clr_flag = false %>
-    $('.list_no_<%= @tng_list%>_tng').html('<%= j(render partial: 'things/tng' , collection: @things.where(list_id: @tng_list), as: 'tng',locals:{lists: @lists,tags: @tags}) %>');
+        $('.list_no_<%= @tng_list%>_tng').html('<%= j(render partial: 'things/tng' , collection: @things.where(list_id: @tng_list), as: 'tng',locals:{lists: @lists,tags: @tags}) %>');
     }
 });

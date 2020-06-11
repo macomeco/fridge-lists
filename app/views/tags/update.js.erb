@@ -2,4 +2,6 @@ $(function(){
     $('.tag_add_update').html('<%= j(render 'tags/partial_tag' , tags: @tags)%>');
     $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
     $('.tng_update').html('<%= j(render 'things/thing_form' ,lists: @lists,tags: @tags)%>');
+    $('.tag_update_<%=@tag.id.to_s%>').html('<%= content_tag(:p, '#'+@tag.name,style:'font-size:11px' ,class:'mt-1 mb-0 tag_update_'+@tag.id.to_s) %>');
+    $('#thing_tag_id > option[value="<%=@tag.id%>"]').html('<%=@tag.name%>');
 });

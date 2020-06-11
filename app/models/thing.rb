@@ -4,8 +4,8 @@ class Thing < ApplicationRecord
   validates :quantity, presence: true, length: { maximum: 50 }
   
   belongs_to :user
-  belongs_to :tag
-  belongs_to :list
+  belongs_to :tag, optional: true
+  belongs_to :list, optional: true
 
   def list_in(list) #thing.list_in(list)
     putinlists.find_or_create_by(list_id: list.id)

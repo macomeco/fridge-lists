@@ -1,4 +1,4 @@
-<% tags.each do |tag|%>
+<% @tags.each do |tag|%>
     <% cache tag ,expires_in: 1.hours do%>
     <div class="tag-flag row no-gutters mx-1 d-flex align-items-center" style="height:30px">
         <div class="col-2 w-100 "><%= link_to tag ,method: :delete, remote: true , data:{ confirm: tag.name+'を削除しますか？'},class: 'clr_point_c' do %><i class="fas fa-times"></i><% end %></div>

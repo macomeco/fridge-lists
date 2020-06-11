@@ -2,5 +2,7 @@ $(function(){
     $('.lists_update').html('<%= j(render 'lists/partial_list' , lists: @lists)%>');
     $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
     $('.tng_update').html('<%= j(render 'things/thing_form' ,lists: @lists,tags: @tags)%>');
-    $('.list_update').remove(' <%= j(render 'lists/list' , list: @list,lists: @lists,tags: @tags)  %> ');
+    $('.list_update').children('.list_<%=@list.id%>').remove();
+    $('#thing_list_id > option[value="<%=@list.id%>"]').remove();
+
 });

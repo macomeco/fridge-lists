@@ -29,12 +29,18 @@ class ThingsController < ApplicationController
   def update
     if @thing.update(things_params)
       @thing.quantity ||= 1
+    
       flash[:success] = @thing.content.to_s + 'を編集しました'
-      redirect_back(fallback_location: root_path)
+      #redirect_back(fallback_location: root_path)
     else
       flash[:error] = @thing.content.to_s + 'の編集に失敗しました'
       redirect_back(fallback_location: root_path)
     end
+    @today = Date.current
+    @no = current_user.things.where(list_id: @thing.list_id).to_a.size 
+    @things = current_user.things.joins(:tag, :list).order(deadline: :asc)
+    @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
+    @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
   end
   
   def destroy
