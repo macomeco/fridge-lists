@@ -18,7 +18,7 @@ class ToppagesController < ApplicationController
       end
     #もの
       @thing = current_user.things.build
-      @things = current_user.things.joins(:tag, :list).order(deadline: :asc)
+      @things = current_user.things.joins(:tag, :list).order(deadline: :asc,id: :desc)
     #タグ
       @tag = current_user.tags.build
       @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)

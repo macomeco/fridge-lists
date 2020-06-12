@@ -1,4 +1,7 @@
 $(function(){
     $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
     $('.tng_no_<%=@thing.id%>').remove();
+    $('.tng_size_<%=@thing.list_id%>').html('<%= @no = current_user.things.where(list_id: @thing.list_id).to_a.size %>');
+    $('.tng_no_<%= current_user.things.where(list_id: @thing.list_id).order(deadline: :asc).last.id %>').removeClass('mb-2');
+    <%if @thing.list_id == nil then%>$('.tng_size_nil').html('<%= @no = current_user.things.where(list_id: nil).to_a.size %>');<%end%>
 });

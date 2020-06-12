@@ -19,7 +19,7 @@ class ListsController < ApplicationController
     end
     @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
-    @things = current_user.things.joins(:tag, :list).order(deadline: :asc)
+    @things = current_user.things.joins(:tag, :list).order(deadline: :asc,id: :desc)
   end
 
   def update
@@ -35,7 +35,9 @@ class ListsController < ApplicationController
   def destroy
     @list.destroy
     flash[:success] = 'お部屋を削除しました'
-    @things = current_user.things.joins(:tag, :list).order(deadline: :asc)
+    @today = Date.current
+    @no = current_user.things.where(list_id: nil).to_a.size 
+    @things = current_user.things.joins(:tag, :list).order(deadline: :asc,id: :desc)
     @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
   end

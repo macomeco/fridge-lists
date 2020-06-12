@@ -25,7 +25,7 @@ class TagsController < ApplicationController
     else
       flash[:error] = @tag.name.to_s + 'の編集に失敗しました'
     end
-    @things = current_user.things.joins(:tag, :list).order(deadline: :asc)
+    @things = current_user.things.joins(:tag, :list).order(deadline: :asc,id: :desc)
     @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
   end
@@ -33,7 +33,6 @@ class TagsController < ApplicationController
   def destroy
     @tag.destroy
     flash[:success] = 'タグを削除しました'
-    #redirect_back(fallback_location: root_path)
     @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
   end

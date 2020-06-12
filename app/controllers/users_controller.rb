@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+  
   def create
     @user = User.new(user_params)
     @user.theme ||= 'sodapop'
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
         instance_variable_set('@theme',$cake )
       end  
       flash[:success] = 'ユーザーを編集しました'
-      redirect_back(fallback_location: root_path)
+      #redirect_back(fallback_location: root_path)
     else
       flash[:error] = 'ユーザーは編集されませんでした'
       redirect_back(fallback_location: root_path)

@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
 <%=render 'layouts/color' %>
-    <button type="button" class="btn clr_main_b clr_sub_c rounded-circle nav-cube" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-cube fa-lg fa-2x"></i></button>
+    <button type="button" class="btn clr_main_b clr_sub_c rounded-circle nav-cube" data-toggle="modal" data-target="#tng_modal"><i class="fas fa-cube fa-lg fa-2x"></i></button>
     <%= render 'things/tng_phone',lists: @lists,tags: @tags%>
     <div class="row main-flag" style="margin:0;">
         <div class="p-3 pb-5 col-12 p-0 clr_sub_b" style="display:inline-block;overflow-x:scroll;height:90%">

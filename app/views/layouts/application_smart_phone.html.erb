@@ -10,12 +10,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>    
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
-    <%= stylesheet_link_tag 'application',  media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <div class="container-fluid" style="padding:0;position:relative;">
       <%= render 'layouts/top_nav'%>
-      <%= render 'layouts/flash_messages'%>
+      <div class="fls_msg"></div>
       <%= render 'layouts/nav_phone'%>
       <%= yield %>
     </div>

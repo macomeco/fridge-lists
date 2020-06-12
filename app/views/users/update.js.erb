@@ -1,0 +1,13 @@
+$(function(){
+    $('.user_update').html('<%= j(render 'users/edit',user: current_user)%>');
+    if(<%= current_user.saved_change_to_name? %>){
+        $('.user_name').html('<%= current_user.name %>さんの冷蔵庫');
+        $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
+    }
+    if(<%= current_user.saved_change_to_email? %>){
+        $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
+    }
+    if(<%= current_user.saved_change_to_theme? %>){
+        window.location.reload();
+    }
+});

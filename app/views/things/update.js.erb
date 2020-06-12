@@ -1,0 +1,25 @@
+$(function(){
+    $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
+    if(<%= @thing.saved_change_to_list_id? %>){
+        $('.tng_no_<%=@thing.id %>').remove();
+        $('.tng_size_<%=@thing.list_id_before_last_save%>').html('<%=@no= current_user.things.where(list_id: @thing.list_id_before_last_save).to_a.size %>');
+        if($('.list_<%=@thing.list_id_before_last_save%>').hasClass('flag_true')){<%@clr_flag=true%>$('.list_no_<%= @thing.list_id_before_last_save%>_tng').html('<%= j(render partial: 'things/tng' , collection: @things.where(list_id: @thing.list_id_before_last_save), as: 'tng',locals:{lists: @lists,tags: @tags})%>');}
+        else{<% @no = current_user.things.where(list_id: @thing.list_id_before_last_save).to_a.size %><%@clr_flag=false%>$('.list_no_<%= @thing.list_id_before_last_save%>_tng').html('<%= j(render partial: 'things/tng' , collection: @things.where(list_id: @thing.list_id_before_last_save), as: 'tng',locals:{lists: @lists,tags: @tags})%>');}
+        $('.tng_size_<%=@thing.list_id%>').html('<%= @no = current_user.things.where(list_id: @thing.list_id).to_a.size %>');
+        if($('.list_<%=@thing.list_id%>').hasClass('flag_true')){<%@clr_flag=true%>$('.list_no_<%= @thing.list_id%>_tng').html('<%= j(render partial: 'things/tng' , collection: @things.where(list_id: @thing.list_id), as: 'tng',locals:{lists: @lists,tags: @tags})%>'); }
+        else{<% @no = current_user.things.where(list_id: @thing.list_id).to_a.size %><%@clr_flag=false%>$('.list_no_<%= @thing.list_id%>_tng').html('<%= j(render partial: 'things/tng' , collection: @things.where(list_id: @thing.list_id), as: 'tng',locals:{lists: @lists,tags: @tags})%>');}
+    }
+    if(<%= @thing.saved_change_to_content? %>){ $('.tng_content_<%= @thing.id %>').html('<%= @thing.content %>'); }
+    if(<%= @thing.saved_change_to_deadline? %>){
+        $('#thing_deadline').val('<%=@thing.deadline%>');
+        $('.tng_deadline_update_<%=@thing.id%>');
+        <%= @num = (@thing.deadline-@today).to_i%>
+        if(<%= @num %> > 0){ $('.tng_deadline_update_<%=@thing.id%>').html('あと <a style="font-size:14px"><%= @num %></a> 日 ');}
+　        else if(<%= @num %> == 0){ $('.tng_deadline_update_<%=@thing.id%>').html('<p class=" m-0 clr_point_c" style="font-size:14px;font-weight: bold;">当日</p>');}
+        else{ $('.tng_deadline_update_<%=@thing.id%>').html('<a style="font-size:14px"><%=@num.abs%></a> 日 経過'); }
+        if($('.list_<%=@thing.list_id%>').hasClass('flag_true')){ <%@clr_flag=true%>$('.list_no_<%= @thing.list_id%>_tng').html('<%= j(render partial: 'things/tng' , collection: @things.where(list_id: @thing.list_id), as: 'tng',locals:{lists: @lists,tags: @tags})%>'); }
+        else{<%@clr_flag=false%>$('.list_no_<%= @thing.list_id%>_tng').html('<%= j(render partial: 'things/tng' , collection: @things.where(list_id: @thing.list_id), as: 'tng',locals:{lists: @lists,tags: @tags})%>');}
+    }
+    if(<%= @thing.saved_change_to_tag_id? %>){ $('.tng_tag_update_<%= @thing.id%>').html('<%unless @thing.tag_id == nil%><%= content_tag(:p, '#'+@tags.find(@thing.tag_id).name ,style:'font-size:11px' ,class: 'tng_tag_update_'+@thing.id.to_s+' mt-1 mb-0 tag_update_'+@thing.tag_id.to_s) %><%else%><%= content_tag(:p, '#----' ,style:'font-size:11px' ,class: 'tng_tag_update_'+@thing.id.to_s+' mt-1 mb-0 tag_update_'+@thing.tag_id.to_s) %><%end%>'); }
+    $('.tef_<%=@tng_id%>').slideUp('fast');
+});
