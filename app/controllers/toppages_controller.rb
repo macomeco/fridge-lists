@@ -13,7 +13,7 @@ class ToppagesController < ApplicationController
           @search_things = current_user.things.where('content LIKE ?',"%#{params[:search]}%").or(current_user.things.where(:tag_id => tag_search_id)).order(deadline: :asc,id: :asc)
         end
       else
-        @search_things = nil
+        @search_things = 0
       end
     #もの
       @thing = current_user.things.build
