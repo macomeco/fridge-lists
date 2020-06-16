@@ -29,7 +29,10 @@
   <%end%>
     <div class="mt-4 list-card search-tngs">
         <div class="w-100 px-2 search_tngs_result">
-            <%if @search_things.size == 0 then%>
+            <%if @search_things.size > 0 then%>
+                <% @no = @search_things.size %><%@clr_main=true%>
+                <%= render partial: 'things/tng' , collection: search_things, as: 'tng',locals:{lists: lists,tags: tags}%>
+            <%else%>
                 <div class='card mx-auto clr_font_bd w-100'>
                     <div class="row no-gutters">
                         <div class="col-1"><div class= 'w-100 h-100 clr_main_b '></div></div>
@@ -38,9 +41,7 @@
                         </div>
                     </div>
                 </div>
-            <%else%>
-                <% @no = @search_things.size %><%@clr_main=true%>
-                <%= render partial: 'things/tng' , collection: search_things, as: 'tng',locals:{lists: lists,tags: tags}%>
+            
             <%end%>
         </div>
     </div>
