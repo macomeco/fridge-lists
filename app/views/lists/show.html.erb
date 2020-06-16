@@ -2,10 +2,10 @@
     <div class="card mb-2 clr_font_bd">
         <div class="card-body">
             <% cache 'list_form_s' ,expires_in: 1.hours do %>
-            <%= form_with(model: @list, local: true)do |f| %>
+            <%= form_with(model: @list)do |f| %>
                 <div class="form-group">
                     <%= f.label :name, 'お部屋の新規登録',class:'mb-2'%>
-                    <%= f.text_field :name, class: 'form-control form-control-sm'%>
+                    <%= f.text_field :name, autocomplete: 'off', class: 'form-control form-control-sm list-field'%>
                 </div>
                 <%= f.submit '追加' , class: 'btn  btn-sm clr_main_b clr_sub_c w-100' %>
             <%end%>
@@ -16,26 +16,8 @@
         <div class="card-body h-100">
             <p class="mb-2">お部屋一覧</p>
             <div class="card mb-3" style="height:91%">
-                <div class="card-body px-3 py-0" style="overflow-y:auto">
-                    <% @lists.each do |list|%>
-                    <% cache list ,expires_in: 1.hours do %>
-                    <div class="list-flag row no-gutters mx-1 d-flex align-items-center" style="height:43px">
-                        <div class="col-2 w-100 "><%= link_to list , :method => :delete, data:{ confirm: list.name+'を削除しますか？'},class: 'clr_point_c' do %><i class="fa fa-times"></i><% end %></div>
-                        <div class="col-8 w-100"><div class="text-left"><%= list.name%></div></div>
-                        <div class="col-2 w-100"><div class="text-right"><div class= 'list-edit clr_point_c text-right btn btn-link p-0'><i class="fas fa-pen fa-sm"></i></div></div></div>
-                    </div>
-                    <div class="list-edit-form mx-1 " style="height:50px;display:none">
-                        <div class=" row no-gutters d-flex align-items-center my-0" style="height:50px"><div class="col-12">
-                            <%= form_with(model: list, local: true)do |f| %>
-                                <div class="input-group">
-                                    <%= f.text_field :name, class: 'form-control form-control-sm'%>
-                                    <span class="input-group-append"><%= f.submit 'OK' , class: 'btn btn-sm clr_sub_b clr_font_c clr_font_bd' %></span>
-                                </div>
-                            <%end%>
-                        </div></div>
-                    </div>
-                    <%end%>
-                    <%end%>
+                <div class="card-body px-3 py-0 lists_update_phone" style="overflow-y:auto">
+                    <%= render 'lists/partial_list_phone' , lists: @lists%>
                 </div>
             </div>
         </div>

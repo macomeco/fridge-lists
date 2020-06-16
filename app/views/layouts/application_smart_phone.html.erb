@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>    
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'%>
+
   </head>
   <body>
     <div class="container-fluid" style="padding:0;position:relative;">
@@ -20,7 +22,6 @@
       <%= yield %>
     </div>
   </body>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'%>
 </html>
 <script>
   //$(function(){setTimeout("$('.toast').fadeOut(200)", 2000)});

@@ -4,10 +4,10 @@
   <div class="bottom-nav-p w-100"style="height:10%">
     <nav id='navbar_p' class= 'clr_main_b left_nav w-100 h-100 py-2' style='box-sizing: border-box;'>
       <div class="row h-100 w-100 m-0">
-        <%= link_to root_path(current_user.id),class:'clr_sub_c btn-p' do %><div class="clr_sub_c h-100 py-2"><i class="fas fa-home fa-2x"></i></div><%end%>
-        <%= link_to tag_path(current_user.id) ,class:'clr_sub_c btn-p' do%><div class="clr_sub_c h-100 py-2"><i class="fas fa-tag fa-2x"></i></div><%end%>
-        <%= link_to list_path(current_user.id),class:'clr_sub_c btn-p' do %><div class="clr_sub_c h-100 py-2"><i class="fas fa-clipboard-list fa-2x"></i></div><%end%>
-        <%= link_to user_path(current_user.id),class:'clr_sub_c btn-p' do %><div class="clr_sub_c h-100 py-2"><i class="fas fa-user fa-2x"></i></div><%end%>
+        <%= link_to root_path(current_user.id),data: {"turbolinks" => false},class:'clr_sub_c btn-p' do %><div class="clr_sub_c h-100 py-2"><i class="fas fa-home fa-2x"></i></div><%end%>
+        <%= link_to tag_path(current_user.id) , data: {"turbolinks" => false},class:'clr_sub_c btn-p' do%><div class="clr_sub_c h-100 py-2"><i class="fas fa-tag fa-2x"></i></div><%end%>
+        <%= link_to list_path(current_user.id), data: {"turbolinks" => false},class:'clr_sub_c btn-p' do %><div class="clr_sub_c h-100 py-2"><i class="fas fa-clipboard-list fa-2x"></i></div><%end%>
+        <%= link_to user_path(current_user.id), data: {"turbolinks" => false},class:'clr_sub_c btn-p' do %><div class="clr_sub_c h-100 py-2"><i class="fas fa-user fa-2x"></i></div><%end%>
       </div>
     </nav>
   </div>

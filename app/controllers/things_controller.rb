@@ -1,6 +1,8 @@
 class ThingsController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: [:destroy, :update]
+  before_action :for_js, only: [:create, :update, :destroy]
+  
   def create
     test = things_params[:quantity].to_i
     @tng_list = things_params[:list_id].to_i
@@ -17,11 +19,7 @@ class ThingsController < ApplicationController
         flash[:error] = 'ものの追加に失敗しました'
       end
     end
-    @today = Date.current
     @no = current_user.things.where(list_id: @tng_list).to_a.size 
-    @things = current_user.things.joins(:tag, :list).order(deadline: :asc,id: :desc)
-    @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
-    @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
   end
 
   def update
@@ -32,20 +30,13 @@ class ThingsController < ApplicationController
       flash[:error] = @thing.content.to_s + 'の編集に失敗しました'
       redirect_back(fallback_location: root_path)
     end
-    @today = Date.current
     @no = current_user.things.where(list_id: @thing.list_id).to_a.size 
-    @things = current_user.things.joins(:tag, :list).order(deadline: :asc,id: :desc)
-    @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
-    @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
   end
   
   def destroy
     @thing.destroy
     flash[:success] = '削除しました'
-    @today = Date.current
-    @things = current_user.things.joins(:tag, :list).order(deadline: :asc,id: :desc)
-    @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
-    @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
+    
   end
 
   private
@@ -58,6 +49,17 @@ class ThingsController < ApplicationController
     unless @thing
     redirect_back(fallback_location: root_path)
     end
+  end
+  
+  def tngs_js
+    current_user.things.joins(:tag, :list).order(deadline: :asc,id: :desc)
+  end
+  
+  def for_js
+    @today = Date.current
+    @things = current_user.things.joins(:tag, :list).order(deadline: :asc,id: :asc)
+    @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
+    @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
   end
   
 end

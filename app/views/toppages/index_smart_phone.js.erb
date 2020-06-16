@@ -1,0 +1,13 @@
+$(function(){
+console.log('<%=@search_things.size%>');
+    $('.search-form').slideUp('',function(){
+        <%if @search_things.size != 0%>
+            <% @no = @search_things.size %><%@clr_main=true%>
+            $('.search_tngs_result').html('<%= j(render partial: 'things/tng' , collection: @search_things, as: 'tng',locals:{lists: @lists,tags: @tags})%>');
+        <%end%>
+        <%if @search_things.size == 0%>
+            $('.search_tngs_result').html("<div class='card mx-auto clr_font_bd w-100 search-x-list'><div class='row no-gutters'><div class='col-1'><div class= 'w-100 h-100 clr_main_b '></div></div><div class='col-9 px-auto w-100 py-3 px-3'><div class='h-100 d-flex align-items-center'><div class='tng-edit text-center w-100'><div class='w-100 text-left h-100'>見つかりませんでした...</div></div></div></div><div class='col-1'><div class= 'w-100 h-100 clr_main_c d-flex align-items-center'><div class='text-center w-100 search-x'><i class='fas fa-times'></i></div></div></div></div></div>");
+        <%end%>
+    });
+    $('.search-tngs').css('height','79vh');
+});

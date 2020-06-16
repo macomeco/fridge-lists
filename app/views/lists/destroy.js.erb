@@ -1,8 +1,9 @@
 $(function(){
     $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
     $('.lists_update').html('<%= j(render 'lists/partial_list' , lists: @lists)%>');
+    $('.lists_update_phone').html('<%= j(render 'lists/partial_list_phone' , lists: @lists)%>');
     $('.list_update').children('.list_<%=@list.id%>').remove();
     $('.tng_update').html('<%= j(render 'things/thing_form' ,lists: @lists,tags: @tags)%>');
     $('#thing_list_id > option[value="<%=@list.id%>"]').remove();
-    $('.tng_size_nil').html('<%= @no = current_user.things.where(list_id: nil).to_a.size %>');$('.list_nil_tng').html('<%= j(render partial: 'things/tng' , collection: current_user.things.where(list_id: nil), as: 'tng',locals:{lists: @lists,tags: @tags})%>');
+    $('.tng_size_nil').html('<%= @no = current_user.things.where(list_id: nil).to_a.size %>');<%@clr_main=true%>$('.list_nil_tng').html('<%= j(render partial: 'things/tng' , collection: current_user.things.where(list_id: nil), as: 'tng',locals:{lists: @lists,tags: @tags})%>');
 });

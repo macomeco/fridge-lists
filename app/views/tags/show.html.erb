@@ -2,10 +2,10 @@
     <div class="card mb-2 clr_font_bd">
         <div class="card-body">
             <% cache 'tag_form_s' ,expires_in: 1.hours do %>
-            <%= form_with(model: @tag, local: true)do |f| %>
+            <%= form_with(model: @tag)do |f| %>
                 <div class="form-group">
                     <%= f.label :name, 'タグの新規登録',class:' mb-2' %>
-                    <%= f.text_field :name, class: 'form-control form-control-sm'%>
+                    <%= f.text_field :name, autocomplete: 'off', class: 'form-control form-control-sm tag-field'%>
                 </div>
                 <%= f.submit '追加' , class: 'btn btn-sm clr_main_b clr_sub_c w-100' %>
             <%end%>
@@ -16,26 +16,8 @@
         <div class="card-body h-100">
             <p class="mb-2">タグ一覧</p>
             <div class="card" style="height:91%">
-                <div class="card-body px-3 py-0" style="overflow-y:auto">
-                    <% @tags.each do |tag|%>
-                    <%cache tag ,expires_in: 1.hours do%>
-                        <div class="tag-flag row no-gutters mx-1 d-flex align-items-center" style="height:43px">
-                            <div class="col-2 w-100 "><%= link_to tag , :method => :delete, data:{ confirm: tag.name+'を削除しますか？'},class: 'clr_point_c' do %><i class="fa fa-times"></i><% end %></div>
-                            <div class="col-8 w-100"><div class="text-left"><%= tag.name%></div></div>
-                            <div class="col-2 w-100"><div class="text-right"><div class= 'tag-edit clr_point_c text-right btn btn-link p-0'><i class="fas fa-pen fa-sm"></i></div></div></div>
-                        </div>
-                        <div class="tag-edit-form mb-1" style="height:50px;display:none">
-                            <div class=" row no-gutters d-flex align-items-center my-0" style="height:50px"><div class="col-12">
-                                <%= form_with(model: tag, local: true)do |f| %>
-                                    <div class="input-group">
-                                        <%= f.text_field :name, class: 'form-control form-control-sm'%>
-                                        <span class="input-group-append"><%= f.submit 'OK' , class: 'btn btn-sm clr_sub_b clr_font_c clr_font_bd' %></span>
-                                    </div>
-                                <%end%>
-                            </div></div>
-                        </div>
-                    <%end%>
-                    <%end%>
+                <div class="card-body px-3 py-0 tags_update_phone" style="overflow-y:auto">
+                    <%= render 'tags/partial_tag_phone',tags: @tags%>
                 </div>
             </div>
         </div>

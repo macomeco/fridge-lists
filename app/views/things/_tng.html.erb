@@ -1,11 +1,10 @@
 <% @no -= 1 %><% if @no == 0 then @m = 'mb-0' else @m = 'mb-2' end%><% @tng_id =tng.id.to_s%>
 <%=content_tag(:div,'', id: tng.id, class: 'tng_no_'+@tng_id+' target-card card clr_font_bd clr_font_c '+@m) do %>
-    <%# cache @clr_flag.to_s+tng.updated_at.to_s+tng.created_at.to_s ,expires_in: 30.minutes do%>
+    <%# cache @clr_flag.to_s+tng.updated_at.to_s ,expires_in: 30.minutes do%>
     <div class="tng-main row no-gutters">
         <div class="col-1 px-auto w-100">
-            <%if @clr_flag == true then%><div class="w-100 h-100 d-flex align-items-center clr_list_i_b">
-            <%elsif @clr_flag == false then%><div class="w-100 h-100 d-flex align-items-center clr_list_ii_b">
-            <%else%><div class="w-100 h-100 d-flex align-items-center clr_main_b"><%end%>
+            <%if @clr_main == true then%><div class="w-100 h-100 d-flex align-items-center clr_main_b">
+            <%else%><div class="w-100 h-100 d-flex align-items-center clr_list_i_b"><%end%>
                 <%= link_to content_tag(:i,'',class:'fa fa-check fa-sm'), tng ,remote: true,method: :delete, data:{ confirm: tng.content+'を削除しますか？'},class: 'clr_sub_c text-center w-100' %>
             </div>
         </div>
@@ -27,24 +26,24 @@
                 </div>
             </div>
         </div>
+        <% cache 'pen'+tng.list_id.to_s ,expires_in: 1.hours do%>
         <div class="col-2 px-auto w-100 py-3">
             <div class="h-100 d-flex align-items-center">
                 <div class="tng-edit text-center w-100">
-                    <%if @clr_flag == true then%><div class="w-100 text-center btn btn-link p-0 clr_list_i_c">
-                    <%elsif @clr_flag == false then %><div class="w-100 text-center btn btn-link p-0 clr_list_ii_c">
-                    <%else%><div class="w-100 text-center btn btn-link p-0 clr_main_c"><%end%>
+                    <%if @clr_main == true%><div class="w-100 text-center btn btn-link p-0 clr_main_c">
+                    <%else%><div class="w-100 text-center btn btn-link p-0 clr_list_i_c"><%end%>
                         <i class="fas fa-pen"></i>
                     </div>
                 </div>
             </div>
         </div>
+        <%end%>
     </div>
     <%#end%>
-    <div class="row no-gutters tng-edit-form tdf_<%=@tng_id%>" style="display:none">
+    <div class="row no-gutters tng-edit-form tef_<%=@tng_id%>" style="display:none">
         <div class="col-1 px-auto w-100">
-            <%if @clr_flag == true then%><div class="h-100 d-flex align-items-center clr_list_i_b"></div>
-            <%elsif @clr_flag == false then %><div class="h-100 d-flex align-items-center clr_list_ii_b"></div>
-            <%else %><div class="h-100 d-flex align-items-center clr_main_b"></div><%end%>
+            <%if @clr_main == true then%><div class="h-100 d-flex align-items-center clr_main_b"></div>
+            <%else%><div class="h-100 d-flex align-items-center clr_list_i_b"></div><%end%>
         </div>
         <%#cache lists.last.updated_at.to_s + lists.size.to_s + tags.last.updated_at.to_s + tags.size.to_s + tng.updated_at.to_s,expires_in: 30.minutes do%>
         <div class="col-11">
@@ -79,9 +78,8 @@
                     <%#    <%end%>
                     </div>
                     <div class="text-right">
-                        <%if @clr_flag == true then%><%= f.submit 'OK' , class: 'btn btn-sm clr_list_i_b clr_sub_c w-100' %>
-                        <%elsif @clr_flag == false then%><%= f.submit 'OK' , class: 'btn btn-sm clr_list_ii_b clr_sub_c w-100' %>
-                        <%else%><%= f.submit 'OK' , class: 'btn btn-sm clr_main_b clr_sub_c w-100' %><%end%>
+                        <%if @clr_main==true then%><%= f.submit 'OK' , class: 'font-weight-bold btn btn-sm clr_main_b clr_sub_c w-100' %>
+                        <%else%><%= f.submit 'OK' , class: 'font-weight-bold btn btn-sm clr_list_i_b clr_sub_c w-100' %><%end%>
                     </div>
                 <%end%>
             </div>            

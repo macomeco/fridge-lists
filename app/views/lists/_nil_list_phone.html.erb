@@ -2,7 +2,6 @@
     <div class='card clr_font_bd list-p-flag' style='width:100%;'>
         <div class="row no-gutters">
             <!-- 色決め リストで交互に -->            
-            <%if @clr_flag == true then @clr_flag = false else @clr_flag = true end%>
             <div class="col-1"><div class="w-100 h-100 clr_main_b"></div></div>
             <div class="col-8">
                 <div class="card-body mx-auto h-100 pr-0"><h1 style="font-size:20px;margin:0">未収納</h1></div>
@@ -23,6 +22,6 @@
     </div>
 <!-- 中身 -->
     <div class="mt-0 mx-auto list-card list-p" style="width:100%;display:none">
-        <div class="w-100 mt-3"><%= render partial: 'things/tng' , collection: current_user.things.where(list_id: nil), as: 'tng', locals:{lists: @lists,tags: @tags}%></div>
+        <div class="w-100 mt-3"><%@clr_main=true%><%= render partial: 'things/tng' , collection: current_user.things.where(list_id: nil), as: 'tng', locals:{lists: @lists,tags: @tags}%></div>
     </div>
 </div>

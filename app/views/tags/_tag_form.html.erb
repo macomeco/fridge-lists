@@ -1,7 +1,0 @@
-<%= form_with(model: tag, class:'mb-3')do |f| %>
-    <div class="form-group">
-        <%= f.label :name, 'タグの新規登録',class:' mb-2' %>
-        <%= f.text_field :name, autocomplete: 'off',class: 'form-control form-control-sm tag-field'%>
-    </div>
-    <div class="text-right"><%= f.submit '追加' , class: 'btn btn-sm clr_sub_b clr_font_c clr_font_bd' %></div>
-<%end%>

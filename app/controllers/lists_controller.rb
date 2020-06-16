@@ -5,7 +5,7 @@ class ListsController < ApplicationController
   
   def show
     @list = current_user.lists.build
-    @lists = current_user.lists.select('name','id','user_id','updated_at').order(id: :asc)
+    @lists = current_user.lists.select('name','id','user_id','updated_at').order(id: :desc)
   end
 
   def create
