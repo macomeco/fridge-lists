@@ -1,8 +1,8 @@
 $(function(){
+    console.log('<%= @s_or_e %>');
     $('.tng-field').val("");
     $('#thing_quantity').val(1);
     $('.tng_size_<%=@tng_list%>').html('<%= @no = current_user.things.where(list_id: @tng_list).to_a.size %>');
     $('.list_no_<%= @tng_list%>_tng').html('<%= j(render partial: 'things/tng' , collection: @things.where(list_id: @tng_list), as: 'tng',locals:{lists: @lists,tags: @tags}) %>');
-    $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
     $('#tng_modal').modal('hide');
 });

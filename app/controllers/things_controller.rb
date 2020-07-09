@@ -4,6 +4,7 @@ class ThingsController < ApplicationController
   before_action :for_js, only: [:create, :update, :destroy]
   
   def create
+    @s_or_e = ''
     test = things_params[:quantity].to_i
     @tng_list = things_params[:list_id].to_i
     @arr = []
@@ -15,8 +16,10 @@ class ThingsController < ApplicationController
     @arr.each do |t|
       if t.save
         flash[:success] = t.content.to_s + 'を追加しました'
+        @s_or_e = 'success'
       else
         flash[:error] = 'ものの追加に失敗しました'
+        @s_or_e = 'error'
       end
     end
     @no = current_user.things.where(list_id: @tng_list).to_a.size 
