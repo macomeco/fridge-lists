@@ -41,11 +41,26 @@
             <div class="forget-form">
                 <%= render 'devise/passwords/new' %>
             </div>
+            
+            <div class="gstlogin-form">
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="field my-2">
+                    <%= f.label :email %>
+                    <%= f.email_field :email, autofocus: true, value: "guestlogin@mail.com",autocomplete: "email",class:'form-control' %>
+                </div>
+                <div class="field my-2">
+                    <%= f.label :password %>
+                    <%= f.password_field :password, value: "guestlogin",autocomplete: "current-password",class:'form-control' %>
+                </div>
+            </div>
+                <%= f.submit "ゲストログイン" , class: 'btn btn-success btn-block mt-3'%>
+            <% end %>
+            
         </div>
     </div>
     <script>
     //button
-    $('.signup-form , .login-form,.forget-form').hide();
+    $('.signup-form , .login-form,.forget-form,.gstlogin-form').hide();
     //signupを選んだ場合
     $('.signup-btn').on('click', function(){
         $('.form-btn, .login-form,.forget-form').hide();
@@ -61,6 +76,7 @@
         $('.form-btn , .login-form').hide();
         $('.forget-form').fadeIn();
     });
+    //ゲストログイン
     </script>
 <%end%>
 <%end%>

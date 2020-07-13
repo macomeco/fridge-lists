@@ -10,11 +10,15 @@ class ListsController < ApplicationController
 
   def create
     @list = current_user.lists.build(lists_params)
-    if @list.save
-      flash.now[:success] = @list.name.to_s + 'を追加しました'
+    
+    unless @list.name.to_s == current_user.lists.find_by(name: lists_params[:name]).name
+      if @list.save
+        flash.now[:success] = @list.name.to_s + 'を追加しました'
+      end
     else
       flash.now[:error] = 'お部屋の追加に失敗しました'
     end
+    
     @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     @things = current_user.things.joins(:tag, :list).order(deadline: :asc,id: :desc)

@@ -9,8 +9,11 @@ class TagsController < ApplicationController
 
   def create
     @tag = current_user.tags.build(tags_params)
-    if @tag.save
-      flash.now[:success] = @tag.name.to_s + 'を追加しました'
+    
+    unless @tag.name.to_s == current_user.tags.find_by(name: tags_params[:name]).name
+      if @tag.save
+        flash.now[:success] = @tag.name.to_s + 'を追加しました'
+      end
     else
       flash.now[:error] = 'タグの追加に失敗しました'
     end
