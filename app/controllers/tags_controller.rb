@@ -10,9 +10,9 @@ class TagsController < ApplicationController
   def create
     @tag = current_user.tags.build(tags_params)
     if @tag.save
-      flash[:success] = @tag.name.to_s + 'を追加しました'
+      flash.now[:success] = @tag.name.to_s + 'を追加しました'
     else
-      flash[:error] = 'タグの追加に失敗しました'
+      flash.now[:error] = 'タグの追加に失敗しました'
     end
     @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
@@ -20,10 +20,9 @@ class TagsController < ApplicationController
 
   def update
     if @tag.update(tags_params)
-      flash[:success] = @tag.name.to_s + 'を編集しました'
-      #    redirect_back(fallback_location: root_path)
+      flash.now[:success] = @tag.name.to_s + 'を編集しました'
     else
-      flash[:error] = @tag.name.to_s + 'の編集に失敗しました'
+      flash.now[:error] = @tag.name.to_s + 'の編集に失敗しました'
     end
     @things = current_user.things.joins(:tag, :list).order(deadline: :asc,id: :desc)
     @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
@@ -32,7 +31,7 @@ class TagsController < ApplicationController
   
   def destroy
     @tag.destroy
-    flash[:success] = 'タグを削除しました'
+    flash.now[:success] = 'タグを削除しました'
     @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
   end

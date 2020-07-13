@@ -1,5 +1,4 @@
-$(function(){
-    $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
+if('<%= flash.keys[0] %>'=='success'){
     <%if @thing.saved_change_to_list_id? %>
         $('.tng_no_<%=@thing.id %>').remove();
         $('.tng_size_<%=@thing.list_id_before_last_save%>').html('<%=@no= current_user.things.where(list_id: @thing.list_id_before_last_save).to_a.size %>');
@@ -19,4 +18,8 @@ $(function(){
     <%end%>
     <%if @thing.saved_change_to_tag_id? %>$('.tng_tag_update_<%= @thing.id%>').html('<%unless @thing.tag_id == nil%><%= content_tag(:p, '#'+@tags.find(@thing.tag_id).name ,style:'font-size:11px' ,class: 'tng_tag_update_'+@thing.id.to_s+' mt-1 mb-0 tag_update_'+@thing.tag_id.to_s) %><%else%><%= content_tag(:p, '#----' ,style:'font-size:11px' ,class: 'tng_tag_update_'+@thing.id.to_s+' mt-1 mb-0 tag_update_'+@thing.tag_id.to_s) %><%end%>');<%end%>
     $('.tef_<%=@thing.id%>').slideUp('fast');
-});
+    
+}else if('<%= flash.keys.last %>'=='error'){
+    console.log('error');
+}
+$('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');

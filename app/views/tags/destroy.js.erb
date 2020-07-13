@@ -1,8 +1,10 @@
-$(function(){
+if('<%= flash.keys[0] %>'=='success'){
     $('.tags_update').html('<%= j(render 'tags/partial_tag' , tags: @tags)%>');
     $('.tags_update_phone').html('<%= j(render 'tags/partial_tag_phone' , tags: @tags)%>');
     $('.tng_update').html('<%= j(render 'things/thing_form' ,lists: @lists,tags: @tags)%>');
     $('.tag_update_<%=@tag.id.to_s%>').html('<%= content_tag(:p, '#----',style:'font-size:11px' ,class:'mt-1 mb-0 tag_update_'+@tag.id.to_s) %>');
     $('#thing_tag_id > option[value="<%=@tag.id%>"]').remove();
-    $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
-});
+}else if('<%= flash.keys.last %>'=='error'){
+    console.log('error');
+}
+$('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');

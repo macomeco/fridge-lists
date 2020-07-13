@@ -11,11 +11,9 @@ class ListsController < ApplicationController
   def create
     @list = current_user.lists.build(lists_params)
     if @list.save
-      flash[:success] = @list.name.to_s + 'を追加しました'
-      #redirect_back(fallback_location: root_path)
+      flash.now[:success] = @list.name.to_s + 'を追加しました'
     else
-      flash[:error] = 'お部屋の追加に失敗しました'
-      #redirect_back(fallback_location: root_path)
+      flash.now[:error] = 'お部屋の追加に失敗しました'
     end
     @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
@@ -24,9 +22,9 @@ class ListsController < ApplicationController
 
   def update
     if @list.update(lists_params)
-        flash[:success] = @list.name.to_s + 'を編集しました'
+        flash.now[:success] = @list.name.to_s + 'を編集しました'
     else
-        flash[:error] = @list.name.to_s + 'の編集に失敗しました'
+        flash.now[:error] = @list.name.to_s + 'の編集に失敗しました'
     end
     @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
@@ -34,7 +32,7 @@ class ListsController < ApplicationController
   
   def destroy
     @list.destroy
-    flash[:success] = 'お部屋を削除しました'
+    flash.now[:success] = 'お部屋を削除しました'
     @today = Date.current
     @no = current_user.things.where(list_id: nil).to_a.size 
     @things = current_user.things.joins(:tag, :list).order(deadline: :asc,id: :desc)

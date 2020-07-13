@@ -15,11 +15,9 @@ class ThingsController < ApplicationController
     end
     @arr.each do |t|
       if t.save
-        flash[:success] = t.content.to_s + 'を追加しました'
-        @s_or_e = 'success'
+        flash.now[:success] = t.content.to_s + 'を追加しました'
       else
-        flash[:error] = 'ものの追加に失敗しました'
-        @s_or_e = 'error'
+        flash.now[:error] = 'ものの追加に失敗しました'
       end
     end
     @no = current_user.things.where(list_id: @tng_list).to_a.size 
@@ -28,9 +26,9 @@ class ThingsController < ApplicationController
   def update
     if @thing.update(things_params)
       @thing.quantity ||= 1
-      flash[:success] = @thing.content.to_s + 'を編集しました'
+      flash.now[:success] = @thing.content.to_s + 'を編集しました'
     else
-      flash[:error] = @thing.content.to_s + 'の編集に失敗しました'
+      flash.now[:error] = @thing.content.to_s + 'の編集に失敗しました'
       redirect_back(fallback_location: root_path)
     end
     @no = current_user.things.where(list_id: @thing.list_id).to_a.size 
@@ -38,7 +36,7 @@ class ThingsController < ApplicationController
   
   def destroy
     @thing.destroy
-    flash[:success] = '削除しました'
+    flash.now[:success] = '削除しました'
     
   end
 

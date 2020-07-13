@@ -1,9 +1,11 @@
-$(function(){
-    $('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
+if('<%= flash.keys[0] %>'=='success'){
     $('.tng_no_<%=@thing.id%>').remove();
     $('.tng_size_<%=@thing.list_id%>').html('<%= @no = current_user.things.where(list_id: @thing.list_id).to_a.size %>');
     <%unless @no == 0 then %>$('.tng_no_<%= current_user.things.where(list_id: @thing.list_id).order(deadline: :asc,id: :asc).last.id %>').removeClass('mb-2');<%end%>
     <%if @thing.list_id == nil then%>$('.tng_size_nil').html('<%= @no = current_user.things.where(list_id: nil).to_a.size %>');
     <%unless @no == 0 then %>$('.tng_no_<%= current_user.things.where(list_id: nil).order(deadline: :asc,id: :asc).last.id %>').removeClass('mb-2');<%end%>
     <%end%>
-});
+}else if('<%= flash.keys.last %>'=='error'){
+    console.log('error');
+}
+$('.fls_msg').html('<%= j(render 'layouts/flash_messages')%>');
