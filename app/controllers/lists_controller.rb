@@ -24,7 +24,7 @@ class ListsController < ApplicationController
     if @list.update(lists_params)
         flash.now[:success] = @list.name.to_s + 'を編集しました'
     else
-        flash.now[:error] = @list.name.to_s + 'の編集に失敗しました'
+        flash.now[:error] = @list.name_was.to_s + 'の編集に失敗しました'
     end
     @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
     @tags = current_user.tags.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)

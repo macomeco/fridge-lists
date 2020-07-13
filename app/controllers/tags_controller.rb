@@ -22,7 +22,7 @@ class TagsController < ApplicationController
     if @tag.update(tags_params)
       flash.now[:success] = @tag.name.to_s + 'を編集しました'
     else
-      flash.now[:error] = @tag.name.to_s + 'の編集に失敗しました'
+      flash.now[:error] = @tag.name_was.to_s + 'の編集に失敗しました'
     end
     @things = current_user.things.joins(:tag, :list).order(deadline: :asc,id: :desc)
     @lists = current_user.lists.joins(:user).select('name','id','user_id','updated_at').order(id: :desc)
