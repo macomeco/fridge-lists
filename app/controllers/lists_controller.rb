@@ -11,7 +11,7 @@ class ListsController < ApplicationController
   def create
     @list = current_user.lists.build(lists_params)
     
-    unless @list.name.to_s == current_user.lists.find_by(name: lists_params[:name]).name
+    if current_user.lists.where(name: @list.name).size.to_i == 0
       if @list.save
         flash.now[:success] = @list.name.to_s + 'を追加しました'
       end
