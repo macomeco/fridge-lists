@@ -15,6 +15,7 @@
             <%= render 'layouts/search' ,search_things: @search_things,lists: @lists,tags: @tags%>
         </div>
     </div>
+    
 <% else %>
 <% cache 'top_p',expires_in: 30.minutes do%>
     <div class="m-0 row align-items-center top">
