@@ -70,6 +70,7 @@ ja:
        
   errors:
       messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
         already_confirmed: "was already confirmed, please try signing in"
         confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
         expired: "has expired, please request a new one"

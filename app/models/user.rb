@@ -16,6 +16,12 @@ class User < ApplicationRecord
     has_many :tags
     has_many :lists
     has_many :things
-    #has_many :colorthemes    
+    #has_many :colorthemes 
+    
+    def self.guest
+        find_or_create_by!(email: 'guest@mail.com',name: 'げすと',theme: 'sodapop') do |user|
+            user.password = SecureRandom.urlsafe_base64
+        end
+    end
 
 end

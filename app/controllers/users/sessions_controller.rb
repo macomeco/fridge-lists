@@ -6,6 +6,13 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
   
+  def new_guest
+    user = User.guest
+    sign_in user
+    flash[:success] = 'ゲストログインしました。'
+    redirect_to root_path
+  end
+  
   def create
     self.resource = warden.authenticate!(auth_options)
     set_flash_message!(:notice, :signed_in)
