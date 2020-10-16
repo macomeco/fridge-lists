@@ -19,8 +19,10 @@ class User < ApplicationRecord
     #has_many :colorthemes 
     
     def self.guest
-        find_or_create_by!(email: 'guest@mail.com',name: 'げすと',theme: 'sodapop') do |user|
-            user.password = SecureRandom.urlsafe_base64
+        find_or_create_by!(email: 'guest@mail.com') do |user|
+            user.password = SecureRandom.urlsafe_base64,
+            user.name ='げすと',
+            user.theme = 'sodapop'
         end
     end
 
