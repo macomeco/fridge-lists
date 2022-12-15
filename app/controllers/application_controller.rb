@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    # なんでかわかんないけど数おおいっておこられる
     include Jpmobile::ViewSelector
     include SessionsHelper
     
@@ -18,7 +19,7 @@ class ApplicationController < ActionController::Base
 
     protected
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :theme])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :theme])
     end
     
     #カラーテーマ

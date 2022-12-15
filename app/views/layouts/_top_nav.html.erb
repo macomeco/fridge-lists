@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
     <%cache current_user.updated_at.to_s do%>
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-0 w-100" style="height:5%">
-            <h1 style="color:white;font-size:20px" class="m-0 user_name w-50"><%= current_user.name %>さんの冷蔵庫</h1>
-            <div class="clr_sub_c w-50 text-right btn p-0 help-btn" data-toggle="modal" data-target="#help_modal"><i class="fas fa-question-circle fa-lg"></i></div>
+            <h1 style="color:white;font-size:20px" class="m-0 user_name"><%= current_user.name %>さんの冷蔵庫</h1>
+            <div class="clr_sub_c text-right btn p-0 help-btn" data-toggle="modal" data-target="#help_modal"><i class="fas fa-question-circle fa-lg"></i></div>
         </nav>
     <%end%>
 <%end%>
