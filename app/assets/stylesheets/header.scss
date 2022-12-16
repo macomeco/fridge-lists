@@ -1,0 +1,21 @@
+// header
+header{
+    width: 100vw;
+}
+    nav{
+        height:5%;
+        background-color: #666666;
+        padding:5px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h1{
+            display: inline;
+            color:white;
+            font-size: 18px;
+            margin:0;
+        }
+        #help_btn{
+            display: inline;
+        }
+    }

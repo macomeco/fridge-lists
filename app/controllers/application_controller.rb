@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    # なんでかわかんないけど数おおいっておこられる
+    # なんでかわかんないけど数おおいっておこられる バージョンアップで解決した
     include Jpmobile::ViewSelector
     include SessionsHelper
     

@@ -4,9 +4,15 @@
 html {
 	width: 100vw
 }
+body{
+    margin:0;
+}
 ul {
 	list-style: none
 }
+
+
+// スマホ用
 .btn-p {
 	width: 25%;
 	height: 100%
@@ -44,6 +50,10 @@ ul {
 	display: inline-block;
 	text-align: center;
 	width: 25%
+}
+.sub-menu-head div{
+    display: flex;
+    align-items: center;
 }
 .list-card {
 	height: auto
